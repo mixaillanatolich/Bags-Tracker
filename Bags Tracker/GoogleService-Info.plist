@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>794264444783-5lbbqr04bulamda3es9af2kqe81ri8se.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.794264444783-5lbbqr04bulamda3es9af2kqe81ri8se</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB8P_ZuVOoOzBGMUyJyD5qW2OanAZx2mdE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>794264444783</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.m-technologies.Bags-Tracker1</string>
+	<key>PROJECT_ID</key>
+	<string>bags-tracker</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bags-tracker.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:794264444783:ios:8a1b88c16dbb41e7fc929a</string>
+	<key>DATABASE_URL</key>
+	<string>https://bags-tracker.firebaseio.com</string>
+</dict>
+</plist>

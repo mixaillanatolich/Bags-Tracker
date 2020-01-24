@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import Firebase
 
 class NearbyDevicesViewController: UIViewController {
 
@@ -20,7 +21,19 @@ class NearbyDevicesViewController: UIViewController {
 
         BLEManager.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
         
+        Analytics.logEvent("start_discovery_devices", parameters: [
+            "device": UUID().uuidString,
+            "some_key": "a_value"
+        ])
+    
+        
         BLEManager.setupDiscoveryNodeCallback { (isNewDevice, device) in
+            
+            Analytics.logEvent("device_discovered", parameters: [
+                "device": device.uuid,
+                "name": device.name,
+                "rssi": device.rssi
+            ])
             
             DispatchQueue.main.async {
                 if let _ = self.discoveredDevices[device.uuid] {
@@ -39,6 +52,12 @@ class NearbyDevicesViewController: UIViewController {
         }
     }
 
+    @IBAction func closeButtonClicked(_ sender: Any) {
+        
+        fatalError()
+
+        
+    }
 }
 
 extension NearbyDevicesViewController: UITableViewDelegate, UITableViewDataSource {

@@ -1,0 +1,6 @@
+framework module Pods_Bags_Tracker {
+  umbrella header "Pods-Bags Tracker-umbrella.h"
+
+  export *
+  module * { export * }
+}

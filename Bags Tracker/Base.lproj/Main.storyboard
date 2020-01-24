@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jio-d6-pqS">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jio-d6-pqS">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +40,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R23-o2-f5E" id="cFq-QS-D5t">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkx-Ud-edV">
@@ -64,7 +62,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdG-wY-ZyD">
-                                                    <rect key="frame" x="15" y="33" width="5" height="12"/>
+                                                    <rect key="frame" x="15" y="33.333333333333336" width="5" height="12"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="Ngs-Bh-UEa"/>
@@ -72,7 +70,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QzS-6x-JE4">
-                                                    <rect key="frame" x="23" y="28" width="5" height="17"/>
+                                                    <rect key="frame" x="23" y="28.333333333333329" width="5" height="17"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="2Hg-4T-3Ju"/>
@@ -80,7 +78,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4H-b1-zQG">
-                                                    <rect key="frame" x="31" y="23" width="5" height="22"/>
+                                                    <rect key="frame" x="31" y="23.333333333333329" width="5" height="22"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="ZqJ-OW-pxT"/>
@@ -88,7 +86,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGb-Sd-4lP">
-                                                    <rect key="frame" x="39" y="18" width="5" height="27"/>
+                                                    <rect key="frame" x="39" y="18.333333333333332" width="5" height="26.999999999999996"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="HAk-Gx-tEN"/>
@@ -96,7 +94,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fO-EP-bbr">
-                                                    <rect key="frame" x="47" y="14" width="5" height="31"/>
+                                                    <rect key="frame" x="47" y="14.333333333333336" width="5" height="31"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31" id="NXD-7d-YeL"/>
@@ -169,18 +167,18 @@
             <objects>
                 <viewController id="gwK-07-ifc" customClass="ScanVC" customModule="Bags_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tge-k2-gek">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zAI-Rc-I8v">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscoveredPeripheralCell" id="GdU-Eq-Mvp" customClass="DiscoveredDeviceTableViewCell" customModule="Bags_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GdU-Eq-Mvp" id="z06-hP-6RS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-s4-eeR">
@@ -202,7 +200,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgG-i1-b8k">
-                                                    <rect key="frame" x="15" y="33" width="5" height="12"/>
+                                                    <rect key="frame" x="15" y="33.333333333333336" width="5" height="12"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="Bfk-x9-hoy"/>
@@ -210,7 +208,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnF-pf-drF">
-                                                    <rect key="frame" x="23" y="28" width="5" height="17"/>
+                                                    <rect key="frame" x="23" y="28.333333333333329" width="5" height="17"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="Yx1-p7-63J"/>
@@ -218,7 +216,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a43-wg-tlI">
-                                                    <rect key="frame" x="31" y="23" width="5" height="22"/>
+                                                    <rect key="frame" x="31" y="23.333333333333329" width="5" height="22"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="a9c-Dv-xJZ"/>
@@ -226,7 +224,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7H-1F-nbP">
-                                                    <rect key="frame" x="39" y="18" width="5" height="27"/>
+                                                    <rect key="frame" x="39" y="18.333333333333332" width="5" height="26.999999999999996"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="Qeb-Jg-Yuq"/>
@@ -234,7 +232,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVe-Jv-GTU">
-                                                    <rect key="frame" x="47" y="14" width="5" height="31"/>
+                                                    <rect key="frame" x="47" y="14.333333333333336" width="5" height="31"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="F8A-hj-Aiz"/>
@@ -311,7 +309,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z3r-PT-gPF" id="OmZ-Ax-WIy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juJ-o0-lZJ">
@@ -333,7 +331,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdF-eC-odU">
-                                                    <rect key="frame" x="15" y="33" width="5" height="12"/>
+                                                    <rect key="frame" x="15" y="33.333333333333336" width="5" height="12"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="hGs-6v-hsW"/>
@@ -341,7 +339,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBl-1K-UDJ">
-                                                    <rect key="frame" x="23" y="28" width="5" height="17"/>
+                                                    <rect key="frame" x="23" y="28.333333333333329" width="5" height="17"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="eJj-4b-s6Z"/>
@@ -349,7 +347,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URJ-QI-8Jj">
-                                                    <rect key="frame" x="31" y="23" width="5" height="22"/>
+                                                    <rect key="frame" x="31" y="23.333333333333329" width="5" height="22"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="80t-d7-njQ"/>
@@ -357,7 +355,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5K-1P-FK2">
-                                                    <rect key="frame" x="39" y="18" width="5" height="27"/>
+                                                    <rect key="frame" x="39" y="18.333333333333332" width="5" height="26.999999999999996"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="NID-LN-4ne"/>
@@ -365,7 +363,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJc-yn-KFb">
-                                                    <rect key="frame" x="47" y="14" width="5" height="31"/>
+                                                    <rect key="frame" x="47" y="14.333333333333336" width="5" height="31"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="lYY-W0-I9b"/>
@@ -418,7 +416,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cwg-JU-P7m"/>
                     </view>
-                    <navigationItem key="navigationItem" id="aky-xj-G3W"/>
+                    <navigationItem key="navigationItem" id="aky-xj-G3W">
+                        <barButtonItem key="rightBarButtonItem" title="Close" style="plain" id="NnL-Fz-QF5">
+                            <connections>
+                                <action selector="closeButtonClicked:" destination="f59-Om-86D" id="xb3-67-m9w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="TC9-nu-HiI" id="r16-QE-pIq"/>
                     </connections>

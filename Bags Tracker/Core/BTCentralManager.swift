@@ -73,7 +73,7 @@ public class BTCentralManager: NSObject, CBCentralManagerDelegate {
     
     fileprivate func startScanIfNecessary() {
         if isScanning && isPoweredOn {
-            dLog("Start ble scan")
+            dNSLog("Start ble scan")
             centralManager?.scanForPeripherals(withServices: nil /*serviceUUIDs*/, options: [CBCentralManagerScanOptionAllowDuplicatesKey : true])
         }
     }

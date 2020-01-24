@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0514D8FD23DAD6BC00451BB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0514D8FC23DAD6BC00451BB7 /* GoogleService-Info.plist */; };
 		051D27F3228D760800D6D1DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051D27F2228D760800D6D1DF /* AppDelegate.swift */; };
 		051D27F8228D760800D6D1DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051D27F6228D760800D6D1DF /* Main.storyboard */; };
 		051D27FA228D760900D6D1DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051D27F9228D760900D6D1DF /* Assets.xcassets */; };
@@ -19,9 +20,11 @@
 		05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55783228D90BB003EEA47 /* BTCentralManager.swift */; };
 		05B55788228D90C5003EEA47 /* ExtObjectOrNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */; };
 		05B55789228D90C5003EEA47 /* LogsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55787228D90C5003EEA47 /* LogsHelper.swift */; };
+		C51632F450E610D5C076D69B /* Pods_Bags_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0514D8FC23DAD6BC00451BB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		051D27EF228D760800D6D1DF /* Bags Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bags Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		051D27F2228D760800D6D1DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		051D27F7228D760800D6D1DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -36,6 +39,9 @@
 		05B55783228D90BB003EEA47 /* BTCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCentralManager.swift; sourceTree = "<group>"; };
 		05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtObjectOrNil.swift; sourceTree = "<group>"; };
 		05B55787228D90C5003EEA47 /* LogsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsHelper.swift; sourceTree = "<group>"; };
+		1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bags_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57BF8721745F59100DECA21D /* Pods-Bags Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bags Tracker.release.xcconfig"; path = "Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker.release.xcconfig"; sourceTree = "<group>"; };
+		DE7DF5668030E781D53F2722 /* Pods-Bags Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bags Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +49,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C51632F450E610D5C076D69B /* Pods_Bags_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03196A3B03CA632B1008C0DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE7DF5668030E781D53F2722 /* Pods-Bags Tracker.debug.xcconfig */,
+				57BF8721745F59100DECA21D /* Pods-Bags Tracker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		051D27E6228D760800D6D1DF = {
 			isa = PBXGroup;
 			children = (
 				051D27F1228D760800D6D1DF /* Bags Tracker */,
 				051D27F0228D760800D6D1DF /* Products */,
+				03196A3B03CA632B1008C0DE /* Pods */,
+				4BCC965954963F2FB9F239DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +94,7 @@
 				051D27F9228D760900D6D1DF /* Assets.xcassets */,
 				051D27FB228D760900D6D1DF /* LaunchScreen.storyboard */,
 				051D27FE228D760900D6D1DF /* Info.plist */,
+				0514D8FC23DAD6BC00451BB7 /* GoogleService-Info.plist */,
 			);
 			path = "Bags Tracker";
 			sourceTree = "<group>";
@@ -109,6 +128,14 @@
 			path = Vendors;
 			sourceTree = "<group>";
 		};
+		4BCC965954963F2FB9F239DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,9 +143,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 051D2801228D760900D6D1DF /* Build configuration list for PBXNativeTarget "Bags Tracker" */;
 			buildPhases = (
+				FA30BF2026ED0454CE611284 /* [CP] Check Pods Manifest.lock */,
 				051D27EB228D760800D6D1DF /* Sources */,
 				051D27EC228D760800D6D1DF /* Frameworks */,
 				051D27ED228D760800D6D1DF /* Resources */,
+				B580E0CDAB2C042D83D28132 /* [CP] Embed Pods Frameworks */,
+				0514D8FE23DADA3F00451BB7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -173,12 +203,74 @@
 			buildActionMask = 2147483647;
 			files = (
 				051D27FD228D760900D6D1DF /* LaunchScreen.storyboard in Resources */,
+				0514D8FD23DAD6BC00451BB7 /* GoogleService-Info.plist in Resources */,
 				051D27FA228D760900D6D1DF /* Assets.xcassets in Resources */,
 				051D27F8228D760800D6D1DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0514D8FE23DADA3F00451BB7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
+		};
+		B580E0CDAB2C042D83D28132 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA30BF2026ED0454CE611284 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bags Tracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		051D27EB228D760800D6D1DF /* Sources */ = {
@@ -337,9 +429,12 @@
 		};
 		051D2802228D760900D6D1DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE7DF5668030E781D53F2722 /* Pods-Bags Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 73LTLJAK8K;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -347,7 +442,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "All devices";
 				SWIFT_VERSION = 5.0;
@@ -357,10 +452,13 @@
 		};
 		051D2803228D760900D6D1DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57BF8721745F59100DECA21D /* Pods-Bags Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 73LTLJAK8K;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
