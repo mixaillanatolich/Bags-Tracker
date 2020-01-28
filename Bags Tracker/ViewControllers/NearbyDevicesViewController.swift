@@ -77,19 +77,19 @@ extension NearbyDevicesViewController: UITableViewDelegate, UITableViewDataSourc
         cell.rssiLabel.text = "RSSI: \(peripheralRSSI)   temperature: \(device.temperature() ?? "n/a") C"
         
         if (peripheralRSSI.intValue > -55) {
-            cell.signalLevelIndicator5.backgroundColor=UIColor.black
+            cell.signalLevelIndicator5.backgroundColor=UIColor.blue
         }
         if (peripheralRSSI.intValue > -65) {
-            cell.signalLevelIndicator4.backgroundColor=UIColor.black
+            cell.signalLevelIndicator4.backgroundColor=UIColor.blue
         }
         if (peripheralRSSI.intValue > -75) {
-            cell.signalLevelIndicator3.backgroundColor=UIColor.black
+            cell.signalLevelIndicator3.backgroundColor=UIColor.blue
         }
         if (peripheralRSSI.intValue > -85) {
-            cell.signalLevelIndicator2.backgroundColor=UIColor.black
+            cell.signalLevelIndicator2.backgroundColor=UIColor.blue
         }
         if (peripheralRSSI.intValue > -95) {
-            cell.signalLevelIndicator1.backgroundColor=UIColor.black
+            cell.signalLevelIndicator1.backgroundColor=UIColor.blue
         }
         
         

@@ -20,6 +20,7 @@
 		05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55783228D90BB003EEA47 /* BTCentralManager.swift */; };
 		05B55788228D90C5003EEA47 /* ExtObjectOrNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */; };
 		05B55789228D90C5003EEA47 /* LogsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55787228D90C5003EEA47 /* LogsHelper.swift */; };
+		05E4E3ED23DC918A0045A432 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4E3EC23DC918A0045A432 /* DataExtension.swift */; };
 		C51632F450E610D5C076D69B /* Pods_Bags_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		05B55783228D90BB003EEA47 /* BTCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCentralManager.swift; sourceTree = "<group>"; };
 		05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtObjectOrNil.swift; sourceTree = "<group>"; };
 		05B55787228D90C5003EEA47 /* LogsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsHelper.swift; sourceTree = "<group>"; };
+		05E4E3EC23DC918A0045A432 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bags_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BF8721745F59100DECA21D /* Pods-Bags Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bags Tracker.release.xcconfig"; path = "Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		DE7DF5668030E781D53F2722 /* Pods-Bags Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bags Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */,
 				05B55787228D90C5003EEA47 /* LogsHelper.swift */,
+				05E4E3EC23DC918A0045A432 /* DataExtension.swift */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				051D27F3228D760800D6D1DF /* AppDelegate.swift in Sources */,
 				05B55781228D90B3003EEA47 /* ScanVC.swift in Sources */,
 				05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */,
+				05E4E3ED23DC918A0045A432 /* DataExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 73LTLJAK8K;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
@@ -457,7 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 73LTLJAK8K;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";

@@ -332,7 +332,7 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdF-eC-odU">
                                                     <rect key="frame" x="15" y="33.333333333333336" width="5" height="12"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="hGs-6v-hsW"/>
                                                         <constraint firstAttribute="height" constant="12" id="nmb-ox-2Tl"/>
@@ -340,7 +340,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBl-1K-UDJ">
                                                     <rect key="frame" x="23" y="28.333333333333329" width="5" height="17"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="eJj-4b-s6Z"/>
                                                         <constraint firstAttribute="width" constant="5" id="icr-xo-dCQ"/>
@@ -348,7 +348,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URJ-QI-8Jj">
                                                     <rect key="frame" x="31" y="23.333333333333329" width="5" height="22"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="80t-d7-njQ"/>
                                                         <constraint firstAttribute="height" constant="22" id="lak-bE-YoG"/>
@@ -356,7 +356,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5K-1P-FK2">
                                                     <rect key="frame" x="39" y="18.333333333333332" width="5" height="26.999999999999996"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="27" id="NID-LN-4ne"/>
                                                         <constraint firstAttribute="width" constant="5" id="mo3-ay-vdQ"/>
@@ -364,7 +364,7 @@
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJc-yn-KFb">
                                                     <rect key="frame" x="47" y="14.333333333333336" width="5" height="31"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="lYY-W0-I9b"/>
                                                         <constraint firstAttribute="height" constant="31" id="nfL-ba-rji"/>

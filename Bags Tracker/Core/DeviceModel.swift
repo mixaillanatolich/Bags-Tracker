@@ -18,17 +18,19 @@ public class DeviceModel: NSObject {
     
     init?(peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
-        guard let kCBAdvDataServiceUUIDs = advertisementData["kCBAdvDataServiceUUIDs"] as? [Any], kCBAdvDataServiceUUIDs.count > 0 else {
+        guard let vCBAdvDataServiceUUIDs = advertisementData["kCBAdvDataServiceUUIDs"] as? [Any], vCBAdvDataServiceUUIDs.count > 0 else {
             return nil
         }
         
-        guard let kCBAdvDataManufacturerData = advertisementData["kCBAdvDataManufacturerData"] else {
+        guard let vCBAdvDataManufacturerData = advertisementData["kCBAdvDataManufacturerData"] as? Data else {
             return nil
         }
         
-        let manufacturerData = "\(kCBAdvDataManufacturerData)".replacingOccurrences(of: " ", with: "")
-            .replacingOccurrences(of: "<", with: "")
-            .replacingOccurrences(of: ">", with: "").lowercased()
+//        let manufacturerData = "\(kCBAdvDataManufacturerData)".replacingOccurrences(of: " ", with: "")
+//            .replacingOccurrences(of: "<", with: "")
+//            .replacingOccurrences(of: ">", with: "").lowercased()
+        
+        let manufacturerData = vCBAdvDataManufacturerData.hexString().lowercased()
         
         dLog("uuid: \(manufacturerData)")
         
