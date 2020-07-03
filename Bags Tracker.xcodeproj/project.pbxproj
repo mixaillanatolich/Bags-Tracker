@@ -15,6 +15,18 @@
 		0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0524162B229271860012FC9A /* NearbyDevicesViewController.swift */; };
 		0525D820228E91A40007884C /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525D81F228E91A40007884C /* DeviceModel.swift */; };
 		0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */; };
+		05973ADA24AF5DF0007855DD /* BLECentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACD24AF5DF0007855DD /* BLECentralManager.swift */; };
+		05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACE24AF5DF0007855DD /* BLECommand.swift */; };
+		05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */; };
+		05973ADD24AF5DF0007855DD /* BLEError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD024AF5DF0007855DD /* BLEError.swift */; };
+		05973ADE24AF5DF0007855DD /* BLEPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD124AF5DF0007855DD /* BLEPeripheral.swift */; };
+		05973ADF24AF5DF0007855DD /* BLERequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD224AF5DF0007855DD /* BLERequest.swift */; };
+		05973AE024AF5DF0007855DD /* BLEResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD324AF5DF0007855DD /* BLEResponse.swift */; };
+		05973AE124AF5DF0007855DD /* BLEResponseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD424AF5DF0007855DD /* BLEResponseFactory.swift */; };
+		05973AE224AF5DF1007855DD /* ExtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD624AF5DF0007855DD /* ExtData.swift */; };
+		05973AE324AF5DF1007855DD /* ExtObjectOrNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD724AF5DF0007855DD /* ExtObjectOrNil.swift */; };
+		05973AE424AF5DF1007855DD /* ExtString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD824AF5DF0007855DD /* ExtString.swift */; };
+		05973AE524AF5DF1007855DD /* LogsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973AD924AF5DF0007855DD /* LogsHelper.swift */; };
 		05B55780228D90B3003EEA47 /* DeviceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B5577E228D90B3003EEA47 /* DeviceListVC.swift */; };
 		05B55781228D90B3003EEA47 /* ScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B5577F228D90B3003EEA47 /* ScanVC.swift */; };
 		05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55783228D90BB003EEA47 /* BTCentralManager.swift */; };
@@ -35,6 +47,18 @@
 		0524162B229271860012FC9A /* NearbyDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyDevicesViewController.swift; sourceTree = "<group>"; };
 		0525D81F228E91A40007884C /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredDeviceTableViewCell.swift; sourceTree = "<group>"; };
+		05973ACD24AF5DF0007855DD /* BLECentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECentralManager.swift; sourceTree = "<group>"; };
+		05973ACE24AF5DF0007855DD /* BLECommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECommand.swift; sourceTree = "<group>"; };
+		05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevicePeripheral.swift; sourceTree = "<group>"; };
+		05973AD024AF5DF0007855DD /* BLEError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEError.swift; sourceTree = "<group>"; };
+		05973AD124AF5DF0007855DD /* BLEPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEPeripheral.swift; sourceTree = "<group>"; };
+		05973AD224AF5DF0007855DD /* BLERequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLERequest.swift; sourceTree = "<group>"; };
+		05973AD324AF5DF0007855DD /* BLEResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEResponse.swift; sourceTree = "<group>"; };
+		05973AD424AF5DF0007855DD /* BLEResponseFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEResponseFactory.swift; sourceTree = "<group>"; };
+		05973AD624AF5DF0007855DD /* ExtData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtData.swift; sourceTree = "<group>"; };
+		05973AD724AF5DF0007855DD /* ExtObjectOrNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtObjectOrNil.swift; sourceTree = "<group>"; };
+		05973AD824AF5DF0007855DD /* ExtString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtString.swift; sourceTree = "<group>"; };
+		05973AD924AF5DF0007855DD /* LogsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsHelper.swift; sourceTree = "<group>"; };
 		05B5577E228D90B3003EEA47 /* DeviceListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceListVC.swift; sourceTree = "<group>"; };
 		05B5577F228D90B3003EEA47 /* ScanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanVC.swift; sourceTree = "<group>"; };
 		05B55783228D90BB003EEA47 /* BTCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCentralManager.swift; sourceTree = "<group>"; };
@@ -88,6 +112,7 @@
 		051D27F1228D760800D6D1DF /* Bags Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				05973ACC24AF5DF0007855DD /* BLECore */,
 				05B55785228D90C5003EEA47 /* Vendors */,
 				05B55782228D90BB003EEA47 /* Core */,
 				05B5577D228D90B3003EEA47 /* ViewControllers */,
@@ -99,6 +124,33 @@
 				0514D8FC23DAD6BC00451BB7 /* GoogleService-Info.plist */,
 			);
 			path = "Bags Tracker";
+			sourceTree = "<group>";
+		};
+		05973ACC24AF5DF0007855DD /* BLECore */ = {
+			isa = PBXGroup;
+			children = (
+				05973ACD24AF5DF0007855DD /* BLECentralManager.swift */,
+				05973ACE24AF5DF0007855DD /* BLECommand.swift */,
+				05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */,
+				05973AD024AF5DF0007855DD /* BLEError.swift */,
+				05973AD124AF5DF0007855DD /* BLEPeripheral.swift */,
+				05973AD224AF5DF0007855DD /* BLERequest.swift */,
+				05973AD324AF5DF0007855DD /* BLEResponse.swift */,
+				05973AD424AF5DF0007855DD /* BLEResponseFactory.swift */,
+				05973AD524AF5DF0007855DD /* Helpers */,
+			);
+			path = BLECore;
+			sourceTree = "<group>";
+		};
+		05973AD524AF5DF0007855DD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				05973AD624AF5DF0007855DD /* ExtData.swift */,
+				05973AD724AF5DF0007855DD /* ExtObjectOrNil.swift */,
+				05973AD824AF5DF0007855DD /* ExtString.swift */,
+				05973AD924AF5DF0007855DD /* LogsHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		05B5577D228D90B3003EEA47 /* ViewControllers */ = {
@@ -261,11 +313,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B55789228D90C5003EEA47 /* LogsHelper.swift in Sources */,
+				05973AE124AF5DF0007855DD /* BLEResponseFactory.swift in Sources */,
+				05973AE024AF5DF0007855DD /* BLEResponse.swift in Sources */,
+				05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */,
+				05973AE424AF5DF1007855DD /* ExtString.swift in Sources */,
+				05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */,
 				0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */,
+				05973ADE24AF5DF0007855DD /* BLEPeripheral.swift in Sources */,
+				05973ADD24AF5DF0007855DD /* BLEError.swift in Sources */,
 				05B55788228D90C5003EEA47 /* ExtObjectOrNil.swift in Sources */,
+				05973AE524AF5DF1007855DD /* LogsHelper.swift in Sources */,
+				05973ADF24AF5DF0007855DD /* BLERequest.swift in Sources */,
 				0525D820228E91A40007884C /* DeviceModel.swift in Sources */,
 				0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */,
 				05B55780228D90B3003EEA47 /* DeviceListVC.swift in Sources */,
+				05973ADA24AF5DF0007855DD /* BLECentralManager.swift in Sources */,
+				05973AE224AF5DF1007855DD /* ExtData.swift in Sources */,
+				05973AE324AF5DF1007855DD /* ExtObjectOrNil.swift in Sources */,
 				051D27F3228D760800D6D1DF /* AppDelegate.swift in Sources */,
 				05B55781228D90B3003EEA47 /* ScanVC.swift in Sources */,
 				05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */,
