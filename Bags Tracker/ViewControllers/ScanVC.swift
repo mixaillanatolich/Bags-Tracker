@@ -21,7 +21,7 @@ class ScanVC: UIViewController {
         
    //     BLEManager.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
         
-        BLEManager.setupDiscoveryNodeCallback { (isNewDevice, device) in
+        BLEManagerOld.setupDiscoveryNodeCallback { (isNewDevice, device) in
             
             DispatchQueue.main.async {
                 

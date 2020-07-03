@@ -23,7 +23,7 @@ class DeviceListVC: UIViewController {
         
         super.viewDidLoad()
         
-        BLEManager.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
+        BLEManagerOld.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
         
     }
 
@@ -31,7 +31,7 @@ class DeviceListVC: UIViewController {
         allDevicesIds = DeviceModel.allDevices()
         tableView.reloadData()
         
-        BLEManager.setupDiscoveryNodeCallback { (isNewDevice, device) in
+        BLEManagerOld.setupDiscoveryNodeCallback { (isNewDevice, device) in
             
             DispatchQueue.main.async {
                 if self.allDevicesIds.contains(device.uuid) {
