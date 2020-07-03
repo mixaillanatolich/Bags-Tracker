@@ -46,16 +46,16 @@
 #import <FirebaseCore/FIRDependency.h>
 #import <FirebaseCore/FIRLibrary.h>
 #import <FirebaseCore/FIROptionsInternal.h>
-#import <FirebaseInstanceID/FirebaseInstanceID.h>
+#import <FirebaseInstallations/FirebaseInstallations.h>
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #endif
 
-FIRCLSContext _clsContext;
-dispatch_queue_t _clsLoggingQueue;
-dispatch_queue_t _clsBinaryImageQueue;
-dispatch_queue_t _clsExceptionQueue;
+FIRCLSContext _firclsContext;
+dispatch_queue_t _firclsLoggingQueue;
+dispatch_queue_t _firclsBinaryImageQueue;
+dispatch_queue_t _firclsExceptionQueue;
 
 static atomic_bool _hasInitializedInstance;
 
@@ -79,7 +79,7 @@ static atomic_bool _hasInitializedInstance;
 
 - (instancetype)initWithApp:(FIRApp *)app
                     appInfo:(NSDictionary *)appInfo
-                 instanceID:(FIRInstanceID *)instanceID
+              installations:(FIRInstallations *)installations
                   analytics:(id<FIRAnalyticsInterop>)analytics {
   self = [super init];
 
@@ -101,7 +101,7 @@ static atomic_bool _hasInitializedInstance;
     _googleAppID = app.options.googleAppID;
     _dataArbiter = [[FIRCLSDataCollectionArbiter alloc] initWithApp:app withAppInfo:appInfo];
     _reportManager = [[FIRCLSReportManager alloc] initWithFileManager:_fileManager
-                                                           instanceID:instanceID
+                                                        installations:installations
                                                             analytics:analytics
                                                           googleAppID:_googleAppID
                                                           dataArbiter:_dataArbiter];
@@ -151,13 +151,13 @@ static atomic_bool _hasInitializedInstance;
 
     id<FIRAnalyticsInterop> analytics = FIR_COMPONENT(FIRAnalyticsInterop, container);
 
-    FIRInstanceID *instanceID = FIRInstanceID.instanceID;
+    FIRInstallations *installations = [FIRInstallations installationsWithApp:container.app];
 
     *isCacheable = YES;
 
     return [[FIRCrashlytics alloc] initWithApp:container.app
                                        appInfo:NSBundle.mainBundle.infoDictionary
-                                    instanceID:instanceID
+                                 installations:installations
                                      analytics:analytics];
   };
 

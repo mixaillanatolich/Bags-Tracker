@@ -109,7 +109,7 @@ const char* FIRCLSDupString(const char* string) {
   }
 
   length = strlen(string);
-  buffer = FIRCLSAllocatorSafeAllocate(_clsContext.allocator, length + 1, CLS_READONLY);
+  buffer = FIRCLSAllocatorSafeAllocate(_firclsContext.allocator, length + 1, CLS_READONLY);
 
   memcpy(buffer, string, length);
 
@@ -167,6 +167,11 @@ NSString* FIRCLSNSDataToNSString(NSData* data) {
   length = [data length];
   size = (length * 2) + 1;
   buffer = malloc(sizeof(char) * size);
+
+  if (!buffer) {
+    FIRCLSErrorLog(@"Unable to malloc in FIRCLSNSDataToNSString");
+    return nil;
+  }
 
   FIRCLSSafeHexToString([data bytes], length, buffer);
 
