@@ -1,5 +1,5 @@
 //
-//  DeviceListVC.swift
+//  MyBeaconsViewController.swift
 //  Bags Tracker
 //
 //  Created by Mixaill on 16/05/2019.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class DeviceListVC: UIViewController {
+class MyBeaconsViewController: UIViewController {
     
     var allDevicesIds = DeviceModel.allDevices()
     var allDevices = [String: DeviceModel]()
@@ -20,14 +20,17 @@ class DeviceListVC: UIViewController {
     
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        BLEManagerOld.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
+       // BLEManagerOld.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
         
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
         allDevicesIds = DeviceModel.allDevices()
         tableView.reloadData()
         
@@ -50,9 +53,13 @@ class DeviceListVC: UIViewController {
         }
     }
     
+    @IBAction func addButtonClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: "ShowScanBLEDevicesScreen", sender: self)
+    }
+
 }
 
-extension DeviceListVC: UITableViewDelegate, UITableViewDataSource {
+extension MyBeaconsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allDevicesIds.count
@@ -71,19 +78,19 @@ extension DeviceListVC: UITableViewDelegate, UITableViewDataSource {
             cell.rssiLabel.text = "RSSI: \(peripheralRSSI)   temperature: \(device.temperature() ?? "n/a") C"
             
             if (peripheralRSSI.intValue > -55) {
-                cell.signalLevelIndicator5.backgroundColor=UIColor.black
+                cell.signalLevelIndicator5.backgroundColor=UIColor.blue
             }
             if (peripheralRSSI.intValue > -65) {
-                cell.signalLevelIndicator4.backgroundColor=UIColor.black
+                cell.signalLevelIndicator4.backgroundColor=UIColor.blue
             }
             if (peripheralRSSI.intValue > -75) {
-                cell.signalLevelIndicator3.backgroundColor=UIColor.black
+                cell.signalLevelIndicator3.backgroundColor=UIColor.blue
             }
             if (peripheralRSSI.intValue > -85) {
-                cell.signalLevelIndicator2.backgroundColor=UIColor.black
+                cell.signalLevelIndicator2.backgroundColor=UIColor.blue
             }
             if (peripheralRSSI.intValue > -95) {
-                cell.signalLevelIndicator1.backgroundColor=UIColor.black
+                cell.signalLevelIndicator1.backgroundColor=UIColor.blue
             }
         }
             
@@ -91,21 +98,21 @@ extension DeviceListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
 
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        self.editedIndex = indexPath
-        
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            
-            let deviceId = self.allDevicesIds[indexPath.row]
-            
-            if let device = self.allDevices[deviceId] {
-                device.remove()
-                self.allDevicesIds = DeviceModel.allDevices()
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-        }
-        return [delete]
-    }
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//
+//        self.editedIndex = indexPath
+//
+//        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+//
+//            let deviceId = self.allDevicesIds[indexPath.row]
+//
+//            if let device = self.allDevices[deviceId] {
+//                device.remove()
+//                self.allDevicesIds = DeviceModel.allDevices()
+//                tableView.deleteRows(at: [indexPath], with: .automatic)
+//            }
+//        }
+//        return [delete]
+//    }
     
 }

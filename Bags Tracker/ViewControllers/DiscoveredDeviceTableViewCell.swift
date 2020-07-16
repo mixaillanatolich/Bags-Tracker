@@ -42,4 +42,26 @@ class DiscoveredDeviceTableViewCell: UITableViewCell {
         signalLevelIndicator1.backgroundColor=UIColor.lightGray
     }
     
+    func updateDeviceRSSI(rssi: NSNumber) {
+        resetCell()
+        
+        rssiLabel.text = "RSSI: \(rssi)"
+        
+        if (rssi.intValue > -55) {
+            signalLevelIndicator5.backgroundColor=UIColor.systemBlue
+        }
+        if (rssi.intValue > -65) {
+            signalLevelIndicator4.backgroundColor=UIColor.systemBlue
+        }
+        if (rssi.intValue > -75) {
+            signalLevelIndicator3.backgroundColor=UIColor.systemBlue
+        }
+        if (rssi.intValue > -85) {
+            signalLevelIndicator2.backgroundColor=UIColor.systemBlue
+        }
+        if (rssi.intValue > -95) {
+            signalLevelIndicator1.backgroundColor=UIColor.systemBlue
+        }
+    }
+    
 }

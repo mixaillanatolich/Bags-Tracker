@@ -54,7 +54,7 @@ class NearbyDevicesViewController: UIViewController {
 
     @IBAction func closeButtonClicked(_ sender: Any) {
         
-        fatalError()
+     //   fatalError()
 
         
     }
