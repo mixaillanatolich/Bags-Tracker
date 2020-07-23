@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		0514D8FD23DAD6BC00451BB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0514D8FC23DAD6BC00451BB7 /* GoogleService-Info.plist */; };
+		05153EA324C17E0F00A2CC7D /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05153EA224C17E0F00A2CC7D /* StringExtention.swift */; };
+		05153EA524C17EE200A2CC7D /* DataExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05153EA424C17EE200A2CC7D /* DataExtentions.swift */; };
+		05153EA724C180CD00A2CC7D /* BeaconGenericModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05153EA624C180CD00A2CC7D /* BeaconGenericModel.swift */; };
+		05153EA924C181A500A2CC7D /* BeaconCLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05153EA824C181A500A2CC7D /* BeaconCLModel.swift */; };
 		051D27F3228D760800D6D1DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051D27F2228D760800D6D1DF /* AppDelegate.swift */; };
 		051D27F8228D760800D6D1DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051D27F6228D760800D6D1DF /* Main.storyboard */; };
 		051D27FA228D760900D6D1DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051D27F9228D760900D6D1DF /* Assets.xcassets */; };
 		051D27FD228D760900D6D1DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 051D27FB228D760900D6D1DF /* LaunchScreen.storyboard */; };
 		0520164824BF37BA00463B48 /* SearchBeaconsByIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */; };
+		0520164D24C085B400463B48 /* BeaconRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164C24C085B400463B48 /* BeaconRealmModel.swift */; };
+		0520165024C088BB00463B48 /* BeaconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164F24C088BB00463B48 /* BeaconModel.swift */; };
 		0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0524162B229271860012FC9A /* NearbyDevicesViewController.swift */; };
 		0525D820228E91A40007884C /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525D81F228E91A40007884C /* DeviceModel.swift */; };
 		0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */; };
@@ -37,6 +43,10 @@
 
 /* Begin PBXFileReference section */
 		0514D8FC23DAD6BC00451BB7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05153EA224C17E0F00A2CC7D /* StringExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
+		05153EA424C17EE200A2CC7D /* DataExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtentions.swift; sourceTree = "<group>"; };
+		05153EA624C180CD00A2CC7D /* BeaconGenericModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconGenericModel.swift; sourceTree = "<group>"; };
+		05153EA824C181A500A2CC7D /* BeaconCLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconCLModel.swift; sourceTree = "<group>"; };
 		051D27EF228D760800D6D1DF /* Bags Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bags Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		051D27F2228D760800D6D1DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		051D27F7228D760800D6D1DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,6 +54,8 @@
 		051D27FC228D760900D6D1DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		051D27FE228D760900D6D1DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeaconsByIdViewController.swift; sourceTree = "<group>"; };
+		0520164C24C085B400463B48 /* BeaconRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRealmModel.swift; sourceTree = "<group>"; };
+		0520164F24C088BB00463B48 /* BeaconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconModel.swift; sourceTree = "<group>"; };
 		0524162B229271860012FC9A /* NearbyDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyDevicesViewController.swift; sourceTree = "<group>"; };
 		0525D81F228E91A40007884C /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredDeviceTableViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +101,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		05153EA124C17DE000A2CC7D /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				05153EA224C17E0F00A2CC7D /* StringExtention.swift */,
+				05153EA424C17EE200A2CC7D /* DataExtentions.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		051D27E6228D760800D6D1DF = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +153,32 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		0520164A24C0857500463B48 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				0520164B24C0859B00463B48 /* Models */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		0520164B24C0859B00463B48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0520164C24C085B400463B48 /* BeaconRealmModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0520164E24C0888100463B48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				05153EA624C180CD00A2CC7D /* BeaconGenericModel.swift */,
+				0520164F24C088BB00463B48 /* BeaconModel.swift */,
+				05153EA824C181A500A2CC7D /* BeaconCLModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		05973ACC24AF5DF0007855DD /* BLECore */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +219,9 @@
 		05B55782228D90BB003EEA47 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				05153EA124C17DE000A2CC7D /* Extentions */,
+				0520164E24C0888100463B48 /* Models */,
+				0520164A24C0857500463B48 /* Storage */,
 				05B55783228D90BB003EEA47 /* BTCentralManager.swift */,
 				0525D81F228E91A40007884C /* DeviceModel.swift */,
 			);
@@ -318,26 +368,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B55789228D90C5003EEA47 /* LogsHelper.swift in Sources */,
+				0520164D24C085B400463B48 /* BeaconRealmModel.swift in Sources */,
 				05973AE124AF5DF0007855DD /* BLEResponseFactory.swift in Sources */,
 				05973AE024AF5DF0007855DD /* BLEResponse.swift in Sources */,
 				05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */,
 				05973AE424AF5DF1007855DD /* ExtString.swift in Sources */,
 				05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */,
+				05153EA724C180CD00A2CC7D /* BeaconGenericModel.swift in Sources */,
 				0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */,
+				05153EA924C181A500A2CC7D /* BeaconCLModel.swift in Sources */,
 				05973ADE24AF5DF0007855DD /* BLEPeripheral.swift in Sources */,
 				05973ADD24AF5DF0007855DD /* BLEError.swift in Sources */,
 				05B55788228D90C5003EEA47 /* ExtObjectOrNil.swift in Sources */,
 				05973ADF24AF5DF0007855DD /* BLERequest.swift in Sources */,
 				0525D820228E91A40007884C /* DeviceModel.swift in Sources */,
+				05153EA324C17E0F00A2CC7D /* StringExtention.swift in Sources */,
 				0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */,
 				05B55780228D90B3003EEA47 /* MyBeaconsViewController.swift in Sources */,
 				05973ADA24AF5DF0007855DD /* BLECentralManager.swift in Sources */,
 				05973AE224AF5DF1007855DD /* ExtData.swift in Sources */,
 				051D27F3228D760800D6D1DF /* AppDelegate.swift in Sources */,
 				05B55781228D90B3003EEA47 /* ScanBLEDevicesVC.swift in Sources */,
+				0520165024C088BB00463B48 /* BeaconModel.swift in Sources */,
 				0520164824BF37BA00463B48 /* SearchBeaconsByIdViewController.swift in Sources */,
 				05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */,
 				05E4E3ED23DC918A0045A432 /* DataExtension.swift in Sources */,
+				05153EA524C17EE200A2CC7D /* DataExtentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
