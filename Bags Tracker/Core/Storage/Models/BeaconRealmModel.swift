@@ -25,6 +25,7 @@ class BeaconRealmModel: Object {
         self.major = beaconModel.majorValue!.intValue
         self.minor = beaconModel.minorValue!.intValue
         self.identifier = "\(uuid)+\(major)+\(minor)".md5
+        self.name = beaconModel.name
         super.init()
     }
     

@@ -18,7 +18,7 @@ class BeaconServiceImpl: NSObject, BeaconServiceProtocol {
     let timer = DispatchSource.makeTimerSource()
     
     let locationManager = CLLocationManager()
-    var delegate: BeaconDelegate?
+    var delegate: BeaconServiceDelegate?
     
     var activeBeacons = [BeaconCLModel]()
     
@@ -47,7 +47,7 @@ class BeaconServiceImpl: NSObject, BeaconServiceProtocol {
         timer.resume()
     }
     
-    func setupDelegate(delegate: BeaconDelegate?) {
+    func setupDelegate(delegate: BeaconServiceDelegate?) {
         self.delegate = delegate
     }
     

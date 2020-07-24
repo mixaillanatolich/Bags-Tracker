@@ -10,12 +10,12 @@ import Foundation
 
 protocol BeaconServiceProtocol {
     func run()
-    func setupDelegate(delegate: BeaconDelegate?)
+    func setupDelegate(delegate: BeaconServiceDelegate?)
     func startMonitoring(beacons: [BeaconModel])
     func stopMonitoring(beacons: [BeaconModel])
 }
 
-protocol BeaconDelegate : NSObjectProtocol {
+protocol BeaconServiceDelegate : NSObjectProtocol {
     func beaconFinded(_ beacon: BeaconCLModel)
     func beaconLost(_ beacon: BeaconCLModel)
     func beaconUpdate(_ beacon: BeaconCLModel)

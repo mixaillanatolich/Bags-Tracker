@@ -42,26 +42,54 @@ class DiscoveredDeviceTableViewCell: UITableViewCell {
         signalLevelIndicator1.backgroundColor=UIColor.lightGray
     }
     
-    func updateDeviceRSSI(rssi: NSNumber) {
-        resetCell()
+    func updateDeviceRSSI(rssi: Int) {
+//        resetCell()
+//
+//        rssiLabel.text = "RSSI: \(rssi)"
         
-        rssiLabel.text = "RSSI: \(rssi)"
-        
-        if (rssi.intValue > -55) {
+        if (rssi > -55) {
             signalLevelIndicator5.backgroundColor=UIColor.systemBlue
         }
-        if (rssi.intValue > -65) {
+        if (rssi > -65) {
             signalLevelIndicator4.backgroundColor=UIColor.systemBlue
         }
-        if (rssi.intValue > -75) {
+        if (rssi > -75) {
             signalLevelIndicator3.backgroundColor=UIColor.systemBlue
         }
-        if (rssi.intValue > -85) {
+        if (rssi > -85) {
             signalLevelIndicator2.backgroundColor=UIColor.systemBlue
         }
-        if (rssi.intValue > -95) {
+        if (rssi > -95) {
             signalLevelIndicator1.backgroundColor=UIColor.systemBlue
         }
+    }
+    
+    func updateInfo(clBeacon: BeaconCLModel) {
+        
+        var rssiStr = "n/a"
+        if let rssi = clBeacon.rssi, rssi != 0 {
+            updateDeviceRSSI(rssi: rssi)
+            rssiStr = "\(rssi)"
+        }
+        
+        var distance: String
+        switch clBeacon.proximity {
+        case .unknown:
+            distance = "Unknown"
+        case .far:
+            distance = "Far"
+        case .immediate:
+            distance = "Immediate"
+        case .near:
+            distance = "Near"
+        case .none:
+            distance = "None"
+        @unknown default:
+            distance = "Unknown"
+        }
+        
+        rssiLabel.text = "RSSI: \(rssiStr),  Distance: \(distance)"
+        
     }
     
 }

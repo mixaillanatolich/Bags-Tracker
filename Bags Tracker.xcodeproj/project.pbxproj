@@ -237,10 +237,10 @@
 			children = (
 				0574933424CA04E0002ACCBA /* BaseViewController.swift */,
 				05B5577E228D90B3003EEA47 /* MyBeaconsViewController.swift */,
+				0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */,
 				0574932924C9BEC8002ACCBA /* AddBeaconByUUIDViewController.swift */,
 				0524162B229271860012FC9A /* NearbyDevicesViewController.swift */,
 				05B5577F228D90B3003EEA47 /* ScanBLEDevicesVC.swift */,
-				0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */,
 				0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */,
 			);
 			path = ViewControllers;

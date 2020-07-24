@@ -30,7 +30,7 @@ class SearchBeaconsByIdViewController: UIViewController {
                     let reloadCellPath = IndexPath(item: index!, section: 0)
                     if let cell = self.tableView.cellForRow(at: reloadCellPath) as? DiscoveredDeviceTableViewCell {
                         cell.deviceName.text = blePeripheral.peripheral.name ?? "Unknown"
-                        cell.updateDeviceRSSI(rssi: blePeripheral.rssi)
+                        cell.updateDeviceRSSI(rssi: blePeripheral.rssi.intValue)
                     }
                     //self.tableView.reloadRows(at: [reloadCellPath], with: .automatic)
                 }
@@ -74,7 +74,7 @@ extension SearchBeaconsByIdViewController: UITableViewDelegate, UITableViewDataS
         let device = discoveredDevices[Array(self.discoveredDevices.keys)[indexPath.row]]!
 
         cell.deviceName.text = device.peripheral.name ?? "Unknown"
-        cell.updateDeviceRSSI(rssi: device.rssi)
+        cell.updateDeviceRSSI(rssi: device.rssi.intValue)
         
         return cell
     }
