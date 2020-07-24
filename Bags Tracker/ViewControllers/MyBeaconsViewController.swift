@@ -9,15 +9,11 @@
 import UIKit
 import CoreBluetooth
 
-class MyBeaconsViewController: UIViewController {
-    
-//    var allDevicesIds = DeviceModel.allDevices()
-//    var allDevices = [String: DeviceModel]()
-//
-//    var editedIndex: IndexPath? = nil
+class MyBeaconsViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var editedIndex: IndexPath? = nil
     
     var allBeacons = [BeaconModel]()
     var beacons = [BeaconModel]()
@@ -25,8 +21,6 @@ class MyBeaconsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       // BLEManagerOld.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
         
         BeaconService.run()
         
@@ -45,29 +39,7 @@ class MyBeaconsViewController: UIViewController {
         prepareBeaconsListAndShow()
         
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//
-//        allDevicesIds = DeviceModel.allDevices()
-//        tableView.reloadData()
-//
-//        BLEManagerOld.setupDiscoveryNodeCallback { (isNewDevice, device) in
-//
-//            DispatchQueue.main.async {
-//                if self.allDevicesIds.contains(device.uuid) {
-//                    self.allDevices[device.uuid] = device
-//
-//                    if let index = self.allDevicesIds.firstIndex(of: device.uuid) {
-//                        let reloadCellPath = IndexPath(item: Int(index), section: 0)
-//
-//                        if self.editedIndex != reloadCellPath {
-//                            self.tableView.reloadRows(at: [reloadCellPath], with: .automatic)
-//                        }
-//                    }
-//
-//                }
-//            }
-//        }
     }
-    
     
     fileprivate func prepareBeaconsListAndShow() {
         allBeacons = StorageService.beacons
@@ -112,7 +84,25 @@ extension MyBeaconsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-
+     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        self.editedIndex = indexPath
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {  (contextualAction, view, boolValue) in
+            let beacon = self.beacons[indexPath.row]
+            StorageService.removeBeacon(beacon) { (error) in
+                if let error = error {
+                    self.showAlert(withTitle: error, andMessage: nil)
+                } else {
+                    self.beacons.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeActions
+    }
+    
 //    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 //
 //        self.editedIndex = indexPath
@@ -144,8 +134,12 @@ extension MyBeaconsViewController: BeaconServiceDelegate {
             return
         }
         clBeacons.remove(at: index)
+        if let index = beacons.firstIndex(where: {$0 == beacon}) {
+            reloadCellFor(row: index)
+        }
         
-        tableView.reloadData()
+//        let deleteCellPath = IndexPath(item: Int(index), section: 0)
+//        self.tableView.deleteRows(at: [deleteCellPath], with: .automatic)
     }
     
     func beaconUpdate(_ beacon: BeaconCLModel) {
@@ -153,8 +147,15 @@ extension MyBeaconsViewController: BeaconServiceDelegate {
             return
         }
         clBeacons[index] = beacon
-        
-        tableView.reloadData()
-        
+        if let index = beacons.firstIndex(where: {$0 == beacon}) {
+            reloadCellFor(row: index)
+        }
+    }
+    
+    fileprivate func reloadCellFor(row: Int) {
+        let reloadCellPath = IndexPath(item: row, section: 0)
+        if self.editedIndex != reloadCellPath {
+            self.tableView.reloadRows(at: [reloadCellPath], with: .automatic)
+        }
     }
 }

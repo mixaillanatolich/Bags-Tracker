@@ -60,7 +60,11 @@ class RealmDbImpl: NSObject, RealmDbProtocol {
             autoreleasepool {
                 do {
                     let realm = try Realm()
-                    let res = self.removeObject(beacon, realmDb: realm)
+                    guard let theBeacon = realm.object(ofType: BeaconRealmModel.self, forPrimaryKey: beacon.identifier) else {
+                        result(.fail)
+                        return
+                    }
+                    let res = self.removeObject(theBeacon, realmDb: realm)
                     result(res)
                 } catch let error as NSError {
                     dLog("\(error)")
