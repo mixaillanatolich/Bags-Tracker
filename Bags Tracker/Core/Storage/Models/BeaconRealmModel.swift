@@ -37,6 +37,12 @@ class BeaconRealmModel: Object {
         super.init()
     }
     
+    func paramsForModify() -> [String : Any] {
+        var params = [String : Any]()
+        params["name"] = name
+        return params
+    }
+    
     required init() {
         super.init()
     }
