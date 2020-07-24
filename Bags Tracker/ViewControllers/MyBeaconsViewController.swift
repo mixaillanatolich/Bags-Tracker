@@ -24,6 +24,11 @@ class MyBeaconsViewController: UIViewController {
         
        // BLEManagerOld.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
         
+        BeaconService.run()
+        
+        StorageService.loadBeacons { (beacons) in
+            dLog("\(beacons)")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

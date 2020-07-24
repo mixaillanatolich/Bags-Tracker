@@ -20,4 +20,10 @@ class BeaconGenericModel: NSObject {
         self.minorValue = minorValue
     }
     
+    static func ==(item: BeaconGenericModel, beacon: BeaconGenericModel) -> Bool {
+        return ((beacon.uuid.uuidString == item.uuid.uuidString))
+            && (Int(truncating: beacon.majorValue ?? 0) == Int(truncating: item.majorValue ?? 0))
+            && (Int(truncating: beacon.minorValue ?? 0) == Int(truncating: item.minorValue ?? 0))
+    }
+    
 }

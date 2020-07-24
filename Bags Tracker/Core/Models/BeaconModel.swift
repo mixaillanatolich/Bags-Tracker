@@ -11,14 +11,18 @@ import CoreLocation
 
 class BeaconModel: BeaconGenericModel {
     let identifier: String
+    var name: String
     
-    init(uuid: String, aIdentifier: String?, majorValue: NSNumber?, minorValue: NSNumber?) {
-        self.identifier = aIdentifier ?? UUID().uuidString
+    init(uuid: String, name: String?, aIdentifier: String?, majorValue: NSNumber?, minorValue: NSNumber?) {
+        let theIdentifier = aIdentifier ?? "\(uuid)+\(majorValue ?? 0)+\(minorValue ?? 0)".md5
+        self.identifier = theIdentifier
+        self.name = name ?? theIdentifier
         super.init(uuid: UUID(uuidString: uuid)!.uuidString, majorValue: majorValue, minorValue: minorValue)
     }
     
     convenience init(with model: BeaconRealmModel) {
         self.init(uuid: model.uuid,
+                  name: model.name,
                   aIdentifier: model.identifier,
                   majorValue: NSNumber(value: model.major),
                   minorValue: NSNumber(value: model.minor))

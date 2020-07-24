@@ -14,11 +14,11 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    func showAlert(withTitle title: String?, andMessage message: String?) {
+    func showAlert(withTitle title: String?, andMessage message: String?, callback: (() -> Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             alert -> Void in
-            dLog("")
+            callback?()
         }))
         self.present(alertController, animated: true, completion: nil)
     }

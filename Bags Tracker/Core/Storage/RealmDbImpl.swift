@@ -6,7 +6,7 @@
 //  Copyright © 2020 M Technologies. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
 let RealmDbService: RealmDbProtocol = RealmDbImpl.sharedInstance
@@ -46,6 +46,21 @@ class RealmDbImpl: NSObject, RealmDbProtocol {
                 do {
                     let realm = try Realm()
                     let res = self.saveObject(beacon, realmDb: realm)
+                    result(res)
+                } catch let error as NSError {
+                    dLog("\(error)")
+                    result(.fail)
+                }
+            }
+        }
+    }
+    
+    func removeBeacon(_ beacon: BeaconRealmModel, result: @escaping (RealmOpStatus) -> Void) {
+        DispatchQueue(label: queueName).async {
+            autoreleasepool {
+                do {
+                    let realm = try Realm()
+                    let res = self.removeObject(beacon, realmDb: realm)
                     result(res)
                 } catch let error as NSError {
                     dLog("\(error)")
@@ -102,6 +117,19 @@ class RealmDbImpl: NSObject, RealmDbProtocol {
         do {
             try realmDb.write {
                 realmDb.add(device, update: .modified)
+            }
+            return .success
+        } catch let error as NSError {
+            dLog("\(error)")
+            return .error
+        }
+    }
+    
+    @discardableResult
+    fileprivate func removeObject(_ device: Object, realmDb: Realm) -> RealmOpStatus {
+        do {
+            try realmDb.write {
+                realmDb.delete(device)
             }
             return .success
         } catch let error as NSError {

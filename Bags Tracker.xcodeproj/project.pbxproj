@@ -27,6 +27,9 @@
 		0574933124C9E006002ACCBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0574932F24C9E006002ACCBA /* Main.storyboard */; };
 		0574933324C9E26C002ACCBA /* ExtUIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933224C9E26C002ACCBA /* ExtUIViewController+Keyboard.swift */; };
 		0574933524CA04E0002ACCBA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933424CA04E0002ACCBA /* BaseViewController.swift */; };
+		0574933724CABE71002ACCBA /* RealmDbImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933624CABE71002ACCBA /* RealmDbImpl.swift */; };
+		0574933924CABE9F002ACCBA /* RealmDbProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */; };
+		0574933B24CAC848002ACCBA /* StorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */; };
 		05973ADA24AF5DF0007855DD /* BLECentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACD24AF5DF0007855DD /* BLECentralManager.swift */; };
 		05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACE24AF5DF0007855DD /* BLECommand.swift */; };
 		05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */; };
@@ -69,6 +72,9 @@
 		0574932F24C9E006002ACCBA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0574933224C9E26C002ACCBA /* ExtUIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExtUIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		0574933424CA04E0002ACCBA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0574933624CABE71002ACCBA /* RealmDbImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDbImpl.swift; sourceTree = "<group>"; };
+		0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDbProtocol.swift; sourceTree = "<group>"; };
+		0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceImpl.swift; sourceTree = "<group>"; };
 		05973ACD24AF5DF0007855DD /* BLECentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECentralManager.swift; sourceTree = "<group>"; };
 		05973ACE24AF5DF0007855DD /* BLECommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECommand.swift; sourceTree = "<group>"; };
 		05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevicePeripheral.swift; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 			isa = PBXGroup;
 			children = (
 				0520164B24C0859B00463B48 /* Models */,
+				0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */,
+				0574933624CABE71002ACCBA /* RealmDbImpl.swift */,
+				0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -400,6 +409,8 @@
 				05153EA724C180CD00A2CC7D /* BeaconGenericModel.swift in Sources */,
 				0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */,
 				05153EA924C181A500A2CC7D /* BeaconCLModel.swift in Sources */,
+				0574933B24CAC848002ACCBA /* StorageServiceImpl.swift in Sources */,
+				0574933724CABE71002ACCBA /* RealmDbImpl.swift in Sources */,
 				05973ADE24AF5DF0007855DD /* BLEPeripheral.swift in Sources */,
 				0574932824C9A9F3002ACCBA /* BeaconServiceImpl.swift in Sources */,
 				0574933524CA04E0002ACCBA /* BaseViewController.swift in Sources */,
@@ -409,6 +420,7 @@
 				0525D820228E91A40007884C /* DeviceModel.swift in Sources */,
 				05153EA324C17E0F00A2CC7D /* StringExtention.swift in Sources */,
 				0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */,
+				0574933924CABE9F002ACCBA /* RealmDbProtocol.swift in Sources */,
 				05B55780228D90B3003EEA47 /* MyBeaconsViewController.swift in Sources */,
 				0574933324C9E26C002ACCBA /* ExtUIViewController+Keyboard.swift in Sources */,
 				05973ADA24AF5DF0007855DD /* BLECentralManager.swift in Sources */,

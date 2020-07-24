@@ -6,7 +6,7 @@
 //  Copyright © 2020 M Technologies. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
 class BeaconRealmModel: Object {

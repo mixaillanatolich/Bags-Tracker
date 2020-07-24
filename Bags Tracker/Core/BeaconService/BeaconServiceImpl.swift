@@ -11,6 +11,8 @@ import CoreLocation
 
 let TimeToLostBeacon: TimeInterval = 30.0
 
+let BeaconService: BeaconServiceProtocol = BeaconServiceImpl.sharedInstance
+
 class BeaconServiceImpl: NSObject, BeaconServiceProtocol {
     
     let timer = DispatchSource.makeTimerSource()
@@ -19,6 +21,18 @@ class BeaconServiceImpl: NSObject, BeaconServiceProtocol {
     var delegate: BeaconDelegate?
     
     var activeBeacons = [BeaconCLModel]()
+    
+    static let sharedInstance: BeaconServiceImpl = {
+        let instance = BeaconServiceImpl()
+        return instance
+    }()
+    
+    override init() {
+        super.init()
+    }
+    
+    deinit {
+    }
     
     func run() {
         locationManager.delegate = self
@@ -73,7 +87,7 @@ class BeaconServiceImpl: NSObject, BeaconServiceProtocol {
 
 extension BeaconServiceImpl: CLLocationManagerDelegate {
     
-    //didRange beacon: CLBeacon (uuid:Bwer, major:21, minor:3, proximity:1 +/- 0.08m, rssi:-89, timestamp:2020-07-23 14:48:45 +0000)
+    //didRange beacon: CLBeacon (uuid:FDA50693-A4E2-4FB1-AFCF-C6EB07647825, major:1, minor:2, proximity:3 +/- 21.54m, rssi:-64, timestamp:2020-07-24 05:58:44 +0000)
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
         
         for beacon in beacons {
@@ -115,6 +129,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
         dLog("didStartMonitoringFor: \(beaconRegion)")
     }
     
+    //CLBeaconRegion (identifier:'053dc9c35570610597386fb1117ee70b', uuid:FDA50693-A4E2-4FB1-AFCF-C6EB07647825, major:1, minor:2)
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         guard let beaconRegion = region as? CLBeaconRegion else {
             return
@@ -124,8 +139,8 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
         
         //TODO handle that case
     }
-    //didEnterRegion: CLBeaconRegion (identifier:'qwe', uuid:sdfw3, major:(null), minor:(null))
-    
+
+  //  didExitRegion: CLBeaconRegion (identifier:'053dc9c35570610597386fb1117ee70b', uuid:FDA50693-A4E2-4FB1-AFCF-C6EB07647825, major:1, minor:2)
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         guard let beaconRegion = region as? CLBeaconRegion else {
             return
@@ -143,8 +158,9 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
     *    App will be launched and the delegate will be notified via locationManager:didDetermineState:forRegion:
     *    when the device's screen is turned on and the user is in the region. By default, this is NO.
     */
+    //didDetermineState: 1 for region CLBeaconRegion (identifier:'053dc9c35570610597386fb1117ee70b', uuid:FDA50693-A4E2-4FB1-AFCF-C6EB07647825, major:1, minor:2)
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-        dLog("didDetermineState: \(state) for region \(region)")
+        dLog("didDetermineState: \(state.rawValue) for region \(region)")
         
         //TODO handle that case
     }
