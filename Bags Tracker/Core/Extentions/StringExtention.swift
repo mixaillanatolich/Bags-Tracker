@@ -27,6 +27,8 @@ extension String {
 //        return hash.map { String(format: "%02x", $0) }.joined()
     }
     
-    
+    var isNumeric: Bool {
+      return !(self.isEmpty) && self.allSatisfy { $0.isNumber }
+    }
     
 }

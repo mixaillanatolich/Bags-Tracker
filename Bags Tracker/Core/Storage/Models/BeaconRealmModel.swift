@@ -28,6 +28,15 @@ class BeaconRealmModel: Object {
         super.init()
     }
     
+    init(with name: String, uuid: String, major: Int, minor: Int) {
+        self.name = name
+        self.uuid = uuid
+        self.major = major
+        self.minor = minor
+        self.identifier = "\(uuid)+\(major)+\(minor)".md5
+        super.init()
+    }
+    
     required init() {
         super.init()
     }

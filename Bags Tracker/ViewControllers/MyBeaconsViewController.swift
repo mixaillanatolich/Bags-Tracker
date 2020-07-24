@@ -54,7 +54,18 @@ class MyBeaconsViewController: UIViewController {
     }
     
     @IBAction func addButtonClicked(_ sender: Any) {
-        self.performSegue(withIdentifier: "ShowScanBLEDevicesScreen", sender: self)
+        //self.performSegue(withIdentifier: "ShowScanBLEDevicesScreen", sender: self)
+        
+        let alert = UIAlertController(title: "Add a new iBeacon", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Add By UUID", style: .default, handler: { action in
+            self.performSegue(withIdentifier: "ShowAddNewBeaconScreen", sender: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Search By UUID", style: .default, handler: { action in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+        }))
+        self.present(alert, animated: true)
     }
 
 }
