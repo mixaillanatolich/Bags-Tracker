@@ -42,10 +42,23 @@ class BeaconCLModel: BeaconGenericModel {
         rssi = clBeacon.rssi
     }
     
+    func updateWith(clBeaconRegion: CLBeaconRegion) {
+        timestamp = Date()
+        proximity = nil
+        accuracy = nil
+        rssi = nil
+    }
+    
     static func ==(item: BeaconCLModel, beacon: CLBeacon) -> Bool {
         return ((beacon.uuid.uuidString == item.uuid.uuidString))
             && (Int(truncating: beacon.major) == Int(truncating: item.majorValue ?? 0))
             && (Int(truncating: beacon.minor) == Int(truncating: item.minorValue ?? 0))
     }
 
+    static func ==(item: BeaconCLModel, beacon: CLBeaconRegion) -> Bool {
+        return ((beacon.uuid.uuidString == item.uuid.uuidString))
+            && (Int(truncating: beacon.major ?? -1) == Int(truncating: item.majorValue ?? 0))
+            && (Int(truncating: beacon.minor ?? -1) == Int(truncating: item.minorValue ?? 0))
+    }
 }
+

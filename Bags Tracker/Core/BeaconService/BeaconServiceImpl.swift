@@ -93,20 +93,16 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
         for beacon in beacons {
             dLog("didRange beacon: \(beacon)")
             
-//            guard beacon.proximity == .near || beacon.proximity == .immediate else {
-//                continue
-//            }
+            guard beacon.proximity != .unknown else {
+                continue
+            }
             
-            let theBeacon = BeaconCLModel(clBeacon: beacon)
-            
-            let aBeacon = activeBeacons.filter { (aBeacon) -> Bool in
-                aBeacon == beacon
-            }.first
-            
-            if let activeBeacon = aBeacon {
+            if let index = activeBeacons.firstIndex(where: { $0 == beacon}) {
+                let activeBeacon = activeBeacons[index]
                 activeBeacon.updateWith(clBeacon: beacon)
-                delegate?.beaconUpdate(theBeacon)
+                delegate?.beaconUpdate(activeBeacon)
             } else {
+                let theBeacon = BeaconCLModel(clBeacon: beacon)
                 activeBeacons.append(theBeacon)
                 delegate?.beaconFinded(theBeacon)
             }
@@ -137,7 +133,17 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
         
         dLog("didEnterRegion: \(beaconRegion)")
         
-        //TODO handle that case
+        if let index = activeBeacons.firstIndex(where: { $0 == beaconRegion}) {
+             let activeBeacon = activeBeacons[index]
+             activeBeacon.updateWith(clBeaconRegion: beaconRegion)
+             delegate?.beaconUpdate(activeBeacon)
+         } else {
+            let theBeacon = BeaconCLModel(clBeaconRegion: beaconRegion)
+             activeBeacons.append(theBeacon)
+             delegate?.beaconFinded(theBeacon)
+         }
+        
+        //TODO need notification?
     }
 
   //  didExitRegion: CLBeaconRegion (identifier:'053dc9c35570610597386fb1117ee70b', uuid:FDA50693-A4E2-4FB1-AFCF-C6EB07647825, major:1, minor:2)
@@ -147,7 +153,13 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
         }
         dLog("didExitRegion: \(beaconRegion)")
         
-        //TODO handle that case
+        if let index = activeBeacons.firstIndex(where: { $0 == beaconRegion}) {
+            let activeBeacon = activeBeacons[index]
+            delegate?.beaconLost(activeBeacon)
+            activeBeacons.remove(at: index)
+        }
+        
+        //TODO need notification?
     }
  
     

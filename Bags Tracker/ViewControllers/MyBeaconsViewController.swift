@@ -38,7 +38,7 @@ class MyBeaconsViewController: BaseViewController {
   
         prepareBeaconsListAndShow()
         
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+       // self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     fileprivate func prepareBeaconsListAndShow() {
@@ -97,28 +97,12 @@ extension MyBeaconsViewController: UITableViewDelegate, UITableViewDataSource {
                     self.beacons.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)
                 }
+                self.editedIndex = nil
             }
         }
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
         return swipeActions
     }
-    
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//
-//        self.editedIndex = indexPath
-//
-//        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-//
-//            let deviceId = self.allDevicesIds[indexPath.row]
-//
-//            if let device = self.allDevices[deviceId] {
-//                device.remove()
-//                self.allDevicesIds = DeviceModel.allDevices()
-//                tableView.deleteRows(at: [indexPath], with: .automatic)
-//            }
-//        }
-//        return [delete]
-//    }
     
 }
 
