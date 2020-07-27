@@ -60,13 +60,33 @@ class MyBeaconsViewController: BaseViewController {
             beacons = allBeacons.filter({ (aBeacon) -> Bool in
                 clBeacons.firstIndex(where: { $0 == aBeacon}) != nil
             })
-//        case .sorting:
-//            beacons = allBeacons
-        default:
+        case .sorting:
             beacons = allBeacons
+            sortBeacons()
         }
         
         tableView.reloadData()
+    }
+    
+    fileprivate func sortBeacons() {
+        
+        beacons = allBeacons.sorted(by: { (aBeacon1, aBeacon2) -> Bool in
+            
+            let aClBeacon1 = clBeacons.first(where: {$0 == aBeacon1})
+            let aClBeacon2 = clBeacons.first(where: {$0 == aBeacon2})
+            
+            if aClBeacon1?.rssi != nil && aClBeacon2?.rssi == nil {
+                return true
+            } else if aClBeacon1?.rssi == nil && aClBeacon2?.rssi != nil {
+                return false
+            } else if aClBeacon1?.rssi == nil && aClBeacon2?.rssi == nil {
+                return false
+            } else {
+                return aClBeacon1!.rssi! > aClBeacon2!.rssi!
+            }
+
+        })
+        
     }
     
     @IBAction func filterBeaconsControlChanged(_ sender: Any) {
@@ -158,8 +178,9 @@ extension MyBeaconsViewController: BeaconServiceDelegate {
                 beacons.append(theBeacon)
                 self.tableView.insertRows(at: [IndexPath(item: beacons.count-1, section: 0)], with: .automatic)
             }
-        default:
-            beacons = allBeacons
+        case .sorting:
+            sortBeacons()
+            tableView.reloadData()
         }
     }
     
@@ -180,8 +201,9 @@ extension MyBeaconsViewController: BeaconServiceDelegate {
                 let deleteCellPath = IndexPath(item: Int(index), section: 0)
                 tableView.deleteRows(at: [deleteCellPath], with: .automatic)
             }
-        default:
-            beacons = allBeacons
+        case .sorting:
+            sortBeacons()
+            tableView.reloadData()
         }
 
     }
@@ -191,8 +213,14 @@ extension MyBeaconsViewController: BeaconServiceDelegate {
             return
         }
         clBeacons[index] = beacon
-        if let index = beacons.firstIndex(where: {$0 == beacon}) {
-            reloadCellFor(row: index)
+        
+        if currentFilterId == .sorting {
+            sortBeacons()
+            tableView.reloadData()
+        } else {
+            if let index = beacons.firstIndex(where: {$0 == beacon}) {
+                reloadCellFor(row: index)
+            }
         }
     }
     
