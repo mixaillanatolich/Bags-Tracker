@@ -78,9 +78,8 @@ class StorageServiceImpl: NSObject {
             DispatchQueue.main.async {
                 if status == .success {
                     if let index = self.beacons.firstIndex(where: { $0 == beacon }) {
-                        self.beacons.remove(at: index)
+                        self.beacons[index] = beacon
                     }
-                    self.beacons.append(beacon)
                     callback(nil)
                 } else if status == .error {
                     callback("Error on update iBeacon")

@@ -17,7 +17,8 @@ class BeaconModel: BeaconGenericModel {
         let theIdentifier = aIdentifier ?? "\(uuid)+\(majorValue ?? 0)+\(minorValue ?? 0)".md5
         self.identifier = theIdentifier
         self.name = name ?? theIdentifier
-        super.init(uuid: UUID(uuidString: uuid)!.uuidString, majorValue: majorValue, minorValue: minorValue)
+        let uuid = UUID(uuidString: uuid) ?? UUID()
+        super.init(uuid: uuid.uuidString, majorValue: majorValue, minorValue: minorValue)
     }
     
     convenience init(with model: BeaconRealmModel) {

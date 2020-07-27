@@ -30,6 +30,7 @@
 		0574933724CABE71002ACCBA /* RealmDbImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933624CABE71002ACCBA /* RealmDbImpl.swift */; };
 		0574933924CABE9F002ACCBA /* RealmDbProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */; };
 		0574933B24CAC848002ACCBA /* StorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */; };
+		0574933D24CF31F3002ACCBA /* EditBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933C24CF31F3002ACCBA /* EditBeaconViewController.swift */; };
 		05973ADA24AF5DF0007855DD /* BLECentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACD24AF5DF0007855DD /* BLECentralManager.swift */; };
 		05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACE24AF5DF0007855DD /* BLECommand.swift */; };
 		05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */; };
@@ -75,6 +76,7 @@
 		0574933624CABE71002ACCBA /* RealmDbImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDbImpl.swift; sourceTree = "<group>"; };
 		0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDbProtocol.swift; sourceTree = "<group>"; };
 		0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceImpl.swift; sourceTree = "<group>"; };
+		0574933C24CF31F3002ACCBA /* EditBeaconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBeaconViewController.swift; sourceTree = "<group>"; };
 		05973ACD24AF5DF0007855DD /* BLECentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECentralManager.swift; sourceTree = "<group>"; };
 		05973ACE24AF5DF0007855DD /* BLECommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECommand.swift; sourceTree = "<group>"; };
 		05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevicePeripheral.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				05B5577E228D90B3003EEA47 /* MyBeaconsViewController.swift */,
 				0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */,
 				0574932924C9BEC8002ACCBA /* AddBeaconByUUIDViewController.swift */,
+				0574933C24CF31F3002ACCBA /* EditBeaconViewController.swift */,
 				0524162B229271860012FC9A /* NearbyDevicesViewController.swift */,
 				05B5577F228D90B3003EEA47 /* ScanBLEDevicesVC.swift */,
 				0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */,
@@ -408,6 +411,7 @@
 				05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */,
 				05153EA724C180CD00A2CC7D /* BeaconGenericModel.swift in Sources */,
 				0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */,
+				0574933D24CF31F3002ACCBA /* EditBeaconViewController.swift in Sources */,
 				05153EA924C181A500A2CC7D /* BeaconCLModel.swift in Sources */,
 				0574933B24CAC848002ACCBA /* StorageServiceImpl.swift in Sources */,
 				0574933724CABE71002ACCBA /* RealmDbImpl.swift in Sources */,
@@ -561,7 +565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 73LTLJAK8K;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
@@ -585,7 +589,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: TELEMETRIYA, OOO";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 73LTLJAK8K;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";

@@ -154,7 +154,14 @@ extension MyBeaconsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.editedIndex = nil
             }
         }
-        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+        let editAction = UIContextualAction(style: .normal, title: "Edit") {  (contextualAction, view, boolValue) in
+            let beacon = self.beacons[indexPath.row]
+            self.performSegue(withIdentifier: "ShowBeaconEditScreen", sender: { (destVC: UIViewController) in
+                let vc = destVC as! EditBeaconViewController
+                vc.beacon = beacon
+            })
+        }
+        let swipeActions = UISwipeActionsConfiguration(actions: [editAction, deleteAction])
         return swipeActions
     }
     

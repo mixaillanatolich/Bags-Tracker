@@ -41,6 +41,7 @@ class BeaconRealmModel: Object {
     func paramsForModify() -> [String : Any] {
         var params = [String : Any]()
         params["name"] = name
+        params["identifier"] = identifier
         return params
     }
     

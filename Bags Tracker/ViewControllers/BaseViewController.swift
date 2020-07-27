@@ -23,4 +23,11 @@ class BaseViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue,
+                      sender: sender)
+        if let prepareBlock = sender as? (UIViewController)->() {
+            prepareBlock(segue.destination)
+        }
+    }
 }
