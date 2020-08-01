@@ -12,6 +12,8 @@ import CoreLocation
 class BeaconModel: BeaconGenericModel {
     let identifier: String
     var name: String
+    var isNotificationEnabled = false
+    var notificationEvent: NotificationEventType = .inRange
     
     init(uuid: String, name: String?, aIdentifier: String?, majorValue: NSNumber?, minorValue: NSNumber?) {
         let theIdentifier = aIdentifier ?? "\(uuid)+\(majorValue ?? 0)+\(minorValue ?? 0)".md5
@@ -27,6 +29,8 @@ class BeaconModel: BeaconGenericModel {
                   aIdentifier: model.identifier,
                   majorValue: NSNumber(value: model.major),
                   minorValue: NSNumber(value: model.minor))
+        self.isNotificationEnabled = model.isNotificationEnabled
+        self.notificationEvent = NotificationEventType(rawValue: model.notificationEvent)!
     }
     
     required init(uuid: String, majorValue: NSNumber?, minorValue: NSNumber?) {
@@ -48,4 +52,11 @@ class BeaconModel: BeaconGenericModel {
                               identifier: identifier)
     }
     
+    func notificationId(eventType: NotificationEventType) -> String {
+        return identifier + eventType.notificationName()
+    }
+    
+    public override var description: String {
+        return "\nBeaconModel:\n\tidentifier: \(identifier)\n\tname: \(name)\n\tisNotificationEnabled: \(isNotificationEnabled)"
+    }
 }

@@ -23,6 +23,9 @@ class BeaconCLModel: BeaconGenericModel {
         accuracy = clBeacon.accuracy
         rssi = clBeacon.rssi
         super.init(uuid: clBeacon.uuid.uuidString, majorValue: clBeacon.major, minorValue: clBeacon.minor)
+        if let major = majorValue?.intValue, let minor = minorValue?.intValue {
+            self.identifier = "\(uuid)+\(major)+\(minor)".md5
+        }
     }
     
     required init(clBeaconRegion: CLBeaconRegion) {

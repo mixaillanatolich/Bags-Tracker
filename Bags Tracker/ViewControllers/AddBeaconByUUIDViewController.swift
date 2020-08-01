@@ -17,6 +17,9 @@ class AddBeaconByUUIDViewController: BaseViewController {
     @IBOutlet weak var majorTextField: UITextField!
     @IBOutlet weak var minorTextField: UITextField!
     
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    @IBOutlet weak var notificationEventControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,6 +75,8 @@ class AddBeaconByUUIDViewController: BaseViewController {
         }
         
         let beacon = BeaconModel(uuid: uuid.uuidString, name: name, aIdentifier: nil, majorValue: NSNumber(value: major), minorValue: NSNumber(value: minor))
+        beacon.isNotificationEnabled = notificationSwitch.isOn
+        beacon.notificationEvent = NotificationEventType(rawValue: notificationEventControl.selectedSegmentIndex)!
         
         StorageService.saveBeacon(beacon) { (error) in
             if let error = error {

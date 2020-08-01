@@ -41,6 +41,21 @@ class StorageServiceImpl: NSObject {
         }
     }
     
+    func beaconBy(id: String, callback: @escaping (BeaconModel?) -> Void) {
+        RealmDbService.beaconBy(identifier: id) { (realmBeacon) in
+            guard let beacon = realmBeacon else {
+                DispatchQueue.main.async {
+                    callback(nil)
+                }
+                return
+            }
+            let theBeacon = BeaconModel(with: beacon)
+            DispatchQueue.main.async {
+                callback(theBeacon)
+            }
+        }
+    }
+    
     func saveBeacon(_ beacon: BeaconModel, callback: @escaping (_ error: String?) -> Void) {
         
         guard self.beacons.firstIndex(where: { $0 == beacon }) == nil else {

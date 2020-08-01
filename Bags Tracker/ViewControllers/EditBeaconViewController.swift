@@ -17,6 +17,9 @@ class EditBeaconViewController: BaseViewController {
     @IBOutlet weak var majorTextField: UITextField!
     @IBOutlet weak var minorTextField: UITextField!
     
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    @IBOutlet weak var notificationEventControl: UISegmentedControl!
+    
     var beacon: BeaconModel!
         
     override func viewDidLoad() {
@@ -29,6 +32,9 @@ class EditBeaconViewController: BaseViewController {
         UUIDTextField.text = beacon.uuid.uuidString
         majorTextField.text = "\(beacon.majorValue!.intValue)"
         minorTextField.text = "\(beacon.minorValue!.intValue)"
+        
+        notificationSwitch.isOn = beacon.isNotificationEnabled
+        notificationEventControl.selectedSegmentIndex = beacon.notificationEvent.rawValue
         
         UUIDTextField.isUserInteractionEnabled = false
         majorTextField.isUserInteractionEnabled = false
@@ -58,6 +64,8 @@ class EditBeaconViewController: BaseViewController {
         }
         
         beacon.name = name
+        beacon.isNotificationEnabled = notificationSwitch.isOn
+        beacon.notificationEvent = NotificationEventType(rawValue: notificationEventControl.selectedSegmentIndex)!
         
         StorageService.updateBeacon(beacon) { (error) in
             if let error = error {
@@ -68,45 +76,6 @@ class EditBeaconViewController: BaseViewController {
                 }
             }
         }
-        
-//
-//        guard let uuidStr = UUIDTextField.text, !uuidStr.isEmpty else {
-//            showAlert(withTitle: nil, andMessage: "Please enter Beacon Proximity UUID")
-//            return
-//        }
-//        // FDA50693-A4E2-4FB1-AFCF-C6EB07647825
-//        // E621E1F8-C36C-495A-93FC-0C247A3E6E5F
-//        // fda50693-a4e2-4fb1-afcf-c6eb07647825
-//        dLog("uuid str \(uuidStr.lowercased())")
-//
-//        guard let uuid = UUID(uuidString: uuidStr) else {
-//            showAlert(withTitle: "Please enter valid Beacon Proximity UUID", andMessage: "Format of valid Beacon UUID: ffffffff-ffff-ffff-ffff-ffffffffffff")
-//            return
-//        }
-//
-//        guard let majorValue = majorTextField.text, majorValue.isNumeric, let major = Int(majorValue), major > 0, major < 65536 else {
-//            showAlert(withTitle: nil, andMessage: "Please enter valid major value")
-//            return
-//        }
-//
-//        guard let minorValue = minorTextField.text, minorValue.isNumeric, let minor = Int(minorValue), minor > 0, minor < 65536 else {
-//            showAlert(withTitle: nil, andMessage: "Please enter valid minor value")
-//            return
-//        }
-//
-//        let beacon = BeaconModel(uuid: uuid.uuidString, name: name, aIdentifier: nil, majorValue: NSNumber(value: major), minorValue: NSNumber(value: minor))
-//
-//        StorageService.saveBeacon(beacon) { (error) in
-//            if let error = error {
-//                self.showAlert(withTitle: error, andMessage: nil)
-//            } else {
-//                BeaconService.startMonitoring(beacons: [beacon])
-//
-//                self.showAlert(withTitle: "iBeacon was added successfully", andMessage: nil) {
-//                    self.closeButtonClicked(self)
-//                }
-//            }
-//        }
 
     }
         

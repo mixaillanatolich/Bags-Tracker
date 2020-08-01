@@ -19,6 +19,7 @@ protocol RealmDbProtocol {
     func cleanupDb(callback: @escaping () -> Void);
     func createBeacon(_ beacon: BeaconRealmModel, result: @escaping (RealmOpStatus) -> Void)
     func updateBeacon(_ beacon: BeaconRealmModel, result: @escaping (RealmOpStatus) -> Void)
+    func beaconBy(identifier: String, result: @escaping (BeaconRealmModel?) -> Void)
     func removeBeacon(_ beacon: BeaconRealmModel, result: @escaping (RealmOpStatus) -> Void)
     func beacons(result: @escaping ([BeaconRealmModel], RealmOpStatus) -> Void)
 }

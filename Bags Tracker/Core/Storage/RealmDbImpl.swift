@@ -21,7 +21,37 @@ class RealmDbImpl: NSObject, RealmDbProtocol {
     }()
     
     override init() {
-        var config = Realm.Configuration()
+        var config = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: 1,
+
+            // Set the block which will be called automatically when opening a Realm with
+            // a schema version lower than the one set above
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if (oldSchemaVersion < 1) {
+                    // Nothing to do!
+                    // Realm will automatically detect new properties and removed properties
+                    // And will update the schema on disk automatically
+                      
+                    /*
+                    // The enumerateObjects(ofType:_:) method iterates
+                    // over every Person object stored in the Realm file
+                    migration.enumerateObjects(ofType: Person.className()) { oldObject, newObject in
+                        // combine name fields into a single field
+                        let firstName = oldObject!["firstName"] as! String
+                        let lastName = oldObject!["lastName"] as! String
+                        newObject!["fullName"] = "\(firstName) \(lastName)"
+                    }
+                    */
+                      
+                    /*
+                    // The renaming operation should be done outside of calls to `enumerateObjects(ofType: _:)`.
+                    migration.renameProperty(onType: Person.className(), from: "yearsSinceBirth", to: "age")
+                    */
+                  }
+        })
         // Use the default directory, but replace the filename with the username
         config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("db.realm")
         // Set this as the configuration used for the default Realm
@@ -84,6 +114,20 @@ class RealmDbImpl: NSObject, RealmDbProtocol {
                 } catch let error as NSError {
                     dLog("\(error)")
                     result(.fail)
+                }
+            }
+        }
+    }
+    
+    func beaconBy(identifier: String, result: @escaping (BeaconRealmModel?) -> Void) {
+        DispatchQueue(label: queueName).async {
+            autoreleasepool {
+                do {
+                    let realm = try Realm()
+                    result(realm.object(ofType: BeaconRealmModel.self, forPrimaryKey: identifier))
+                } catch let error as NSError {
+                    dLog("\(error)")
+                    result(nil)
                 }
             }
         }

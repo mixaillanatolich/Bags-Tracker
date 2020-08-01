@@ -46,6 +46,8 @@
 		05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55783228D90BB003EEA47 /* BTCentralManager.swift */; };
 		05B55788228D90C5003EEA47 /* ExtObjectOrNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */; };
 		05B55789228D90C5003EEA47 /* LogsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55787228D90C5003EEA47 /* LogsHelper.swift */; };
+		05C6248B24D1D3120024A296 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6248A24D1D3120024A296 /* ApplicationManager.swift */; };
+		05C6248D24D2896B0024A296 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6248C24D2896B0024A296 /* NotificationManager.swift */; };
 		05E4E3ED23DC918A0045A432 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4E3EC23DC918A0045A432 /* DataExtension.swift */; };
 		C51632F450E610D5C076D69B /* Pods_Bags_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +94,8 @@
 		05B55783228D90BB003EEA47 /* BTCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTCentralManager.swift; sourceTree = "<group>"; };
 		05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtObjectOrNil.swift; sourceTree = "<group>"; };
 		05B55787228D90C5003EEA47 /* LogsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsHelper.swift; sourceTree = "<group>"; };
+		05C6248A24D1D3120024A296 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
+		05C6248C24D2896B0024A296 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		05E4E3EC23DC918A0045A432 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bags_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BF8721745F59100DECA21D /* Pods-Bags Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bags Tracker.release.xcconfig"; path = "Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		05B55782228D90BB003EEA47 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				05C6248A24D1D3120024A296 /* ApplicationManager.swift */,
+				05C6248C24D2896B0024A296 /* NotificationManager.swift */,
 				05153EA124C17DE000A2CC7D /* Extentions */,
 				0520164E24C0888100463B48 /* Models */,
 				0520164A24C0857500463B48 /* Storage */,
@@ -408,6 +414,7 @@
 				05973AE024AF5DF0007855DD /* BLEResponse.swift in Sources */,
 				05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */,
 				05973AE424AF5DF1007855DD /* ExtString.swift in Sources */,
+				05C6248B24D1D3120024A296 /* ApplicationManager.swift in Sources */,
 				05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */,
 				05153EA724C180CD00A2CC7D /* BeaconGenericModel.swift in Sources */,
 				0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */,
@@ -434,6 +441,7 @@
 				05B55781228D90B3003EEA47 /* ScanBLEDevicesVC.swift in Sources */,
 				0520165024C088BB00463B48 /* BeaconModel.swift in Sources */,
 				0520164824BF37BA00463B48 /* SearchBeaconsByIdViewController.swift in Sources */,
+				05C6248D24D2896B0024A296 /* NotificationManager.swift in Sources */,
 				05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */,
 				05E4E3ED23DC918A0045A432 /* DataExtension.swift in Sources */,
 				05153EA524C17EE200A2CC7D /* DataExtentions.swift in Sources */,
