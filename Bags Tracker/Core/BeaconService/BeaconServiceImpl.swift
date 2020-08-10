@@ -77,7 +77,7 @@ class BeaconServiceImpl: NSObject, BeaconServiceProtocol {
         activeBeacons = activeBeacons.filter { (beacon) -> Bool in
             if Date().timeIntervalSince(beacon.timestamp) > TimeToLostBeacon {
                 delegate?.beaconLost(beacon)
-         //       NotificationCenter.checkNotificationFor2(beacon: beacon, eventType: .outOfRange)
+                NotificationCenter.checkNotificationFor(beacon: beacon, eventType: .outOfRange)
                 return false
             }
             return true
@@ -103,13 +103,15 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
                 activeBeacon.updateWith(clBeacon: beacon)
                 delegate?.beaconUpdate(activeBeacon)
                 
-             //   NotificationCenter.checkNotificationFor2(beacon: activeBeacon, eventType: .near)
+                if beacon.proximity == .immediate || beacon.proximity == .near {
+                    NotificationCenter.checkNotificationFor(beacon: activeBeacon, eventType: .near)
+                }
             } else {
                 let theBeacon = BeaconCLModel(clBeacon: beacon)
                 activeBeacons.append(theBeacon)
                 delegate?.beaconFinded(theBeacon)
                 
-             //   NotificationCenter.checkNotificationFor2(beacon: theBeacon, eventType: .inRange)
+                NotificationCenter.checkNotificationFor(beacon: theBeacon, eventType: .inRange)
             }
         }
     }
@@ -179,6 +181,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
         dLog("didDetermineState: \(state.rawValue) for region \(region)")
         
+        /*
         guard let beaconRegion = region as? CLBeaconRegion else {
             return
         }
@@ -186,7 +189,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
         guard state == .inside || state == .outside else { return }
         
         let type: NotificationEventType = (state == .inside ? .inRange : .outOfRange)
-        
+        */
        // NotificationCenter.checkNotificationFor2(beacon: BeaconCLModel(clBeaconRegion: beaconRegion), eventType: type)
     }
     

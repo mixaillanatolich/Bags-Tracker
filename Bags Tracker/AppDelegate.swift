@@ -51,5 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    // TODO
+    // investigate disable monitoring for beacons in case notification is off
+    // investigate push notifications
+    
 }

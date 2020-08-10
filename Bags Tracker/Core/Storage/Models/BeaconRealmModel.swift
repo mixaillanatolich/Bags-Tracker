@@ -16,7 +16,7 @@ class BeaconRealmModel: Object {
     @objc dynamic var minor: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var isNotificationEnabled = false
-    @objc dynamic var notificationEvent: Int = 0
+    dynamic var notificationEvents = List<Int>()
     
     override static func primaryKey() -> String? {
         return "identifier"
@@ -33,25 +33,18 @@ class BeaconRealmModel: Object {
         self.identifier = "\(uuid)+\(major)+\(minor)".md5
         self.name = beaconModel.name
         self.isNotificationEnabled = beaconModel.isNotificationEnabled
-        self.notificationEvent = beaconModel.notificationEvent.rawValue
+        for event in beaconModel.notificationEvents {
+            notificationEvents.append(event.rawValue)
+        }
         super.init()
     }
-    
-//    init(with name: String, uuid: String, major: Int, minor: Int) {
-//        self.name = name
-//        self.uuid = uuid
-//        self.major = major
-//        self.minor = minor
-//        self.identifier = "\(uuid)+\(major)+\(minor)".md5
-//        super.init()
-//    }
     
     func paramsForModify() -> [String : Any] {
         var params = [String : Any]()
         params["identifier"] = identifier
         params["name"] = name
         params["isNotificationEnabled"] = isNotificationEnabled
-        params["notificationEvent"] = notificationEvent
+        params["notificationEvents"] = notificationEvents
         return params
     }
 }

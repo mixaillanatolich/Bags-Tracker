@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultiSelectSegmentedControl
 
 class EditBeaconViewController: BaseViewController {
 
@@ -18,7 +19,7 @@ class EditBeaconViewController: BaseViewController {
     @IBOutlet weak var minorTextField: UITextField!
     
     @IBOutlet weak var notificationSwitch: UISwitch!
-    @IBOutlet weak var notificationEventControl: UISegmentedControl!
+    @IBOutlet weak var notificationEventsControl: MultiSelectSegmentedControl!
     
     var beacon: BeaconModel!
         
@@ -34,7 +35,16 @@ class EditBeaconViewController: BaseViewController {
         minorTextField.text = "\(beacon.minorValue!.intValue)"
         
         notificationSwitch.isOn = beacon.isNotificationEnabled
-        notificationEventControl.selectedSegmentIndex = beacon.notificationEvent.rawValue
+        
+        notificationEventsControl.items = ["In Range", "Out Of Range", "Nearby"]
+        notificationEventsControl.selectedSegmentIndex = 0
+        notificationEventsControl.delegate = self
+        
+        notificationEventsControl.tintColor = .white
+        notificationEventsControl.selectedSegmentIndexes = IndexSet(beacon.notificationEvents.map { $0.rawValue })
+        //notificationEventsControl.selectedBackgroundColor = .systemOrange
+        notificationEventsControl.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
+        notificationEventsControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
         
         UUIDTextField.isUserInteractionEnabled = false
         majorTextField.isUserInteractionEnabled = false
@@ -65,7 +75,10 @@ class EditBeaconViewController: BaseViewController {
         
         beacon.name = name
         beacon.isNotificationEnabled = notificationSwitch.isOn
-        beacon.notificationEvent = NotificationEventType(rawValue: notificationEventControl.selectedSegmentIndex)!
+        beacon.notificationEvents.removeAll()
+        for item in notificationEventsControl.segments.enumerated().filter({ $1.isSelected }).map({ $0.offset }) {
+            beacon.notificationEvents.append(NotificationEventType(rawValue: item)!)
+        }
         
         StorageService.updateBeacon(beacon) { (error) in
             if let error = error {
@@ -81,6 +94,12 @@ class EditBeaconViewController: BaseViewController {
         
     @objc func onTouchGesture() {
         self.view.endEditing(true)
+    }
+}
+
+extension EditBeaconViewController: MultiSelectSegmentedControlDelegate {
+    func multiSelect(_ multiSelectSegmentedControl: MultiSelectSegmentedControl, didChange value: Bool, at index: Int) {
+        dLog("\(value) at \(index)")
     }
 }
 

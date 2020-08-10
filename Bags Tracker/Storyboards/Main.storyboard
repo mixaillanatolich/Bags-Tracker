@@ -829,7 +829,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCx-nE-R6m">
-                                        <rect key="frame" x="0.0" y="381.66666666666669" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="382.66666666666669" width="375" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="zVD-r4-tfr"/>
@@ -864,19 +864,18 @@
                                         <rect key="frame" x="130" y="278.66666666666669" width="51" height="31"/>
                                         <color key="onTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kKs-Gx-MLY">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sX6-fI-1Qu" customClass="MultiSelectSegmentedControl" customModule="MultiSelectSegmentedControl">
                                         <rect key="frame" x="16" y="325.66666666666669" width="343" height="32"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <segments>
-                                            <segment title="In Range"/>
-                                            <segment title="Out Of Range"/>
-                                            <segment title="Nearby"/>
-                                        </segments>
-                                        <color key="selectedSegmentTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="filterBeaconsControlChanged:" destination="kx6-pO-HmW" eventType="valueChanged" id="NH1-T8-IvP"/>
-                                        </connections>
-                                    </segmentedControl>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="22Q-Og-IZl"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="QFD-uv-brl" firstAttribute="centerX" secondItem="c2f-Kt-ltm" secondAttribute="centerX" id="2Ri-x4-NjB"/>
@@ -885,19 +884,17 @@
                                     <constraint firstItem="RgD-hg-BjT" firstAttribute="leading" secondItem="nv9-mv-KiJ" secondAttribute="leading" constant="16" id="ACa-dZ-Pfp"/>
                                     <constraint firstItem="Z5p-0h-jlK" firstAttribute="leading" secondItem="sjk-9o-yYm" secondAttribute="leading" constant="16" id="B9f-EZ-EkD"/>
                                     <constraint firstItem="scZ-qO-NtB" firstAttribute="leading" secondItem="c2f-Kt-ltm" secondAttribute="leading" id="D1A-UY-eef"/>
-                                    <constraint firstItem="kKs-Gx-MLY" firstAttribute="leading" secondItem="c2f-Kt-ltm" secondAttribute="leading" constant="16" id="EIq-Le-uAG"/>
                                     <constraint firstItem="2N6-fI-Ljv" firstAttribute="leading" secondItem="sjk-9o-yYm" secondAttribute="leading" constant="16" id="GxS-bT-Yfy"/>
                                     <constraint firstItem="PVr-sz-LTf" firstAttribute="leading" secondItem="nv9-mv-KiJ" secondAttribute="leading" constant="16" id="J5Q-At-DE2"/>
                                     <constraint firstAttribute="trailing" secondItem="scZ-qO-NtB" secondAttribute="trailing" id="JKZ-Dw-8RH"/>
                                     <constraint firstItem="9s3-Ed-huM" firstAttribute="centerY" secondItem="Z5p-0h-jlK" secondAttribute="centerY" id="KOj-Au-eHz"/>
+                                    <constraint firstItem="hCx-nE-R6m" firstAttribute="top" secondItem="sX6-fI-1Qu" secondAttribute="bottom" constant="25" id="L4g-AU-wtn"/>
                                     <constraint firstItem="QFD-uv-brl" firstAttribute="top" secondItem="dLl-r2-dT6" secondAttribute="bottom" constant="25" id="Lat-rj-7Ap"/>
                                     <constraint firstAttribute="bottom" secondItem="2N6-fI-Ljv" secondAttribute="bottom" constant="88" id="MUy-CO-Ioe"/>
-                                    <constraint firstAttribute="trailing" secondItem="kKs-Gx-MLY" secondAttribute="trailing" constant="16" id="Nyb-C3-cZV"/>
                                     <constraint firstItem="RgD-hg-BjT" firstAttribute="top" secondItem="QFD-uv-brl" secondAttribute="bottom" constant="16" id="Ois-Sv-fMR"/>
-                                    <constraint firstItem="hCx-nE-R6m" firstAttribute="top" secondItem="kKs-Gx-MLY" secondAttribute="bottom" constant="25" id="PpM-fd-9OP"/>
                                     <constraint firstItem="vrV-WJ-jym" firstAttribute="top" secondItem="dN8-aL-ck1" secondAttribute="bottom" constant="8" id="Rme-pe-JPz"/>
                                     <constraint firstItem="2N6-fI-Ljv" firstAttribute="top" secondItem="Z5p-0h-jlK" secondAttribute="bottom" constant="23" id="SMJ-cy-hyn"/>
-                                    <constraint firstItem="kKs-Gx-MLY" firstAttribute="top" secondItem="WR3-lq-hOE" secondAttribute="bottom" constant="16" id="U35-5s-9AJ"/>
+                                    <constraint firstItem="sX6-fI-1Qu" firstAttribute="top" secondItem="WR3-lq-hOE" secondAttribute="bottom" constant="16" id="T6b-9R-dd9"/>
                                     <constraint firstItem="hCx-nE-R6m" firstAttribute="leading" secondItem="c2f-Kt-ltm" secondAttribute="leading" id="VqS-Ay-Rc7"/>
                                     <constraint firstItem="PVr-sz-LTf" firstAttribute="top" secondItem="nv9-mv-KiJ" secondAttribute="top" constant="16" id="Vwa-5L-MVw"/>
                                     <constraint firstItem="sjk-9o-yYm" firstAttribute="trailing" secondItem="vrV-WJ-jym" secondAttribute="trailing" constant="16" id="cen-D9-AS2"/>
@@ -906,8 +903,10 @@
                                     <constraint firstItem="vrV-WJ-jym" firstAttribute="leading" secondItem="sjk-9o-yYm" secondAttribute="leading" constant="16" id="fXY-no-uvI"/>
                                     <constraint firstItem="Z5p-0h-jlK" firstAttribute="top" secondItem="vrV-WJ-jym" secondAttribute="bottom" constant="17" id="geG-8s-niq"/>
                                     <constraint firstItem="dN8-aL-ck1" firstAttribute="top" secondItem="scZ-qO-NtB" secondAttribute="bottom" constant="10" id="kdG-eP-j31"/>
+                                    <constraint firstItem="sjk-9o-yYm" firstAttribute="trailing" secondItem="sX6-fI-1Qu" secondAttribute="trailing" constant="16" id="lJM-m6-5Mz"/>
                                     <constraint firstItem="WR3-lq-hOE" firstAttribute="centerY" secondItem="RgD-hg-BjT" secondAttribute="centerY" id="lMC-bk-1EM"/>
                                     <constraint firstItem="scZ-qO-NtB" firstAttribute="top" secondItem="c2f-Kt-ltm" secondAttribute="top" id="mjt-tF-jDY"/>
+                                    <constraint firstItem="sX6-fI-1Qu" firstAttribute="leading" secondItem="sjk-9o-yYm" secondAttribute="leading" constant="16" id="q2P-aQ-dwX"/>
                                     <constraint firstItem="nv9-mv-KiJ" firstAttribute="trailing" secondItem="PVr-sz-LTf" secondAttribute="trailing" constant="16" id="qXP-y1-P1D"/>
                                     <constraint firstItem="scZ-qO-NtB" firstAttribute="centerX" secondItem="c2f-Kt-ltm" secondAttribute="centerX" id="reP-EY-PfU"/>
                                     <constraint firstItem="dLl-r2-dT6" firstAttribute="leading" secondItem="2N6-fI-Ljv" secondAttribute="trailing" constant="16" id="w4x-z0-W0j"/>
@@ -941,7 +940,7 @@
                         <outlet property="majorTextField" destination="9s3-Ed-huM" id="qzt-iA-n59"/>
                         <outlet property="minorTextField" destination="dLl-r2-dT6" id="UBG-5w-819"/>
                         <outlet property="nameTextField" destination="PVr-sz-LTf" id="2GQ-A7-AOM"/>
-                        <outlet property="notificationEventControl" destination="kKs-Gx-MLY" id="gv9-9h-uKM"/>
+                        <outlet property="notificationEventsControl" destination="sX6-fI-1Qu" id="DKM-P1-rvd"/>
                         <outlet property="notificationSwitch" destination="WR3-lq-hOE" id="SHs-cH-kLz"/>
                         <outlet property="scrollView" destination="c2f-Kt-ltm" id="3Wu-xC-jmb"/>
                     </connections>
@@ -1120,7 +1119,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRg-9l-AoM">
-                                        <rect key="frame" x="0.0" y="381.66666666666669" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="382.66666666666669" width="375" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="kaX-jV-awj"/>
@@ -1155,24 +1154,20 @@
                                         <rect key="frame" x="130" y="278.66666666666669" width="51" height="31"/>
                                         <color key="onTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sWK-Zq-x0t">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKj-1V-SQW" customClass="MultiSelectSegmentedControl" customModule="MultiSelectSegmentedControl">
                                         <rect key="frame" x="16" y="325.66666666666669" width="343" height="32"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <segments>
-                                            <segment title="In Range"/>
-                                            <segment title="Out Of Range"/>
-                                            <segment title="Nearby"/>
-                                        </segments>
-                                        <color key="selectedSegmentTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="filterBeaconsControlChanged:" destination="kx6-pO-HmW" eventType="valueChanged" id="p1u-Bj-pn4"/>
-                                        </connections>
-                                    </segmentedControl>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fe9-YF-9Si" firstAttribute="trailing" secondItem="pyc-3l-Yn9" secondAttribute="trailing" constant="16" id="0pN-Wb-Izr"/>
                                     <constraint firstItem="yQk-Yy-KIo" firstAttribute="centerX" secondItem="W74-8e-NVS" secondAttribute="centerX" id="36C-9V-Ahu"/>
-                                    <constraint firstItem="sWK-Zq-x0t" firstAttribute="leading" secondItem="W74-8e-NVS" secondAttribute="leading" constant="16" id="4cO-sv-xub"/>
+                                    <constraint firstItem="wKj-1V-SQW" firstAttribute="leading" secondItem="fe9-YF-9Si" secondAttribute="leading" constant="16" id="6gy-q6-WN2"/>
                                     <constraint firstItem="apr-oa-jM4" firstAttribute="top" secondItem="W74-8e-NVS" secondAttribute="top" id="8ui-Ym-9xr"/>
                                     <constraint firstAttribute="trailing" secondItem="JRg-9l-AoM" secondAttribute="trailing" id="9WK-lY-OjH"/>
                                     <constraint firstItem="JRg-9l-AoM" firstAttribute="leading" secondItem="W74-8e-NVS" secondAttribute="leading" id="DPK-Lp-CAY"/>
@@ -1180,20 +1175,20 @@
                                     <constraint firstItem="Ww2-1w-I5y" firstAttribute="leading" secondItem="8NV-eo-3Si" secondAttribute="trailing" constant="26" id="EuS-q4-6Ka"/>
                                     <constraint firstItem="rSB-Ry-sWc" firstAttribute="centerX" secondItem="W74-8e-NVS" secondAttribute="centerX" id="F1a-OZ-qVP"/>
                                     <constraint firstItem="UoZ-Y2-llZ" firstAttribute="leading" secondItem="fe9-YF-9Si" secondAttribute="leading" constant="16" id="FfK-4W-khY"/>
-                                    <constraint firstItem="JRg-9l-AoM" firstAttribute="top" secondItem="sWK-Zq-x0t" secondAttribute="bottom" constant="25" id="FkW-ak-PuR"/>
                                     <constraint firstItem="8NV-eo-3Si" firstAttribute="leading" secondItem="W74-8e-NVS" secondAttribute="leading" constant="16" id="HGc-me-SfM"/>
                                     <constraint firstItem="8NV-eo-3Si" firstAttribute="top" secondItem="yQk-Yy-KIo" secondAttribute="bottom" constant="16" id="IEe-fJ-cuR"/>
                                     <constraint firstItem="bhj-C7-r9D" firstAttribute="centerY" secondItem="UoZ-Y2-llZ" secondAttribute="centerY" id="Nes-Tc-QKN"/>
                                     <constraint firstItem="Ogb-uB-x21" firstAttribute="top" secondItem="zZf-t5-XFn" secondAttribute="top" constant="16" id="OBZ-9P-JjL"/>
-                                    <constraint firstAttribute="trailing" secondItem="sWK-Zq-x0t" secondAttribute="trailing" constant="16" id="RjH-YY-uh3"/>
+                                    <constraint firstItem="JRg-9l-AoM" firstAttribute="top" secondItem="wKj-1V-SQW" secondAttribute="bottom" constant="25" id="Q10-XX-Ust"/>
                                     <constraint firstItem="CZ6-xO-kMa" firstAttribute="top" secondItem="pyc-3l-Yn9" secondAttribute="bottom" constant="17" id="TGN-LX-ahp"/>
                                     <constraint firstItem="bhj-C7-r9D" firstAttribute="leading" secondItem="UoZ-Y2-llZ" secondAttribute="trailing" constant="16" id="X32-Ue-Agd"/>
+                                    <constraint firstItem="wKj-1V-SQW" firstAttribute="top" secondItem="Ww2-1w-I5y" secondAttribute="bottom" constant="16" id="XYS-4m-5VG"/>
                                     <constraint firstAttribute="trailing" secondItem="apr-oa-jM4" secondAttribute="trailing" id="YX2-UJ-Y2a"/>
                                     <constraint firstItem="pyc-3l-Yn9" firstAttribute="top" secondItem="rSB-Ry-sWc" secondAttribute="bottom" constant="8" id="axj-pj-28X"/>
                                     <constraint firstItem="CZ6-xO-kMa" firstAttribute="leading" secondItem="fe9-YF-9Si" secondAttribute="leading" constant="16" id="cmq-2n-aZJ"/>
                                     <constraint firstItem="Zag-Up-EE1" firstAttribute="leading" secondItem="CZ6-xO-kMa" secondAttribute="trailing" constant="16" id="e0N-Zw-QCn"/>
+                                    <constraint firstItem="fe9-YF-9Si" firstAttribute="trailing" secondItem="wKj-1V-SQW" secondAttribute="trailing" constant="16" id="hhE-rb-xTI"/>
                                     <constraint firstAttribute="bottom" secondItem="UoZ-Y2-llZ" secondAttribute="bottom" constant="88" id="i4G-8C-RwG"/>
-                                    <constraint firstItem="sWK-Zq-x0t" firstAttribute="top" secondItem="Ww2-1w-I5y" secondAttribute="bottom" constant="16" id="iON-gQ-nWD"/>
                                     <constraint firstItem="apr-oa-jM4" firstAttribute="leading" secondItem="W74-8e-NVS" secondAttribute="leading" id="jEG-dw-fr4"/>
                                     <constraint firstItem="rSB-Ry-sWc" firstAttribute="top" secondItem="apr-oa-jM4" secondAttribute="bottom" constant="10" id="jhC-hF-2SV"/>
                                     <constraint firstItem="UoZ-Y2-llZ" firstAttribute="top" secondItem="CZ6-xO-kMa" secondAttribute="bottom" constant="23" id="ji0-tR-Ui6"/>
@@ -1232,14 +1227,14 @@
                         <outlet property="majorTextField" destination="Zag-Up-EE1" id="XlJ-TQ-BCY"/>
                         <outlet property="minorTextField" destination="bhj-C7-r9D" id="yUW-Tg-Kz5"/>
                         <outlet property="nameTextField" destination="Ogb-uB-x21" id="hJz-Aw-Bhc"/>
-                        <outlet property="notificationEventControl" destination="sWK-Zq-x0t" id="PeG-qk-Et0"/>
+                        <outlet property="notificationEventsControl" destination="wKj-1V-SQW" id="F70-Rs-M0q"/>
                         <outlet property="notificationSwitch" destination="Ww2-1w-I5y" id="rDo-wb-kC8"/>
                         <outlet property="scrollView" destination="W74-8e-NVS" id="hAM-Xr-pzL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XD7-O8-O99" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890" y="-520"/>
+            <point key="canvasLocation" x="1895" y="-525"/>
         </scene>
     </scenes>
     <resources>
