@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import MultiSelectSegmentedControl
 
 enum FilterType: Int {
     case all = 0
@@ -19,6 +20,7 @@ class MyBeaconsViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterBeaconsControl: UISegmentedControl!
+    @IBOutlet weak var filterBeaconsMultiControl: MultiSelectSegmentedControl!
     
     var editedIndex: IndexPath? = nil
     
@@ -30,6 +32,17 @@ class MyBeaconsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        filterBeaconsMultiControl.items = ["All", "Nearby", "Sorting"]
+        filterBeaconsMultiControl.selectedSegmentIndex = 0
+        filterBeaconsMultiControl.delegate = self
+        filterBeaconsMultiControl.allowsMultipleSelection = false
+        
+        filterBeaconsMultiControl.tintColor = .white
+        //filterBeaconsMultiControl.selectedSegmentIndexes = IndexSet(beacon.notificationEvents.map { $0.rawValue })
+        //notificationEventsControl.selectedBackgroundColor = .systemOrange
+        filterBeaconsMultiControl.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
+        filterBeaconsMultiControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
         
         BeaconService.run()
         
@@ -120,6 +133,13 @@ class MyBeaconsViewController: BaseViewController {
         }
     }
     
+}
+
+extension MyBeaconsViewController: MultiSelectSegmentedControlDelegate {
+    func multiSelect(_ multiSelectSegmentedControl: MultiSelectSegmentedControl, didChange value: Bool, at index: Int) {
+        currentFilterId = FilterType(rawValue: index)!
+        prepareBeaconsListAndShow()
+    }
 }
 
 extension MyBeaconsViewController: UITableViewDelegate, UITableViewDataSource {

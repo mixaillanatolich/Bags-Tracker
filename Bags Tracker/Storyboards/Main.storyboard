@@ -197,7 +197,7 @@
                                     <constraint firstAttribute="height" constant="90" id="ivd-fC-JjE"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Fv-DX-9eE">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Fv-DX-9eE">
                                 <rect key="frame" x="0.0" y="742" width="375" height="32"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
@@ -210,6 +210,18 @@
                                     <action selector="filterBeaconsControlChanged:" destination="kx6-pO-HmW" eventType="valueChanged" id="gQy-AY-dNF"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tz6-ZA-v39" customClass="MultiSelectSegmentedControl" customModule="MultiSelectSegmentedControl">
+                                <rect key="frame" x="16" y="742" width="343" height="32"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="y9T-BD-UH6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -221,12 +233,15 @@
                             <constraint firstItem="eWu-RU-Zpr" firstAttribute="trailing" secondItem="4Fv-DX-9eE" secondAttribute="trailing" id="OLa-4n-WGH"/>
                             <constraint firstItem="eWu-RU-Zpr" firstAttribute="bottom" secondItem="gzi-AX-AbC" secondAttribute="bottom" constant="44" id="Ojm-t5-E30"/>
                             <constraint firstItem="gzi-AX-AbC" firstAttribute="top" secondItem="eWu-RU-Zpr" secondAttribute="top" constant="44" id="PUB-zV-IKf"/>
+                            <constraint firstItem="tz6-ZA-v39" firstAttribute="leading" secondItem="eWu-RU-Zpr" secondAttribute="leading" constant="16" id="ST5-7l-qVN"/>
                             <constraint firstItem="gzi-AX-AbC" firstAttribute="trailing" secondItem="eWu-RU-Zpr" secondAttribute="trailing" id="WhO-2W-Fwt"/>
                             <constraint firstItem="eWu-RU-Zpr" firstAttribute="trailing" secondItem="Pl4-xo-6kW" secondAttribute="trailing" id="Yxq-TV-UNJ"/>
+                            <constraint firstItem="eWu-RU-Zpr" firstAttribute="trailing" secondItem="tz6-ZA-v39" secondAttribute="trailing" constant="16" id="bRB-ZJ-QMO"/>
                             <constraint firstItem="7N5-cp-z4x" firstAttribute="leading" secondItem="eWu-RU-Zpr" secondAttribute="leading" id="cO6-ld-APn"/>
                             <constraint firstItem="myb-9F-C8L" firstAttribute="top" secondItem="gzi-AX-AbC" secondAttribute="bottom" id="chT-Rr-sEN"/>
                             <constraint firstItem="Pl4-xo-6kW" firstAttribute="leading" secondItem="eWu-RU-Zpr" secondAttribute="leading" id="fRu-KC-bss"/>
                             <constraint firstItem="gzi-AX-AbC" firstAttribute="leading" secondItem="eWu-RU-Zpr" secondAttribute="leading" id="gcx-bU-ZjM"/>
+                            <constraint firstItem="tz6-ZA-v39" firstAttribute="top" secondItem="gzi-AX-AbC" secondAttribute="bottom" constant="8" id="kta-cq-WPk"/>
                             <constraint firstItem="myb-9F-C8L" firstAttribute="leading" secondItem="eWu-RU-Zpr" secondAttribute="leading" id="qxk-Xd-5SK"/>
                             <constraint firstItem="eWu-RU-Zpr" firstAttribute="bottom" secondItem="Pl4-xo-6kW" secondAttribute="bottom" constant="-34" id="sEy-En-pm5"/>
                             <constraint firstItem="4Fv-DX-9eE" firstAttribute="top" secondItem="gzi-AX-AbC" secondAttribute="bottom" constant="8" id="w4z-jX-REQ"/>
@@ -243,6 +258,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="filterBeaconsControl" destination="4Fv-DX-9eE" id="un0-Fr-Dfg"/>
+                        <outlet property="filterBeaconsMultiControl" destination="tz6-ZA-v39" id="V3b-Xu-IaD"/>
                         <outlet property="tableView" destination="gzi-AX-AbC" id="pmB-3E-kEz"/>
                         <segue destination="eQw-Rv-FXF" kind="presentation" identifier="ShowAddNewBeaconScreen" modalPresentationStyle="currentContext" id="rBI-PX-2a9"/>
                         <segue destination="fg4-rr-tP9" kind="presentation" identifier="ShowBeaconEditScreen" modalPresentationStyle="currentContext" id="Dtc-Ik-rE5"/>
@@ -1118,7 +1134,7 @@
                                             <outlet property="delegate" destination="fg4-rr-tP9" id="efz-cg-5Ra"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRg-9l-AoM">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRg-9l-AoM">
                                         <rect key="frame" x="0.0" y="382.66666666666669" width="375" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1154,7 +1170,7 @@
                                         <rect key="frame" x="130" y="278.66666666666669" width="51" height="31"/>
                                         <color key="onTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKj-1V-SQW" customClass="MultiSelectSegmentedControl" customModule="MultiSelectSegmentedControl">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKj-1V-SQW" customClass="MultiSelectSegmentedControl" customModule="MultiSelectSegmentedControl">
                                         <rect key="frame" x="16" y="325.66666666666669" width="343" height="32"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
