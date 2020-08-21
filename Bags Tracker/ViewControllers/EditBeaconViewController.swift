@@ -74,6 +74,7 @@ class EditBeaconViewController: BaseViewController {
         }
         
         beacon.name = name
+        let notificationStateWasChanged = (beacon.isNotificationEnabled != notificationSwitch.isOn)
         beacon.isNotificationEnabled = notificationSwitch.isOn
         beacon.notificationEvents.removeAll()
         for item in notificationEventsControl.segments.enumerated().filter({ $1.isSelected }).map({ $0.offset }) {
@@ -84,6 +85,14 @@ class EditBeaconViewController: BaseViewController {
             if let error = error {
                 self.showAlert(withTitle: error, andMessage: nil)
             } else {
+                
+                if (notificationStateWasChanged) {
+                    BeaconService.stopMonitoring(beacons: [self.beacon])
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        BeaconService.startMonitoring(beacons: [self.beacon])
+                    }
+                }
+
                 self.showAlert(withTitle: "iBeacon was updated successfully", andMessage: nil) {
                     self.closeButtonClicked(self)
                 }

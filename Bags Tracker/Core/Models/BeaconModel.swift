@@ -47,11 +47,16 @@ class BeaconModel: BeaconGenericModel {
         guard let minorValue = minorValue else {
             return CLBeaconRegion(uuid: uuid, major: CLBeaconMajorValue(majorValue.intValue), identifier: identifier)
         }
+        
+        let beaconRegion = CLBeaconRegion(uuid: uuid,
+                                          major: CLBeaconMajorValue(majorValue.intValue),
+                                          minor: CLBeaconMinorValue(minorValue.intValue),
+                                          identifier: identifier)
     
-        return CLBeaconRegion(uuid: uuid,
-                              major: CLBeaconMajorValue(majorValue.intValue),
-                              minor: CLBeaconMinorValue(minorValue.intValue),
-                              identifier: identifier)
+        beaconRegion.notifyOnExit = isNotificationEnabled
+        beaconRegion.notifyOnEntry = isNotificationEnabled
+        
+        return beaconRegion
     }
     
     func notificationId(eventType: NotificationEventType) -> String {
