@@ -57,7 +57,7 @@ class MyBeaconsViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-  
+        BeaconService.setupDelegate(delegate: self)
         prepareBeaconsListAndShow()
         
        // self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -115,13 +115,13 @@ class MyBeaconsViewController: BaseViewController {
             self.performSegue(withIdentifier: "ShowAddNewBeaconScreen", sender: nil)
         }))
         alert.addAction(UIAlertAction(title: "Search By UUID", style: .default, handler: { action in
-            
+            self.performSegue(withIdentifier: "ShowSearchBeaconScreen", sender: nil)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
         }))
         self.present(alert, animated: true)
     }
-
+    
     fileprivate func updateCell(_ cell: DiscoveredDeviceTableViewCell, for indexPath: IndexPath) {
         cell.resetCell()
         
@@ -132,7 +132,6 @@ class MyBeaconsViewController: BaseViewController {
             cell.updateInfo(clBeacon: clBeacon)
         }
     }
-    
 }
 
 extension MyBeaconsViewController: MultiSelectSegmentedControlDelegate {
