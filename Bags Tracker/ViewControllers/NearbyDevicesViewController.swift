@@ -19,7 +19,7 @@ class NearbyDevicesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        BLEManager.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
+        BLEManagerOld.startDiscovery(serviceUUIDs: [CBUUID.init(string: "0000")])
         
         Analytics.logEvent("start_discovery_devices", parameters: [
             "device": UUID().uuidString,
@@ -27,7 +27,7 @@ class NearbyDevicesViewController: UIViewController {
         ])
     
         
-        BLEManager.setupDiscoveryNodeCallback { (isNewDevice, device) in
+        BLEManagerOld.setupDiscoveryNodeCallback { (isNewDevice, device) in
             
             Analytics.logEvent("device_discovered", parameters: [
                 "device": device.uuid,
@@ -54,7 +54,7 @@ class NearbyDevicesViewController: UIViewController {
 
     @IBAction func closeButtonClicked(_ sender: Any) {
         
-        fatalError()
+     //   fatalError()
 
         
     }
