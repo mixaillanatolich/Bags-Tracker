@@ -131,6 +131,13 @@ class NotificationManager: NSObject {
         
     }
     
+    func testNotification(text: String) {
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "dd MMM yyyy, HH:mm:ss"
+        let dateStr = timeFormatter.string(from: Date())
+        self.showLocalNotificationWith(title: text, message: "\(dateStr)", delay: nil, identifier: "com.app.test" + UUID().uuidString)
+    }
+    
     fileprivate func createNotificationFor(beacon: BeaconModel, eventType: NotificationEventType, mark: String = "") {
         let statekey = beacon.identifier + (eventType == .near ? "+near" : "")
         self.beaconStates[statekey] = BeaconNotificationState(event: eventType, date: Date())
