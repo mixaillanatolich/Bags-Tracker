@@ -21,6 +21,10 @@ class AddBeaconByUUIDViewController: BaseViewController {
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var notificationEventsControl: MultiSelectSegmentedControl!
     
+    var theUuid: String?
+    var theMajor: String?
+    var theMinor: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +39,10 @@ class AddBeaconByUUIDViewController: BaseViewController {
         //notificationEventsControl.selectedBackgroundColor = .systemOrange
         notificationEventsControl.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
         notificationEventsControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        
+        UUIDTextField.text = theUuid
+        majorTextField.text = theMajor
+        minorTextField.text = theMinor
     }
     
     override func viewWillAppear(_ animated: Bool) {

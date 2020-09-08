@@ -20,6 +20,7 @@
 		0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0524162B229271860012FC9A /* NearbyDevicesViewController.swift */; };
 		0525D820228E91A40007884C /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525D81F228E91A40007884C /* DeviceModel.swift */; };
 		0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */; };
+		05556A7B250759D000906A1D /* SearchBeaconByUUIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05556A7A250759D000906A1D /* SearchBeaconByUUIDViewController.swift */; };
 		0574932624C9A888002ACCBA /* BeaconServiceProtocol+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574932524C9A888002ACCBA /* BeaconServiceProtocol+Delegate.swift */; };
 		0574932824C9A9F3002ACCBA /* BeaconServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574932724C9A9F3002ACCBA /* BeaconServiceImpl.swift */; };
 		0574932A24C9BEC8002ACCBA /* AddBeaconByUUIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574932924C9BEC8002ACCBA /* AddBeaconByUUIDViewController.swift */; };
@@ -68,6 +69,7 @@
 		0524162B229271860012FC9A /* NearbyDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyDevicesViewController.swift; sourceTree = "<group>"; };
 		0525D81F228E91A40007884C /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredDeviceTableViewCell.swift; sourceTree = "<group>"; };
+		05556A7A250759D000906A1D /* SearchBeaconByUUIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeaconByUUIDViewController.swift; sourceTree = "<group>"; };
 		0574932524C9A888002ACCBA /* BeaconServiceProtocol+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconServiceProtocol+Delegate.swift"; sourceTree = "<group>"; };
 		0574932724C9A9F3002ACCBA /* BeaconServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconServiceImpl.swift; sourceTree = "<group>"; };
 		0574932924C9BEC8002ACCBA /* AddBeaconByUUIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBeaconByUUIDViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */,
 				0574932924C9BEC8002ACCBA /* AddBeaconByUUIDViewController.swift */,
 				0574933C24CF31F3002ACCBA /* EditBeaconViewController.swift */,
+				05556A7A250759D000906A1D /* SearchBeaconByUUIDViewController.swift */,
 				0524162B229271860012FC9A /* NearbyDevicesViewController.swift */,
 				05B5577F228D90B3003EEA47 /* ScanBLEDevicesVC.swift */,
 				0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */,
@@ -256,12 +259,12 @@
 		05B55782228D90BB003EEA47 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				05C6248A24D1D3120024A296 /* ApplicationManager.swift */,
-				05C6248C24D2896B0024A296 /* NotificationManager.swift */,
 				05153EA124C17DE000A2CC7D /* Extentions */,
 				0520164E24C0888100463B48 /* Models */,
 				0520164A24C0857500463B48 /* Storage */,
 				0574932424C9A860002ACCBA /* BeaconService */,
+				05C6248A24D1D3120024A296 /* ApplicationManager.swift */,
+				05C6248C24D2896B0024A296 /* NotificationManager.swift */,
 				05B55783228D90BB003EEA47 /* BTCentralManager.swift */,
 				0525D81F228E91A40007884C /* DeviceModel.swift */,
 			);
@@ -428,6 +431,7 @@
 				05973ADD24AF5DF0007855DD /* BLEError.swift in Sources */,
 				05B55788228D90C5003EEA47 /* ExtObjectOrNil.swift in Sources */,
 				05973ADF24AF5DF0007855DD /* BLERequest.swift in Sources */,
+				05556A7B250759D000906A1D /* SearchBeaconByUUIDViewController.swift in Sources */,
 				0525D820228E91A40007884C /* DeviceModel.swift in Sources */,
 				05153EA324C17E0F00A2CC7D /* StringExtention.swift in Sources */,
 				0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */,
@@ -573,7 +577,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 73LTLJAK8K;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
@@ -597,7 +601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: TELEMETRIYA, OOO";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 73LTLJAK8K;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
