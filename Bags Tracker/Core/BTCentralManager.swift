@@ -9,7 +9,7 @@
 import Foundation
 import CoreBluetooth
 
-public let BLEManager = BTCentralManager.sharedInstance
+public let BLEManagerOld = BTCentralManager.sharedInstance
 
 public class BTCentralManager: NSObject, CBCentralManagerDelegate {
 

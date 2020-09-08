@@ -24,9 +24,14 @@
 	<string>We need Bluetooth to discover your bags</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>We need Bluetooth to discover, connect and share information with other nearby devices.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We Need Location Permission Only For Bluetooth To Discover Your Bags</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We Need Location Permission Only For Bluetooth To Discover Your Bags</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
+		<string>processing</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
