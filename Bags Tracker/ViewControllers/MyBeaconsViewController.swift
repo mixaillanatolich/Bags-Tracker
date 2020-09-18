@@ -235,18 +235,19 @@ extension MyBeaconsViewController: BeaconServiceDelegate {
     }
     
     func beaconUpdate(_ beacon: BeaconCLModel) {
-        guard let index =  clBeacons.firstIndex(where: {$0 == beacon}) else {
-            return
-        }
-        clBeacons[index] = beacon
         
-        if currentFilterId == .sorting {
-            sortBeacons()
-            tableView.reloadData()
-        } else {
-            if let index = beacons.firstIndex(where: {$0 == beacon}) {
-                reloadCellFor(row: index)
+        if let index =  clBeacons.firstIndex(where: {$0 == beacon}) {
+            clBeacons[index] = beacon
+            if currentFilterId == .sorting {
+                sortBeacons()
+                tableView.reloadData()
+            } else {
+                if let index = beacons.firstIndex(where: {$0 == beacon}) {
+                    reloadCellFor(row: index)
+                }
             }
+        } else {
+            beaconFinded(beacon)
         }
     }
     

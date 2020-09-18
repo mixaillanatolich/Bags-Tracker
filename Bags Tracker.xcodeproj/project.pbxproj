@@ -14,6 +14,7 @@
 		05153EA924C181A500A2CC7D /* BeaconCLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05153EA824C181A500A2CC7D /* BeaconCLModel.swift */; };
 		051D27F3228D760800D6D1DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051D27F2228D760800D6D1DF /* AppDelegate.swift */; };
 		051D27FA228D760900D6D1DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051D27F9228D760900D6D1DF /* Assets.xcassets */; };
+		051E2E922510E762001B788B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051E2E912510E762001B788B /* CloudKit.framework */; };
 		0520164824BF37BA00463B48 /* SearchBeaconsByIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */; };
 		0520164D24C085B400463B48 /* BeaconRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164C24C085B400463B48 /* BeaconRealmModel.swift */; };
 		0520165024C088BB00463B48 /* BeaconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164F24C088BB00463B48 /* BeaconModel.swift */; };
@@ -32,6 +33,8 @@
 		0574933924CABE9F002ACCBA /* RealmDbProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */; };
 		0574933B24CAC848002ACCBA /* StorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */; };
 		0574933D24CF31F3002ACCBA /* EditBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933C24CF31F3002ACCBA /* EditBeaconViewController.swift */; };
+		0583ADC92511ECBE00CC675B /* CloudStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583ADC82511ECBE00CC675B /* CloudStorageImpl.swift */; };
+		0583ADCB2511F35700CC675B /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583ADCA2511F35600CC675B /* JsonHelper.swift */; };
 		05973ADA24AF5DF0007855DD /* BLECentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACD24AF5DF0007855DD /* BLECentralManager.swift */; };
 		05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACE24AF5DF0007855DD /* BLECommand.swift */; };
 		05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */; };
@@ -63,6 +66,8 @@
 		051D27F2228D760800D6D1DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		051D27F9228D760900D6D1DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		051D27FE228D760900D6D1DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		051E2E902510E71F001B788B /* Bags Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bags Tracker.entitlements"; sourceTree = "<group>"; };
+		051E2E912510E762001B788B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeaconsByIdViewController.swift; sourceTree = "<group>"; };
 		0520164C24C085B400463B48 /* BeaconRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRealmModel.swift; sourceTree = "<group>"; };
 		0520164F24C088BB00463B48 /* BeaconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconModel.swift; sourceTree = "<group>"; };
@@ -81,6 +86,8 @@
 		0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDbProtocol.swift; sourceTree = "<group>"; };
 		0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceImpl.swift; sourceTree = "<group>"; };
 		0574933C24CF31F3002ACCBA /* EditBeaconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBeaconViewController.swift; sourceTree = "<group>"; };
+		0583ADC82511ECBE00CC675B /* CloudStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorageImpl.swift; sourceTree = "<group>"; };
+		0583ADCA2511F35600CC675B /* JsonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		05973ACD24AF5DF0007855DD /* BLECentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECentralManager.swift; sourceTree = "<group>"; };
 		05973ACE24AF5DF0007855DD /* BLECommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECommand.swift; sourceTree = "<group>"; };
 		05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevicePeripheral.swift; sourceTree = "<group>"; };
@@ -110,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C51632F450E610D5C076D69B /* Pods_Bags_Tracker.framework in Frameworks */,
+				051E2E922510E762001B788B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +163,7 @@
 		051D27F1228D760800D6D1DF /* Bags Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				051E2E902510E71F001B788B /* Bags Tracker.entitlements */,
 				05973ACC24AF5DF0007855DD /* BLECore */,
 				05B55785228D90C5003EEA47 /* Vendors */,
 				05B55782228D90BB003EEA47 /* Core */,
@@ -175,6 +184,7 @@
 				0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */,
 				0574933624CABE71002ACCBA /* RealmDbImpl.swift */,
 				0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */,
+				0583ADC82511ECBE00CC675B /* CloudStorageImpl.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -274,6 +284,7 @@
 		05B55785228D90C5003EEA47 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				0583ADCA2511F35600CC675B /* JsonHelper.swift */,
 				0574933224C9E26C002ACCBA /* ExtUIViewController+Keyboard.swift */,
 				05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */,
 				05B55787228D90C5003EEA47 /* LogsHelper.swift */,
@@ -285,6 +296,7 @@
 		4BCC965954963F2FB9F239DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				051E2E912510E762001B788B /* CloudKit.framework */,
 				1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */,
 			);
 			name = Frameworks;
@@ -319,7 +331,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "M Technologies";
 				TargetAttributes = {
 					051D27EE228D760800D6D1DF = {
@@ -416,6 +428,7 @@
 				05973AE124AF5DF0007855DD /* BLEResponseFactory.swift in Sources */,
 				05973AE024AF5DF0007855DD /* BLEResponse.swift in Sources */,
 				05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */,
+				0583ADCB2511F35700CC675B /* JsonHelper.swift in Sources */,
 				05973AE424AF5DF1007855DD /* ExtString.swift in Sources */,
 				05C6248B24D1D3120024A296 /* ApplicationManager.swift in Sources */,
 				05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */,
@@ -435,6 +448,7 @@
 				0525D820228E91A40007884C /* DeviceModel.swift in Sources */,
 				05153EA324C17E0F00A2CC7D /* StringExtention.swift in Sources */,
 				0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */,
+				0583ADC92511ECBE00CC675B /* CloudStorageImpl.swift in Sources */,
 				0574933924CABE9F002ACCBA /* RealmDbProtocol.swift in Sources */,
 				05B55780228D90B3003EEA47 /* MyBeaconsViewController.swift in Sources */,
 				0574933324C9E26C002ACCBA /* ExtUIViewController+Keyboard.swift in Sources */,
@@ -576,19 +590,20 @@
 			baseConfigurationReference = DE7DF5668030E781D53F2722 /* Pods-Bags Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Bags Tracker/Bags Tracker.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 73LTLJAK8K;
+				DEVELOPMENT_TEAM = 7AQZ4EXY6H;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "All devices";
+				PROVISIONING_PROFILE_SPECIFIER = "Bags Tracker Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -599,20 +614,21 @@
 			baseConfigurationReference = 57BF8721745F59100DECA21D /* Pods-Bags Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TELEMETRIYA, OOO";
+				CODE_SIGN_ENTITLEMENTS = "Bags Tracker/Bags Tracker.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 73LTLJAK8K;
+				DEVELOPMENT_TEAM = 7AQZ4EXY6H;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Bags Tracker. in-house (Mikhail)";
+				PROVISIONING_PROFILE_SPECIFIER = "Bags Tracker Prod";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

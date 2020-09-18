@@ -64,6 +64,6 @@ class BeaconModel: BeaconGenericModel {
     }
     
     public override var description: String {
-        return "\nBeaconModel:\n\tidentifier: \(identifier)\n\tname: \(name)\n\tisNotificationEnabled: \(isNotificationEnabled)"
+        return "\nBeaconModel:\n\tidentifier: \(identifier)\n\tname: \(name)\n\tisNotificationEnabled: \(isNotificationEnabled)\n\tnotificationEvents: \(notificationEvents)"
     }
 }

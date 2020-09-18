@@ -194,9 +194,7 @@ extension SearchBeaconByUUIDViewController: BeaconServiceDelegate {
             clBeacons[index] = beacon
             tableView.reloadData()
         } else {
-            guard isExpectedBeacon(beacon) else { return }
-            clBeacons.append(beacon)
-            tableView.insertRows(at: [IndexPath(item: clBeacons.count-1, section: 0)], with: .automatic)
+            beaconFinded(beacon)
         }
     }
 }
