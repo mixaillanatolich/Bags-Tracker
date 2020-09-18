@@ -92,7 +92,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
         
         for beacon in beacons {
-            dLog("didRange beacon: \(beacon)")
+           // dLog("didRange beacon: \(beacon)")
             
             guard beacon.proximity != .unknown else {
                 continue
