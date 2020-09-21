@@ -8,11 +8,20 @@
 
 import Foundation
 
+enum CloudSyncStatusType: Int {
+    case none = 0
+    case create = 1
+    case update = 2
+    case delete = 3
+    case synced = 4
+}
+
 let StorageService = StorageServiceImpl.sharedInstance
 
 class StorageServiceImpl: NSObject {
     
     var beacons = [BeaconModel]()
+    var removedBeacons = [BeaconModel]()
     
     static let sharedInstance: StorageServiceImpl = {
         let instance = StorageServiceImpl()
@@ -26,16 +35,17 @@ class StorageServiceImpl: NSObject {
     deinit {
     }
     
+    //MARK: - api
     func loadBeacons(callback: @escaping ([BeaconModel]) -> Void) {
-        RealmDbService.beacons { (realmBeacons, opStatus) in
-            if opStatus == .success {
-                var beaconsArr = [BeaconModel]()
-                for realmBeacon in realmBeacons {
-                    beaconsArr.append(BeaconModel(with: realmBeacon))
-                }
-                DispatchQueue.main.async {
-                    self.beacons = beaconsArr
-                    callback(self.beacons)
+        self.localBeacons { (beacons) in
+            DispatchQueue.main.async {
+                self.beacons = beacons.filter( { $0.cloudSyncStatus != .delete })
+                self.removedBeacons = beacons.filter( { $0.cloudSyncStatus == .delete })
+                
+                callback(self.beacons)
+                
+                DispatchQueue.global(qos: .background).async {
+                    self.syncDbWithCloud()
                 }
             }
         }
@@ -56,19 +66,35 @@ class StorageServiceImpl: NSObject {
         }
     }
     
-    func saveBeacon(_ beacon: BeaconModel, callback: @escaping (_ error: String?) -> Void) {
+    func createBeacon(_ beacon: BeaconModel, callback: @escaping (_ error: String?) -> Void) {
+        
+        if let removedBeacon = self.removedBeacons.filter( { $0 == beacon} ).first {
+            dLog("restore beacon from removed")
+            removedBeacon.cloudSyncStatus = .create
+            removedBeacon.lastModified = Date()
+            updateLocal(beacon: removedBeacon) { (error) in
+                guard error == nil else {
+                    callback(error)
+                    return
+                }
+                self.beacons.append(removedBeacon)
+                if let index = self.removedBeacons.firstIndex(where: { $0 == beacon }) {
+                    self.removedBeacons.remove(at: index)
+                }
+                callback(nil)
+                
+                self.syncCreateWithCloud(beacon: beacon)
+            }
+            return
+        }
         
         guard self.beacons.firstIndex(where: { $0 == beacon }) == nil else {
             callback("iBeacon Already Exist")
             return
         }
         
-//        for theBeacon in beacons {
-//            dLog("0: \(theBeacon == beacon)")
-//            dLog("1: \(beacon.uuid.uuidString == theBeacon.uuid.uuidString)")
-//            dLog("2: \(Int(truncating: beacon.majorValue ?? 0) == Int(truncating: theBeacon.majorValue ?? 0))")
-//            dLog("3: \(Int(truncating: beacon.majorValue ?? 0) == Int(truncating: theBeacon.minorValue ?? 0))")
-//        }
+        beacon.cloudSyncStatus = .create
+        beacon.lastModified = Date()
         
         let realmBeacon = BeaconRealmModel(with: beacon)
         RealmDbService.createBeacon(realmBeacon) { (status) in
@@ -76,6 +102,7 @@ class StorageServiceImpl: NSObject {
                 if status == .success {
                     self.beacons.append(beacon)
                     callback(nil)
+                    self.syncCreateWithCloud(beacon: beacon)
                 } else if status == .error {
                     callback("Error on save iBeacon")
                 } else if status == .fail {
@@ -83,18 +110,64 @@ class StorageServiceImpl: NSObject {
                 }
             }
         }
-        
     }
     
     func updateBeacon(_ beacon: BeaconModel, callback: @escaping (_ error: String?) -> Void) {
-        
+        beacon.cloudSyncStatus = .update
+        beacon.lastModified = Date()
+        updateLocal(beacon: beacon) { (error) in
+            guard error == nil else {
+                callback(error)
+                return
+            }
+            
+            if let index = self.beacons.firstIndex(where: { $0 == beacon }) {
+                self.beacons[index] = beacon
+            }
+            callback(nil)
+            
+            self.syncUpdateWithCloud(beacon: beacon)
+        }
+    }
+    
+    func removeBeacon(_ beacon: BeaconModel, callback: @escaping (_ error: String?) -> Void) {
+        beacon.cloudSyncStatus = .delete
+        beacon.lastModified = Date()
+        updateLocal(beacon: beacon) { (error) in
+            guard error == nil else {
+                callback(error)
+                return
+            }
+            
+            if let index = self.beacons.firstIndex(where: { $0 == beacon }) {
+                self.beacons.remove(at: index)
+            }
+            self.removedBeacons.append(beacon)
+            callback(nil)
+            
+            self.syncDeleteWithCloud(beacon: beacon)
+        }
+    }
+    
+    //MARK: - private
+    
+    func localBeacons(callback: @escaping ([BeaconModel]) -> Void) {
+        RealmDbService.beacons { (realmBeacons, opStatus) in
+            var beacons = [BeaconModel]()
+            if opStatus == .success {
+                for realmBeacon in realmBeacons {
+                    beacons.append(BeaconModel(with: realmBeacon))
+                }
+            }
+            callback(beacons)
+        }
+    }
+    
+    fileprivate func updateLocal(beacon: BeaconModel, callback: @escaping (_ error: String?) -> Void) {
         let realmBeacon = BeaconRealmModel(with: beacon)
         RealmDbService.updateBeacon(realmBeacon) { (status) in
             DispatchQueue.main.async {
                 if status == .success {
-                    if let index = self.beacons.firstIndex(where: { $0 == beacon }) {
-                        self.beacons[index] = beacon
-                    }
                     callback(nil)
                 } else if status == .error {
                     callback("Error on update iBeacon")
@@ -103,18 +176,13 @@ class StorageServiceImpl: NSObject {
                 }
             }
         }
-        
     }
     
-    func removeBeacon(_ beacon: BeaconModel, callback: @escaping (_ error: String?) -> Void) {
-        
+    fileprivate func removeLocal(beacon: BeaconModel, callback: @escaping (_ error: String?) -> Void) {
         let realmBeacon = BeaconRealmModel(with: beacon)
         RealmDbService.removeBeacon(realmBeacon) { (status) in
             DispatchQueue.main.async {
                 if status == .success {
-                    if let index = self.beacons.firstIndex(where: { $0 == beacon }) {
-                        self.beacons.remove(at: index)
-                    }
                     callback(nil)
                 } else if status == .error {
                     callback("Error on remove iBeacon")
@@ -123,6 +191,129 @@ class StorageServiceImpl: NSObject {
                 }
             }
         }
+    }
+    
+    fileprivate func syncDbWithCloud() {
         
+        let groupDisp = DispatchGroup()
+        
+        for beacon in removedBeacons {
+            groupDisp.enter()
+            syncDeleteWithCloud(beacon: beacon) {
+                groupDisp.leave()
+            }
+        }
+        
+        groupDisp.notify(queue: .global(qos: .background)) {
+            for beacon in self.beacons {
+                if beacon.cloudSyncStatus == .create || beacon.cloudSyncStatus == .none {
+                    groupDisp.enter()
+                    self.syncCreateWithCloud(beacon: beacon) {
+                        groupDisp.leave()
+                    }
+                } else if beacon.cloudSyncStatus == .update {
+                    groupDisp.enter()
+                    self.syncUpdateWithCloud(beacon: beacon) {
+                        groupDisp.leave()
+                    }
+                }
+            }
+            
+            groupDisp.notify(queue: .global(qos: .background)) {
+                CloudStorage.loadBeacons { (aCloudBeacons, error) in
+                    guard error == nil, let cloudBeacons = aCloudBeacons else { return }
+                    for cloudBeacon in cloudBeacons {
+                        if let index = self.beacons.firstIndex(where: { $0 == cloudBeacon }) {
+                            let beacon = self.beacons[index]
+                            if let lastModified = beacon.lastModified {
+                                if lastModified.compare(cloudBeacon.lastModified!) != .orderedSame {
+                                    groupDisp.enter()
+                                    self.updateLocal(beacon: cloudBeacon) { (error) in
+                                        groupDisp.leave()
+                                        dLog("\(error.orNil)")
+                                    }
+                                }
+                            } else {
+                                groupDisp.enter()
+                                self.updateLocal(beacon: cloudBeacon) { (error) in
+                                    groupDisp.leave()
+                                    dLog("\(error.orNil)")
+                                }
+                            }
+                        } else {
+                            groupDisp.enter()
+                            RealmDbService.createBeacon(BeaconRealmModel(with: cloudBeacon)) { (status) in
+                                groupDisp.leave()
+                            }
+                        }
+                    }
+                    
+                    for beacon in self.beacons {
+                        if !cloudBeacons.contains(where: { $0 == beacon} ) {
+                            groupDisp.enter()
+                            self.removeLocal(beacon: beacon) { (error) in
+                                groupDisp.leave()
+                            }
+                        }
+                    }
+                    
+                    groupDisp.notify(queue: .global(qos: .background)) {
+                        self.localBeacons { (beacons) in
+                            DispatchQueue.main.async {
+                                self.beacons = beacons.filter( { $0.cloudSyncStatus != .delete })
+                                self.removedBeacons = beacons.filter( { $0.cloudSyncStatus == .delete })
+                                NotificationCenter.post(name: NSNotification.Name(rawValue: BeaconsSyncedWithCloudNotification), object: nil)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    fileprivate func syncCreateWithCloud(beacon: BeaconModel, callback: (() -> Void)? = nil) {
+        CloudStorage.createBeacon(beacon) { (newCloudBeacon, error) in
+            guard error == nil, let theBeacon = newCloudBeacon else { return }
+            self.updateBeaconInDbAfterSyncWithCloud(beacon: theBeacon, callback: callback)
+        }
+    }
+    
+    fileprivate func syncUpdateWithCloud(beacon: BeaconModel, callback: (() -> Void)? = nil) {
+        CloudStorage.updateBeacon(beacon) { (newCloudBeacon, error) in
+            guard error == nil, let theBeacon = newCloudBeacon else { return }
+            self.updateBeaconInDbAfterSyncWithCloud(beacon: theBeacon, callback: callback)
+        }
+    }
+    
+    fileprivate func syncDeleteWithCloud(beacon: BeaconModel, callback: (() -> Void)? = nil) {
+        CloudStorage.deleteBeacon(beacon) { (recordId, error) in
+            guard error == nil, let _ = recordId else { return }
+            self.removeLocal(beacon: beacon) { (error) in
+                guard error == nil else { return }
+                DispatchQueue.main.async {
+                    if let index = self.removedBeacons.firstIndex(where: { $0 == beacon }) {
+                        self.removedBeacons.remove(at: index)
+                    }
+                    DispatchQueue.global(qos: .background).async {
+                        callback?()
+                    }
+                }
+            }
+        }
+    }
+    
+    fileprivate func updateBeaconInDbAfterSyncWithCloud(beacon: BeaconModel, callback: (() -> Void)? = nil) {
+        RealmDbService.updateBeacon(BeaconRealmModel(with: beacon)) { (status) in
+            DispatchQueue.main.async {
+                if status == .success {
+                    if let index = self.beacons.firstIndex(where: { $0 == beacon }) {
+                        self.beacons[index] = beacon
+                    }
+                    DispatchQueue.global(qos: .background).async {
+                        callback?()
+                    }
+                }
+            }
+        }
     }
 }

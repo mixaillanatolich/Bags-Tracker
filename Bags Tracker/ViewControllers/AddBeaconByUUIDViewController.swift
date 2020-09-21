@@ -101,7 +101,7 @@ class AddBeaconByUUIDViewController: BaseViewController {
             beacon.notificationEvents.append(NotificationEventType(rawValue: item)!)
         }
         
-        StorageService.saveBeacon(beacon) { (error) in
+        StorageService.createBeacon(beacon) { (error) in
             if let error = error {
                 self.showAlert(withTitle: error, andMessage: nil)
             } else {

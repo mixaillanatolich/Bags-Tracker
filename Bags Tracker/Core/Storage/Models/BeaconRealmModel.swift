@@ -17,6 +17,8 @@ class BeaconRealmModel: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var isNotificationEnabled = false
     dynamic var notificationEvents = List<Int>()
+    @objc dynamic var cloudSyncStatus = 0
+    @objc dynamic var lastModified: Date? = nil
     
     override static func primaryKey() -> String? {
         return "identifier"
@@ -26,7 +28,7 @@ class BeaconRealmModel: Object {
         super.init()
     }
     
-    init(with beaconModel:BeaconModel) {
+    init(with beaconModel: BeaconModel) {
         self.uuid = beaconModel.uuid.uuidString
         self.major = beaconModel.majorValue!.intValue
         self.minor = beaconModel.minorValue!.intValue
@@ -36,6 +38,8 @@ class BeaconRealmModel: Object {
         for event in beaconModel.notificationEvents {
             notificationEvents.append(event.rawValue)
         }
+        self.cloudSyncStatus = beaconModel.cloudSyncStatus.rawValue
+        self.lastModified = beaconModel.lastModified
         super.init()
     }
     
@@ -45,6 +49,8 @@ class BeaconRealmModel: Object {
         params["name"] = name
         params["isNotificationEnabled"] = isNotificationEnabled
         params["notificationEvents"] = notificationEvents
+        params["cloudSyncStatus"] = cloudSyncStatus
+        params["lastModified"] = lastModified
         return params
     }
 }
