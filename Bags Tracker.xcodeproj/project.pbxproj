@@ -14,12 +14,14 @@
 		05153EA924C181A500A2CC7D /* BeaconCLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05153EA824C181A500A2CC7D /* BeaconCLModel.swift */; };
 		051D27F3228D760800D6D1DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051D27F2228D760800D6D1DF /* AppDelegate.swift */; };
 		051D27FA228D760900D6D1DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051D27F9228D760900D6D1DF /* Assets.xcassets */; };
+		051E2E922510E762001B788B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051E2E912510E762001B788B /* CloudKit.framework */; };
 		0520164824BF37BA00463B48 /* SearchBeaconsByIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */; };
 		0520164D24C085B400463B48 /* BeaconRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164C24C085B400463B48 /* BeaconRealmModel.swift */; };
 		0520165024C088BB00463B48 /* BeaconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0520164F24C088BB00463B48 /* BeaconModel.swift */; };
 		0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0524162B229271860012FC9A /* NearbyDevicesViewController.swift */; };
 		0525D820228E91A40007884C /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525D81F228E91A40007884C /* DeviceModel.swift */; };
 		0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */; };
+		053F4F2E2514E5C300A5C58E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053F4F2D2514E5C300A5C58E /* Constants.swift */; };
 		05556A7B250759D000906A1D /* SearchBeaconByUUIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05556A7A250759D000906A1D /* SearchBeaconByUUIDViewController.swift */; };
 		0574932624C9A888002ACCBA /* BeaconServiceProtocol+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574932524C9A888002ACCBA /* BeaconServiceProtocol+Delegate.swift */; };
 		0574932824C9A9F3002ACCBA /* BeaconServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574932724C9A9F3002ACCBA /* BeaconServiceImpl.swift */; };
@@ -32,6 +34,8 @@
 		0574933924CABE9F002ACCBA /* RealmDbProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */; };
 		0574933B24CAC848002ACCBA /* StorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */; };
 		0574933D24CF31F3002ACCBA /* EditBeaconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574933C24CF31F3002ACCBA /* EditBeaconViewController.swift */; };
+		0583ADC92511ECBE00CC675B /* CloudStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583ADC82511ECBE00CC675B /* CloudStorageImpl.swift */; };
+		0583ADCB2511F35700CC675B /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583ADCA2511F35600CC675B /* JsonHelper.swift */; };
 		05973ADA24AF5DF0007855DD /* BLECentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACD24AF5DF0007855DD /* BLECentralManager.swift */; };
 		05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACE24AF5DF0007855DD /* BLECommand.swift */; };
 		05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */; };
@@ -48,7 +52,7 @@
 		05B55788228D90C5003EEA47 /* ExtObjectOrNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */; };
 		05B55789228D90C5003EEA47 /* LogsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B55787228D90C5003EEA47 /* LogsHelper.swift */; };
 		05C6248B24D1D3120024A296 /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6248A24D1D3120024A296 /* ApplicationManager.swift */; };
-		05C6248D24D2896B0024A296 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6248C24D2896B0024A296 /* NotificationManager.swift */; };
+		05C6248D24D2896B0024A296 /* NotificationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C6248C24D2896B0024A296 /* NotificationManagerImpl.swift */; };
 		05E4E3ED23DC918A0045A432 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E4E3EC23DC918A0045A432 /* DataExtension.swift */; };
 		C51632F450E610D5C076D69B /* Pods_Bags_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */; };
 /* End PBXBuildFile section */
@@ -63,12 +67,15 @@
 		051D27F2228D760800D6D1DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		051D27F9228D760900D6D1DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		051D27FE228D760900D6D1DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		051E2E902510E71F001B788B /* Bags Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bags Tracker.entitlements"; sourceTree = "<group>"; };
+		051E2E912510E762001B788B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0520164724BF37BA00463B48 /* SearchBeaconsByIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeaconsByIdViewController.swift; sourceTree = "<group>"; };
 		0520164C24C085B400463B48 /* BeaconRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconRealmModel.swift; sourceTree = "<group>"; };
 		0520164F24C088BB00463B48 /* BeaconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconModel.swift; sourceTree = "<group>"; };
 		0524162B229271860012FC9A /* NearbyDevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyDevicesViewController.swift; sourceTree = "<group>"; };
 		0525D81F228E91A40007884C /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		0525D821228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveredDeviceTableViewCell.swift; sourceTree = "<group>"; };
+		053F4F2D2514E5C300A5C58E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		05556A7A250759D000906A1D /* SearchBeaconByUUIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBeaconByUUIDViewController.swift; sourceTree = "<group>"; };
 		0574932524C9A888002ACCBA /* BeaconServiceProtocol+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BeaconServiceProtocol+Delegate.swift"; sourceTree = "<group>"; };
 		0574932724C9A9F3002ACCBA /* BeaconServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconServiceImpl.swift; sourceTree = "<group>"; };
@@ -81,6 +88,8 @@
 		0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDbProtocol.swift; sourceTree = "<group>"; };
 		0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceImpl.swift; sourceTree = "<group>"; };
 		0574933C24CF31F3002ACCBA /* EditBeaconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBeaconViewController.swift; sourceTree = "<group>"; };
+		0583ADC82511ECBE00CC675B /* CloudStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorageImpl.swift; sourceTree = "<group>"; };
+		0583ADCA2511F35600CC675B /* JsonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		05973ACD24AF5DF0007855DD /* BLECentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECentralManager.swift; sourceTree = "<group>"; };
 		05973ACE24AF5DF0007855DD /* BLECommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECommand.swift; sourceTree = "<group>"; };
 		05973ACF24AF5DF0007855DD /* BLEDevicePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevicePeripheral.swift; sourceTree = "<group>"; };
@@ -97,7 +106,7 @@
 		05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtObjectOrNil.swift; sourceTree = "<group>"; };
 		05B55787228D90C5003EEA47 /* LogsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsHelper.swift; sourceTree = "<group>"; };
 		05C6248A24D1D3120024A296 /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
-		05C6248C24D2896B0024A296 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		05C6248C24D2896B0024A296 /* NotificationManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerImpl.swift; sourceTree = "<group>"; };
 		05E4E3EC23DC918A0045A432 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bags_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BF8721745F59100DECA21D /* Pods-Bags Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bags Tracker.release.xcconfig"; path = "Target Support Files/Pods-Bags Tracker/Pods-Bags Tracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C51632F450E610D5C076D69B /* Pods_Bags_Tracker.framework in Frameworks */,
+				051E2E922510E762001B788B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +165,7 @@
 		051D27F1228D760800D6D1DF /* Bags Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				051E2E902510E71F001B788B /* Bags Tracker.entitlements */,
 				05973ACC24AF5DF0007855DD /* BLECore */,
 				05B55785228D90C5003EEA47 /* Vendors */,
 				05B55782228D90BB003EEA47 /* Core */,
@@ -175,6 +186,7 @@
 				0574933824CABE9F002ACCBA /* RealmDbProtocol.swift */,
 				0574933624CABE71002ACCBA /* RealmDbImpl.swift */,
 				0574933A24CAC848002ACCBA /* StorageServiceImpl.swift */,
+				0583ADC82511ECBE00CC675B /* CloudStorageImpl.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -264,9 +276,10 @@
 				0520164A24C0857500463B48 /* Storage */,
 				0574932424C9A860002ACCBA /* BeaconService */,
 				05C6248A24D1D3120024A296 /* ApplicationManager.swift */,
-				05C6248C24D2896B0024A296 /* NotificationManager.swift */,
+				05C6248C24D2896B0024A296 /* NotificationManagerImpl.swift */,
 				05B55783228D90BB003EEA47 /* BTCentralManager.swift */,
 				0525D81F228E91A40007884C /* DeviceModel.swift */,
+				053F4F2D2514E5C300A5C58E /* Constants.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -274,6 +287,7 @@
 		05B55785228D90C5003EEA47 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				0583ADCA2511F35600CC675B /* JsonHelper.swift */,
 				0574933224C9E26C002ACCBA /* ExtUIViewController+Keyboard.swift */,
 				05B55786228D90C5003EEA47 /* ExtObjectOrNil.swift */,
 				05B55787228D90C5003EEA47 /* LogsHelper.swift */,
@@ -285,6 +299,7 @@
 		4BCC965954963F2FB9F239DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				051E2E912510E762001B788B /* CloudKit.framework */,
 				1C78BC7949CAA3CE6CB85302 /* Pods_Bags_Tracker.framework */,
 			);
 			name = Frameworks;
@@ -319,7 +334,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "M Technologies";
 				TargetAttributes = {
 					051D27EE228D760800D6D1DF = {
@@ -416,10 +431,12 @@
 				05973AE124AF5DF0007855DD /* BLEResponseFactory.swift in Sources */,
 				05973AE024AF5DF0007855DD /* BLEResponse.swift in Sources */,
 				05973ADC24AF5DF0007855DD /* BLEDevicePeripheral.swift in Sources */,
+				0583ADCB2511F35700CC675B /* JsonHelper.swift in Sources */,
 				05973AE424AF5DF1007855DD /* ExtString.swift in Sources */,
 				05C6248B24D1D3120024A296 /* ApplicationManager.swift in Sources */,
 				05973ADB24AF5DF0007855DD /* BLECommand.swift in Sources */,
 				05153EA724C180CD00A2CC7D /* BeaconGenericModel.swift in Sources */,
+				053F4F2E2514E5C300A5C58E /* Constants.swift in Sources */,
 				0525D822228EA0CA0007884C /* DiscoveredDeviceTableViewCell.swift in Sources */,
 				0574933D24CF31F3002ACCBA /* EditBeaconViewController.swift in Sources */,
 				05153EA924C181A500A2CC7D /* BeaconCLModel.swift in Sources */,
@@ -435,6 +452,7 @@
 				0525D820228E91A40007884C /* DeviceModel.swift in Sources */,
 				05153EA324C17E0F00A2CC7D /* StringExtention.swift in Sources */,
 				0524162C229271860012FC9A /* NearbyDevicesViewController.swift in Sources */,
+				0583ADC92511ECBE00CC675B /* CloudStorageImpl.swift in Sources */,
 				0574933924CABE9F002ACCBA /* RealmDbProtocol.swift in Sources */,
 				05B55780228D90B3003EEA47 /* MyBeaconsViewController.swift in Sources */,
 				0574933324C9E26C002ACCBA /* ExtUIViewController+Keyboard.swift in Sources */,
@@ -445,7 +463,7 @@
 				05B55781228D90B3003EEA47 /* ScanBLEDevicesVC.swift in Sources */,
 				0520165024C088BB00463B48 /* BeaconModel.swift in Sources */,
 				0520164824BF37BA00463B48 /* SearchBeaconsByIdViewController.swift in Sources */,
-				05C6248D24D2896B0024A296 /* NotificationManager.swift in Sources */,
+				05C6248D24D2896B0024A296 /* NotificationManagerImpl.swift in Sources */,
 				05B55784228D90BB003EEA47 /* BTCentralManager.swift in Sources */,
 				05E4E3ED23DC918A0045A432 /* DataExtension.swift in Sources */,
 				05153EA524C17EE200A2CC7D /* DataExtentions.swift in Sources */,
@@ -576,19 +594,20 @@
 			baseConfigurationReference = DE7DF5668030E781D53F2722 /* Pods-Bags Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Bags Tracker/Bags Tracker.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 73LTLJAK8K;
+				DEVELOPMENT_TEAM = 7AQZ4EXY6H;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "All devices";
+				PROVISIONING_PROFILE_SPECIFIER = "Bags Tracker Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -599,20 +618,21 @@
 			baseConfigurationReference = 57BF8721745F59100DECA21D /* Pods-Bags Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: TELEMETRIYA, OOO";
+				CODE_SIGN_ENTITLEMENTS = "Bags Tracker/Bags Tracker.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 73LTLJAK8K;
+				DEVELOPMENT_TEAM = 7AQZ4EXY6H;
 				INFOPLIST_FILE = "Bags Tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.m-technologies.Bags-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Bags Tracker. in-house (Mikhail)";
+				PROVISIONING_PROFILE_SPECIFIER = "Bags Tracker Prod";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

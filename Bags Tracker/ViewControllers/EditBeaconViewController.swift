@@ -104,6 +104,43 @@ class EditBeaconViewController: BaseViewController {
     @objc func onTouchGesture() {
         self.view.endEditing(true)
     }
+    
+    
+    @IBAction func button1Clicked(_ sender: Any) {
+        //list
+        
+        
+        CloudStorage.loadBeacons { (beacons, error) in
+            dLog("beacons \(beacons.orNil)")
+        }
+    }
+    
+    @IBAction func button2Clicked(_ sender: Any) {
+        //create
+        
+        
+//        CloudStorage.createBeacon(beacon) { (error) in
+//
+//        }
+    }
+    
+    @IBAction func button3Clicked(_ sender: Any) {
+        //update
+        
+//        CloudStorage.updateBeacon(beacon) { (error) in
+//
+//        }
+        
+    }
+    
+    @IBAction func button4Clicked(_ sender: Any) {
+        //delete
+        
+        CloudStorage.deleteBeacon(beacon) { (recordId, error) in
+            dLog("record Id \(recordId.orNil)")
+            dLog("error \(error.orNil)")
+        }
+    }
 }
 
 extension EditBeaconViewController: MultiSelectSegmentedControlDelegate {

@@ -40,7 +40,9 @@ class AddBeaconByUUIDViewController: BaseViewController {
         notificationEventsControl.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
         notificationEventsControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
         
-        UUIDTextField.text = theUuid
+        if let uuid = theUuid {
+            UUIDTextField.text = uuid
+        }
         majorTextField.text = theMajor
         minorTextField.text = theMinor
     }
@@ -99,7 +101,7 @@ class AddBeaconByUUIDViewController: BaseViewController {
             beacon.notificationEvents.append(NotificationEventType(rawValue: item)!)
         }
         
-        StorageService.saveBeacon(beacon) { (error) in
+        StorageService.createBeacon(beacon) { (error) in
             if let error = error {
                 self.showAlert(withTitle: error, andMessage: nil)
             } else {
