@@ -77,7 +77,7 @@ class BeaconServiceImpl: NSObject, BeaconServiceProtocol {
         activeBeacons = activeBeacons.filter { (beacon) -> Bool in
             if Date().timeIntervalSince(beacon.timestamp) > TimeToLostBeacon {
                 delegate?.beaconLost(beacon)
-                NotificationCenter.checkNotificationFor(beacon: beacon, eventType: .outOfRange)
+                NotificationManager.checkNotificationFor(beacon: beacon, eventType: .outOfRange)
                 return false
             }
             return true
@@ -92,7 +92,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
         
         for beacon in beacons {
-            dLog("didRange beacon: \(beacon)")
+           // dLog("didRange beacon: \(beacon)")
             
             guard beacon.proximity != .unknown else {
                 continue
@@ -104,14 +104,14 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
                 delegate?.beaconUpdate(activeBeacon)
                 
                 if beacon.proximity == .immediate || beacon.proximity == .near {
-                    NotificationCenter.checkNotificationFor(beacon: activeBeacon, eventType: .near)
+                    NotificationManager.checkNotificationFor(beacon: activeBeacon, eventType: .near)
                 }
             } else {
                 let theBeacon = BeaconCLModel(clBeacon: beacon)
                 activeBeacons.append(theBeacon)
                 delegate?.beaconFinded(theBeacon)
                 
-                NotificationCenter.checkNotificationFor(beacon: theBeacon, eventType: .inRange)
+                NotificationManager.checkNotificationFor(beacon: theBeacon, eventType: .inRange)
             }
         }
     }
@@ -150,7 +150,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
              delegate?.beaconFinded(theBeacon)
          }
         
-        NotificationCenter.checkNotificationFor(beacon: BeaconCLModel(clBeaconRegion: beaconRegion), eventType: .inRange)
+        NotificationManager.checkNotificationFor(beacon: BeaconCLModel(clBeaconRegion: beaconRegion), eventType: .inRange)
     }
 
   //  didExitRegion: CLBeaconRegion (identifier:'053dc9c35570610597386fb1117ee70b', uuid:FDA50693-A4E2-4FB1-AFCF-C6EB07647825, major:1, minor:2)
@@ -166,7 +166,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
             activeBeacons.remove(at: index)
         }
         
-        NotificationCenter.checkNotificationFor(beacon: BeaconCLModel(clBeaconRegion: beaconRegion), eventType: .outOfRange)
+        NotificationManager.checkNotificationFor(beacon: BeaconCLModel(clBeaconRegion: beaconRegion), eventType: .outOfRange)
     }
  
     
