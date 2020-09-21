@@ -204,9 +204,11 @@ class StorageServiceImpl: NSObject {
             }
         }
         
+        var newBeaconIdsForCloud = [String]()
         groupDisp.notify(queue: .global(qos: .background)) {
             for beacon in self.beacons {
                 if beacon.cloudSyncStatus == .create || beacon.cloudSyncStatus == .none {
+                    newBeaconIdsForCloud.append(beacon.identifier)
                     groupDisp.enter()
                     self.syncCreateWithCloud(beacon: beacon) {
                         groupDisp.leave()
@@ -220,13 +222,21 @@ class StorageServiceImpl: NSObject {
             }
             
             groupDisp.notify(queue: .global(qos: .background)) {
-                CloudStorage.loadBeacons { (aCloudBeacons, error) in
-                    guard error == nil, let cloudBeacons = aCloudBeacons else { return }
-                    for cloudBeacon in cloudBeacons {
-                        if let index = self.beacons.firstIndex(where: { $0 == cloudBeacon }) {
-                            let beacon = self.beacons[index]
-                            if let lastModified = beacon.lastModified {
-                                if lastModified.compare(cloudBeacon.lastModified!) != .orderedSame {
+              //  DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 3.0) {
+                    CloudStorage.loadBeacons { (aCloudBeacons, error) in
+                        guard error == nil, let cloudBeacons = aCloudBeacons else { return }
+                        for cloudBeacon in cloudBeacons {
+                            if let index = self.beacons.firstIndex(where: { $0 == cloudBeacon }) {
+                                let beacon = self.beacons[index]
+                                if let lastModified = beacon.lastModified {
+                                    if lastModified.compare(cloudBeacon.lastModified!) != .orderedSame {
+                                        groupDisp.enter()
+                                        self.updateLocal(beacon: cloudBeacon) { (error) in
+                                            groupDisp.leave()
+                                            dLog("\(error.orNil)")
+                                        }
+                                    }
+                                } else {
                                     groupDisp.enter()
                                     self.updateLocal(beacon: cloudBeacon) { (error) in
                                         groupDisp.leave()
@@ -235,38 +245,32 @@ class StorageServiceImpl: NSObject {
                                 }
                             } else {
                                 groupDisp.enter()
-                                self.updateLocal(beacon: cloudBeacon) { (error) in
+                                RealmDbService.createBeacon(BeaconRealmModel(with: cloudBeacon)) { (status) in
                                     groupDisp.leave()
-                                    dLog("\(error.orNil)")
                                 }
                             }
-                        } else {
-                            groupDisp.enter()
-                            RealmDbService.createBeacon(BeaconRealmModel(with: cloudBeacon)) { (status) in
-                                groupDisp.leave()
+                        }
+                        
+                        for beacon in self.beacons {
+                            if !cloudBeacons.contains(where: { $0 == beacon } ) && !newBeaconIdsForCloud.contains(beacon.identifier) {
+                                groupDisp.enter()
+                                self.removeLocal(beacon: beacon) { (error) in
+                                    groupDisp.leave()
+                                }
+                            }
+                        }
+                        
+                        groupDisp.notify(queue: .global(qos: .background)) {
+                            self.localBeacons { (beacons) in
+                                DispatchQueue.main.async {
+                                    self.beacons = beacons.filter( { $0.cloudSyncStatus != .delete })
+                                    self.removedBeacons = beacons.filter( { $0.cloudSyncStatus == .delete })
+                                    NotificationCenter.post(name: NSNotification.Name(rawValue: BeaconsSyncedWithCloudNotification), object: nil)
+                                }
                             }
                         }
                     }
-                    
-                    for beacon in self.beacons {
-                        if !cloudBeacons.contains(where: { $0 == beacon} ) {
-                            groupDisp.enter()
-                            self.removeLocal(beacon: beacon) { (error) in
-                                groupDisp.leave()
-                            }
-                        }
-                    }
-                    
-                    groupDisp.notify(queue: .global(qos: .background)) {
-                        self.localBeacons { (beacons) in
-                            DispatchQueue.main.async {
-                                self.beacons = beacons.filter( { $0.cloudSyncStatus != .delete })
-                                self.removedBeacons = beacons.filter( { $0.cloudSyncStatus == .delete })
-                                NotificationCenter.post(name: NSNotification.Name(rawValue: BeaconsSyncedWithCloudNotification), object: nil)
-                            }
-                        }
-                    }
-                }
+            //    }
             }
         }
     }
