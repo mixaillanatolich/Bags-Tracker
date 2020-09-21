@@ -15,6 +15,9 @@ class BeaconModel: BeaconGenericModel {
     var isNotificationEnabled = false
     var notificationEvents = [NotificationEventType]()
     
+    var cloudSyncStatus: CloudSyncStatusType = .none
+    var lastModified: Date? = nil
+    
     init(uuid: String, name: String?, aIdentifier: String?, majorValue: NSNumber?, minorValue: NSNumber?) {
         let theIdentifier = aIdentifier ?? "\(uuid)+\(majorValue ?? 0)+\(minorValue ?? 0)".md5
         self.identifier = theIdentifier
@@ -33,6 +36,8 @@ class BeaconModel: BeaconGenericModel {
         for notificationEvent in model.notificationEvents {
             notificationEvents.append(NotificationEventType(rawValue: notificationEvent)!)
         }
+        self.cloudSyncStatus = CloudSyncStatusType(rawValue: model.cloudSyncStatus) ?? .none
+        self.lastModified = model.lastModified
     }
     
     required init(uuid: String, majorValue: NSNumber?, minorValue: NSNumber?) {
@@ -64,6 +69,6 @@ class BeaconModel: BeaconGenericModel {
     }
     
     public override var description: String {
-        return "\nBeaconModel:\n\tidentifier: \(identifier)\n\tname: \(name)\n\tisNotificationEnabled: \(isNotificationEnabled)\n\tnotificationEvents: \(notificationEvents)"
+        return "\nBeaconModel:\n\tidentifier: \(identifier)\n\tname: \(name)\n\tisNotificationEnabled: \(isNotificationEnabled)\n\tnotificationEvents: \(notificationEvents)\n\tcloudSyncStatus: \(cloudSyncStatus)\n\tlastModified: \(lastModified.orNil)"
     }
 }

@@ -17,6 +17,10 @@ class CloudStorageImpl: NSObject {
     let publicDB: CKDatabase
     let privateDB: CKDatabase
     
+    let defaultZone = CKRecordZone.default().zoneID
+    
+    let errorDomain = "iCloud.\(Bundle.main.bundleIdentifier ?? "")"
+    
     static let sharedInstance: CloudStorageImpl = {
         let instance = CloudStorageImpl()
         return instance
@@ -39,67 +43,143 @@ class CloudStorageImpl: NSObject {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Beacons", predicate: predicate)
         
-        privateDB.perform(query, inZoneWith: CKRecordZone.default().zoneID) { results, error in
+        privateDB.perform(query, inZoneWith: defaultZone) { results, error in
+
+            dLog("record \(results.orNil)")
+            dLog("error \(error.orNil)")
+            
             if let error = error {
-                dLog("loadBeacons error \(error)")
-                DispatchQueue.main.async {
-                    callback(nil, error)
-                }
+                callback(nil, error)
                 return
             }
             
             guard let devices = results else {
-                callback(nil, NSError(domain: "iCloud.com.m-technologies.Bags-Tracker", code: 1, userInfo: [NSLocalizedDescriptionKey : "Empty Response"]))
+                callback(nil, NSError(domain: self.errorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey : "Empty Response"]))
                 return
             }
             
             var beacons = [BeaconModel]()
   
             for device in devices {
-                
-                guard let uuid = device["uuid"] >>> JSONAsString,
-                    let name = device["name"] >>> JSONAsString,
-                    let identifier = device["identifier"] >>> JSONAsString,
-                    let major = device["major"] >>> JSONAsNumber,
-                    let minor = device["minor"] >>> JSONAsNumber
-                    else {
-                    continue
+                if let beacon = self.parseRecordToBeacon(device) {
+                    beacons.append(beacon)
                 }
-                
-                let beacon = BeaconModel(uuid: uuid, name: name, aIdentifier: identifier, majorValue: major, minorValue: minor)
-                beacon.isNotificationEnabled = (device["isNotificationEnabled"] >>> JSONAsBool) ?? false
-                if let events = device["notificationEvents"] >>> JSONAsArray {
-                    for event in events as! [Int] {
-                        beacon.notificationEvents.append(NotificationEventType(rawValue: event)!)
-                    }
-                }
-                beacons.append(beacon)
             }
 
-            DispatchQueue.main.async {
-                callback(beacons, nil)
-            }
+            callback(beacons, nil)
         }
     }
     
-    func createBeacon(_ beacon: BeaconModel, callback: @escaping (Error?) -> Void) {
-        
-        let ckbeacon = createCKBeaconFrom(beacon)
-
-        privateDB.save(ckbeacon) { (record, error) -> Void in
+    func createBeacon(_ beacon: BeaconModel, callback: @escaping (BeaconModel?, Error?) -> Void) {
+        privateDB.save(createRecordFrom(beacon)) { (record, error) -> Void in
             
             dLog("record \(record.orNil)")
             dLog("error \(error.orNil)")
             
-            DispatchQueue.main.sync {
-                callback(error)
+            if let error = error {
+                callback(nil, error)
+                return
             }
+            
+            guard let beacon = record else {
+                callback(nil, NSError(domain: self.errorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey : "Empty Response"]))
+                return
+            }
+            
+            guard let theBeacon = self.parseRecordToBeacon(beacon) else {
+                callback(nil, NSError(domain: self.errorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey : "Parse error"]))
+                return
+            }
+            
+            callback(theBeacon, nil)
         }
     }
     
-    func updateBeacon(_ beacon: BeaconModel, callback: @escaping (Error?) -> Void) {
+    func updateBeacon(_ beacon: BeaconModel, callback: @escaping (BeaconModel?, Error?) -> Void) {
         
-        let ckbeacon = createCKBeaconFrom(beacon)
+        let ckbeacon = createRecordFrom(beacon)
+
+        let modifyRecords = CKModifyRecordsOperation(recordsToSave:[ckbeacon], recordIDsToDelete: nil)
+        modifyRecords.savePolicy = CKModifyRecordsOperation.RecordSavePolicy.changedKeys
+        modifyRecords.qualityOfService = QualityOfService.userInitiated
+   
+        modifyRecords.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
+            
+            dLog("record \(savedRecords.orNil)")
+            dLog("error \(error.orNil)")
+            
+            if let error = error {
+                callback(nil, error)
+                return
+            }
+            
+            guard let beacons = savedRecords, let beacon = beacons.first else {
+                callback(nil, NSError(domain: self.errorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey : "Empty Response"]))
+                return
+            }
+            
+            guard let theBeacon = self.parseRecordToBeacon(beacon) else {
+                callback(nil, NSError(domain: self.errorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey : "Parse error"]))
+                return
+            }
+            
+            callback(theBeacon, nil)
+        }
+        
+        privateDB.add(modifyRecords)
+        
+    }
+    
+    func deleteBeacon(_ beacon: BeaconModel, callback: @escaping (String?, Error?) -> Void) {
+        privateDB.delete(withRecordID: CKRecord.ID(recordName: beacon.identifier)) { (recordID, error) -> Void in
+            dLog("recordID \(recordID.orNil)")
+            dLog("error \(error.orNil)")
+            callback(recordID?.recordName, error)
+        }
+    }
+    
+    
+    //MARK: - private
+    fileprivate func parseRecordToBeacon(_ record: CKRecord) -> BeaconModel? {
+        guard let uuid = record["uuid"] >>> JSONAsString,
+            let name = record["name"] >>> JSONAsString,
+            let identifier = record["identifier"] >>> JSONAsString,
+            let major = record["major"] >>> JSONAsNumber,
+            let minor = record["minor"] >>> JSONAsNumber
+            else {
+            return nil
+        }
+        let beacon = BeaconModel(uuid: uuid, name: name, aIdentifier: identifier, majorValue: major, minorValue: minor)
+        beacon.isNotificationEnabled = (record["isNotificationEnabled"] >>> JSONAsBool) ?? false
+        if let events = record["notificationEvents"] >>> JSONAsArray {
+            for event in events as! [Int] {
+                beacon.notificationEvents.append(NotificationEventType(rawValue: event)!)
+            }
+        }
+        beacon.cloudSyncStatus = .synced
+        beacon.lastModified = record.modificationDate
+        return beacon
+    }
+    
+    fileprivate func createRecordFrom(_ beacon: BeaconModel) -> CKRecord {
+        let ckbeacon = CKRecord(recordType: "Beacons", recordID: CKRecord.ID(recordName: beacon.identifier) ) //CKRecord(recordType: "Beacons")
+        
+        ckbeacon.setObject(beacon.uuid.uuidString as __CKRecordObjCValue, forKey: "uuid")
+        ckbeacon.setObject(beacon.identifier as __CKRecordObjCValue, forKey: "identifier")
+        ckbeacon.setObject(beacon.name as __CKRecordObjCValue, forKey: "name")
+        ckbeacon.setObject((beacon.majorValue ?? 0) as __CKRecordObjCValue, forKey: "major")
+        ckbeacon.setObject((beacon.minorValue ?? 0) as __CKRecordObjCValue, forKey: "minor")
+        ckbeacon.setObject(beacon.isNotificationEnabled as __CKRecordObjCValue, forKey: "isNotificationEnabled")
+        var notificationEvents = [Int]()
+        for event in beacon.notificationEvents {
+            notificationEvents.append(event.rawValue)
+        }
+        ckbeacon.setObject(notificationEvents as __CKRecordObjCValue, forKey: "notificationEvents")
+        
+        return ckbeacon
+    }
+    
+}
 
 //        let query = CKQuery(recordType: "Beacons", predicate: NSPredicate(format: "identifier == %@", beacon.identifier))
 //
@@ -142,20 +222,7 @@ class CloudStorageImpl: NSObject {
 //            }
 //        }
         
-        let modifyRecords = CKModifyRecordsOperation(recordsToSave:[ckbeacon], recordIDsToDelete: nil)
-        modifyRecords.savePolicy = CKModifyRecordsOperation.RecordSavePolicy.changedKeys
-        modifyRecords.qualityOfService = QualityOfService.userInitiated
-   
-        
-        modifyRecords.modifyRecordsCompletionBlock = { savedRecords, deletedRecordIDs, error in
-            if error == nil {
-                dLog("Modified")
-            }else {
-                dLog("\(error.orNil)")
-            }
-        }
-        
-        privateDB.add(modifyRecords)
+
 //        privateDB.save(ckbeacon) { (record, error) -> Void in
 //
 //            dLog("record \(record.orNil)")
@@ -165,38 +232,3 @@ class CloudStorageImpl: NSObject {
 //                callback(error)
 //            }
 //        }
-    }
-    
-    func deleteBeacon(_ beacon: BeaconModel, callback: @escaping (Error?) -> Void) {
-        
-        privateDB.delete(withRecordID: CKRecord.ID(recordName: beacon.identifier)) { (recordID, error) -> Void in
-            DispatchQueue.main.sync {
-                dLog("recordID \(recordID.orNil)")
-                dLog("error \(error.orNil)")
-
-                callback(error)
-                
-            }
-        }
-        
-    }
-    
-    fileprivate func createCKBeaconFrom(_ beacon: BeaconModel) -> CKRecord {
-        let ckbeacon = CKRecord(recordType: "Beacons", recordID: CKRecord.ID(recordName: beacon.identifier) ) //CKRecord(recordType: "Beacons")
-        
-        ckbeacon.setObject(beacon.uuid.uuidString as __CKRecordObjCValue, forKey: "uuid")
-        ckbeacon.setObject(beacon.identifier as __CKRecordObjCValue, forKey: "identifier")
-        ckbeacon.setObject(beacon.name as __CKRecordObjCValue, forKey: "name")
-        ckbeacon.setObject((beacon.majorValue ?? 0) as __CKRecordObjCValue, forKey: "major")
-        ckbeacon.setObject((beacon.minorValue ?? 0) as __CKRecordObjCValue, forKey: "minor")
-        ckbeacon.setObject(beacon.isNotificationEnabled as __CKRecordObjCValue, forKey: "isNotificationEnabled")
-        var notificationEvents = [Int]()
-        for event in beacon.notificationEvents {
-            notificationEvents.append(event.rawValue)
-        }
-        ckbeacon.setObject(notificationEvents as __CKRecordObjCValue, forKey: "notificationEvents")
-        
-        return ckbeacon
-    }
-    
-}

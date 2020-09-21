@@ -39,10 +39,10 @@ class MyBeaconsViewController: BaseViewController {
         filterBeaconsMultiControl.allowsMultipleSelection = false
         
         filterBeaconsMultiControl.tintColor = .white
-        //filterBeaconsMultiControl.selectedSegmentIndexes = IndexSet(beacon.notificationEvents.map { $0.rawValue })
-        //notificationEventsControl.selectedBackgroundColor = .systemOrange
         filterBeaconsMultiControl.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
         filterBeaconsMultiControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        
+        NotificationCenter.addObserver(self, selector: #selector(prepareBeaconsListAndShow), name: NSNotification.Name(rawValue: BeaconsSyncedWithCloudNotification), object: nil)
         
         BeaconService.run()
         
@@ -50,7 +50,6 @@ class MyBeaconsViewController: BaseViewController {
         
         StorageService.loadBeacons { (beacons) in
             dLog("\(beacons)")
-            BeaconService.startMonitoring(beacons: beacons)
             self.prepareBeaconsListAndShow()
         }
     }
@@ -59,12 +58,11 @@ class MyBeaconsViewController: BaseViewController {
         super.viewWillAppear(animated)
         BeaconService.setupDelegate(delegate: self)
         prepareBeaconsListAndShow()
-        
-       // self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    fileprivate func prepareBeaconsListAndShow() {
+    @objc fileprivate func prepareBeaconsListAndShow() {
         allBeacons = StorageService.beacons
+        BeaconService.startMonitoring(beacons: allBeacons)
         
         switch currentFilterId {
         case .all:

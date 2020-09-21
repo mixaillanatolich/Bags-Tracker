@@ -119,25 +119,26 @@ class EditBeaconViewController: BaseViewController {
         //create
         
         
-        CloudStorage.createBeacon(beacon) { (error) in
-            
-        }
+//        CloudStorage.createBeacon(beacon) { (error) in
+//
+//        }
     }
     
     @IBAction func button3Clicked(_ sender: Any) {
         //update
         
-        CloudStorage.updateBeacon(beacon) { (error) in
-            
-        }
+//        CloudStorage.updateBeacon(beacon) { (error) in
+//
+//        }
         
     }
     
     @IBAction func button4Clicked(_ sender: Any) {
         //delete
         
-        CloudStorage.deleteBeacon(beacon) { (error) in
-            
+        CloudStorage.deleteBeacon(beacon) { (recordId, error) in
+            dLog("record Id \(recordId.orNil)")
+            dLog("error \(error.orNil)")
         }
     }
 }

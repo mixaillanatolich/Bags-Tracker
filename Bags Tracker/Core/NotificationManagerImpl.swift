@@ -32,16 +32,16 @@ struct BeaconNotificationState {
 
 fileprivate let NotificationDelaySec: TimeInterval = 11.6
 
-let NotificationCenter = NotificationManager.sharedInstance
+let NotificationManager = NotificationManagerImpl.sharedInstance
 
-class NotificationManager: NSObject {
+class NotificationManagerImpl: NSObject {
     
     var beaconStates = [String: BeaconNotificationState]()
     
     fileprivate let notificationCenter = UNUserNotificationCenter.current()
     
-    static let sharedInstance: NotificationManager = {
-        let instance = NotificationManager()
+    static let sharedInstance: NotificationManagerImpl = {
+        let instance = NotificationManagerImpl()
         return instance
     }()
     
