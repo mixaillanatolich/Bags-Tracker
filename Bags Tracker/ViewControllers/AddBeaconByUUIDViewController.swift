@@ -40,6 +40,11 @@ class AddBeaconByUUIDViewController: BaseViewController {
         notificationEventsControl.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
         notificationEventsControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
         
+        #if DEBUG
+        #else
+            UUIDTextField.text = ""
+        #endif
+        
         if let uuid = theUuid {
             UUIDTextField.text = uuid
         }
