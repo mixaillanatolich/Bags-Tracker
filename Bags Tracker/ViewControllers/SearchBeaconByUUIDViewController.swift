@@ -30,6 +30,11 @@ class SearchBeaconByUUIDViewController: BaseViewController, UIGestureRecognizerD
         let tap = UITapGestureRecognizer(target: self, action: #selector(onTouchGesture))
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
+        
+        #if DEBUG
+        #else
+            UUIDTextField.text = ""
+        #endif
     }
     
     override func viewWillAppear(_ animated: Bool) {
