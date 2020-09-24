@@ -35,7 +35,10 @@ class BeaconCLModel: BeaconGenericModel {
     }
     
     required init(uuid: String, majorValue: NSNumber?, minorValue: NSNumber?) {
-        fatalError("init(uuid:majorValue:minorValue:) has not been implemented")
+        timestamp = Date()
+        super.init(uuid: uuid, majorValue: majorValue, minorValue: minorValue)
+        //self.identifier = "\(uuid)+\(majorValue!.intValue)+\(minorValue!.intValue)".md5
+       // fatalError("init(uuid:majorValue:minorValue:) has not been implemented")
     }
     
     func updateWith(clBeacon: CLBeacon) {

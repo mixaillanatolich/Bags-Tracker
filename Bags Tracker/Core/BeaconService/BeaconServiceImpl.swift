@@ -74,6 +74,15 @@ class BeaconServiceImpl: NSObject, BeaconServiceProtocol {
     }
     
     fileprivate func checkActiveBeacons() {
+#if DEBUG
+        if (AppManager.isRunningOnSimulator) {
+            for beacon in activeBeacons {
+                beacon.proximity = CLProximity(rawValue: Int.random(in: 1..<3))
+                beacon.rssi = Int.random(in: -90 ..< -10)
+                delegate?.beaconUpdate(beacon)
+            }
+        }
+#endif
         activeBeacons = activeBeacons.filter { (beacon) -> Bool in
             if Date().timeIntervalSince(beacon.timestamp) > TimeToLostBeacon {
                 delegate?.beaconLost(beacon)
@@ -123,6 +132,31 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         dLog("monitoringDidFailFor: \(error.localizedDescription)")
+        
+#if DEBUG
+        guard AppManager.isRunningOnSimulator else {
+            return
+        }
+        guard let beaconRegion = region as? CLBeaconRegion else {
+            return
+        }
+        
+        var major = beaconRegion.major
+        if major == nil {
+            major = NSNumber(value: Int.random(in: 1..<65000))
+        }
+        var minor = beaconRegion.minor
+        if minor == nil {
+            minor = NSNumber(value: Int.random(in: 1..<65000))
+        }
+        let theBeacon = BeaconCLModel(uuid: beaconRegion.uuid.uuidString, majorValue: major, minorValue: minor)
+        
+        theBeacon.identifier = beaconRegion.identifier
+        theBeacon.proximity = CLProximity(rawValue: Int.random(in: 1..<3))
+        theBeacon.rssi = Int.random(in: -90 ..< -10)
+        activeBeacons.append(theBeacon)
+        delegate?.beaconFinded(theBeacon)
+#endif
     }
   
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {

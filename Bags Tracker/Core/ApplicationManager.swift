@@ -10,7 +10,7 @@ import Foundation
 
 let UserDefaults = Foundation.UserDefaults.standard
 
-let appManager = ApplicationManager.sharedInstance
+let AppManager = ApplicationManager.sharedInstance
 
 class ApplicationManager: NSObject {
 
@@ -26,6 +26,12 @@ class ApplicationManager: NSObject {
     deinit {
     }
     
-    
+    var isRunningOnSimulator: Bool = {
+        #if targetEnvironment(simulator)
+            return true
+        #else
+            return false
+        #endif
+    }()
     
 }
