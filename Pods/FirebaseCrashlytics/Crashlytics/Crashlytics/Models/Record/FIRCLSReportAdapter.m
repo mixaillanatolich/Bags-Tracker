@@ -22,21 +22,26 @@
 
 #import "Crashlytics/Crashlytics/Components/FIRCLSUserLogging.h"
 
-#if SWIFT_PACKAGE
-@import nanopb;
-#else
 #import <nanopb/pb.h>
 #import <nanopb/pb_decode.h>
 #import <nanopb/pb_encode.h>
-#endif
+
+@interface FIRCLSReportAdapter ()
+
+@property(nonatomic, strong) FIRCLSInstallIdentifierModel *installIDModel;
+
+@end
 
 @implementation FIRCLSReportAdapter
 
-- (instancetype)initWithPath:(NSString *)folderPath googleAppId:(NSString *)googleAppID {
+- (instancetype)initWithPath:(NSString *)folderPath
+                 googleAppId:(NSString *)googleAppID
+              installIDModel:(FIRCLSInstallIdentifierModel *)installIDModel {
   self = [super init];
   if (self) {
     _folderPath = folderPath;
     _googleAppID = googleAppID;
+    _installIDModel = installIDModel;
 
     [self loadMetaDataFile];
 
@@ -145,7 +150,7 @@
   report.sdk_version = FIRCLSEncodeString(self.identity.build_version);
   report.gmp_app_id = FIRCLSEncodeString(self.googleAppID);
   report.platform = [self protoPlatformFromString:self.host.platform];
-  report.installation_uuid = FIRCLSEncodeString(self.identity.install_id);
+  report.installation_uuid = FIRCLSEncodeString(self.installIDModel.installID);
   report.build_version = FIRCLSEncodeString(self.application.build_version);
   report.display_version = FIRCLSEncodeString(self.application.display_version);
   report.apple_payload = [self protoFilesPayload];

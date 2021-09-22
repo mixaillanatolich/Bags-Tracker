@@ -24,7 +24,7 @@ class BeaconRealmModel: Object {
         return "identifier"
     }
     
-    required init() {
+    required override init() {
         super.init()
     }
     

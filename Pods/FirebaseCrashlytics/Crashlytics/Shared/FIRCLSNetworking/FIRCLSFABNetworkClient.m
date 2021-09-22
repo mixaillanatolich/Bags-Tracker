@@ -14,10 +14,6 @@
 
 #import "Crashlytics/Shared/FIRCLSNetworking/FIRCLSFABNetworkClient.h"
 
-#if FIRCLSURLSESSION_REQUIRED
-#import "Crashlytics/Crashlytics/FIRCLSURLSession/FIRCLSURLSession.h"
-#endif
-
 #import "Crashlytics/Shared/FIRCLSNetworking/FIRCLSNetworkResponseHandler.h"
 
 static const float FIRCLSNetworkMinimumRetryJitter = 0.90f;
@@ -37,11 +33,7 @@ const NSUInteger FIRCLSNetworkMaximumRetryCount = 10;
 }
 
 - (instancetype)initWithQueue:(nullable NSOperationQueue *)operationQueue {
-#if !FIRCLSURLSESSION_REQUIRED
   NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-#else
-  NSURLSessionConfiguration *config = [FIRCLSURLSessionConfiguration defaultSessionConfiguration];
-#endif
   return [self initWithSessionConfiguration:config queue:operationQueue];
 }
 
@@ -52,15 +44,10 @@ const NSUInteger FIRCLSNetworkMaximumRetryCount = 10;
     return nil;
   }
 
-#if !FIRCLSURLSESSION_REQUIRED
   _session = [NSURLSession sessionWithConfiguration:config
                                            delegate:self
                                       delegateQueue:operationQueue];
-#else
-  _session = [FIRCLSURLSession sessionWithConfiguration:config
-                                               delegate:self
-                                          delegateQueue:operationQueue];
-#endif
+
   if (!_session) {
     return nil;
   }
@@ -147,20 +134,18 @@ const NSUInteger FIRCLSNetworkMaximumRetryCount = 10;
                                   }
 
                                   [self
-                                      runAfterRetryValueFromResponse:response
-                                                            attempts:tries
-                                                               block:^{
-                                                                 [self
-                                                                     startDataTaskWithRequest:
-                                                                         request
-                                                                                   retryLimit:
-                                                                                       retryLimit
-                                                                                        tries:
-                                                                                            (tries +
+                                    runAfterRetryValueFromResponse:response
+                                                          attempts:tries
+                                                             block:^{
+                                                               [self
+                                                                   startDataTaskWithRequest:request
+                                                                                 retryLimit:
+                                                                                     retryLimit
+                                                                                      tries:(tries +
                                                                                              1)
-                                                                            completionHandler:
-                                                                                completionHandler];
-                                                               }];
+                                                                          completionHandler:
+                                                                              completionHandler];
+                                                             }];
                                 }];
         }];
 
@@ -224,20 +209,20 @@ const NSUInteger FIRCLSNetworkMaximumRetryCount = 10;
                                       }
 
                                       [self
-                                          runAfterRetryValueFromResponse:response
-                                                                attempts:tries
-                                                                   block:^{
-                                                                     [self
-                                                                         startDownloadTaskWithRequest:
-                                                                             request
-                                                                                           retryLimit:
-                                                                                               retryLimit
-                                                                                                tries:
-                                                                                                    (tries +
-                                                                                                     1)
-                                                                                    completionHandler:
-                                                                                        completionHandler];
-                                                                   }];
+                                        runAfterRetryValueFromResponse:response
+                                                              attempts:tries
+                                                                 block:^{
+                                                                   [self
+                                                                       startDownloadTaskWithRequest:
+                                                                           request
+                                                                                         retryLimit:
+                                                                                             retryLimit
+                                                                                              tries:
+                                                                                                  (tries +
+                                                                                                   1)
+                                                                                  completionHandler:
+                                                                                      completionHandler];
+                                                                 }];
                                     }];
             }];
 
