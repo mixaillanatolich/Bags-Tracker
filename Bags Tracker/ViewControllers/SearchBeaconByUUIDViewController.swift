@@ -135,7 +135,7 @@ extension SearchBeaconByUUIDViewController: UITextFieldDelegate {
 extension SearchBeaconByUUIDViewController: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func updateCell(_ cell: DiscoveredDeviceTableViewCell, for indexPath: IndexPath) {
-        cell.resetCell()
+        cell.resetContent()
         let beacon = clBeacons[indexPath.row]
         let major = (beacon.majorValue != nil) ? "\(beacon.majorValue!)" : "n/a"
         let minor = (beacon.minorValue != nil) ? "\(beacon.minorValue!)" : "n/a"
@@ -183,7 +183,7 @@ extension SearchBeaconByUUIDViewController: BeaconServiceDelegate {
         return true
     }
     
-    func beaconFinded(_ beacon: BeaconCLModel) {
+    func beaconFound(_ beacon: BeaconCLModel) {
         guard isExpectedBeacon(beacon) else { return }
         
         clBeacons.append(beacon)
@@ -199,7 +199,7 @@ extension SearchBeaconByUUIDViewController: BeaconServiceDelegate {
             clBeacons[index] = beacon
             tableView.reloadData()
         } else {
-            beaconFinded(beacon)
+            beaconFound(beacon)
         }
     }
 }

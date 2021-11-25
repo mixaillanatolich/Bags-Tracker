@@ -16,7 +16,7 @@ protocol BeaconServiceProtocol {
 }
 
 protocol BeaconServiceDelegate : NSObjectProtocol {
-    func beaconFinded(_ beacon: BeaconCLModel)
+    func beaconFound(_ beacon: BeaconCLModel)
     func beaconLost(_ beacon: BeaconCLModel)
     func beaconUpdate(_ beacon: BeaconCLModel)
 }

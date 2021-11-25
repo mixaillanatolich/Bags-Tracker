@@ -31,36 +31,34 @@ class DiscoveredDeviceTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func resetCell() {
+    func resetContent() {
         
         rssiLabel.text = "RSSI: n/a"
         
-        signalLevelIndicator5.backgroundColor=UIColor.lightGray
-        signalLevelIndicator4.backgroundColor=UIColor.lightGray
-        signalLevelIndicator3.backgroundColor=UIColor.lightGray
-        signalLevelIndicator2.backgroundColor=UIColor.lightGray
-        signalLevelIndicator1.backgroundColor=UIColor.lightGray
+        signalLevelIndicator5.backgroundColor = UIColor.lightGray
+        signalLevelIndicator4.backgroundColor = UIColor.lightGray
+        signalLevelIndicator3.backgroundColor = UIColor.lightGray
+        signalLevelIndicator2.backgroundColor = UIColor.lightGray
+        signalLevelIndicator1.backgroundColor = UIColor.lightGray
     }
     
     func updateDeviceRSSI(rssi: Int) {
-//        resetCell()
-//
 //        rssiLabel.text = "RSSI: \(rssi)"
         
         if (rssi > -55) {
-            signalLevelIndicator5.backgroundColor=UIColor.systemBlue
+            signalLevelIndicator5.backgroundColor = UIColor.systemBlue
         }
         if (rssi > -65) {
-            signalLevelIndicator4.backgroundColor=UIColor.systemBlue
+            signalLevelIndicator4.backgroundColor = UIColor.systemBlue
         }
         if (rssi > -75) {
-            signalLevelIndicator3.backgroundColor=UIColor.systemBlue
+            signalLevelIndicator3.backgroundColor = UIColor.systemBlue
         }
         if (rssi > -85) {
-            signalLevelIndicator2.backgroundColor=UIColor.systemBlue
+            signalLevelIndicator2.backgroundColor = UIColor.systemBlue
         }
         if (rssi > -95) {
-            signalLevelIndicator1.backgroundColor=UIColor.systemBlue
+            signalLevelIndicator1.backgroundColor = UIColor.systemBlue
         }
     }
     
@@ -89,7 +87,6 @@ class DiscoveredDeviceTableViewCell: UITableViewCell {
         }
         
         rssiLabel.text = "RSSI: \(rssiStr),  Distance: \(distance)"
-        
     }
     
 }

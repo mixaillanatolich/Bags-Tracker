@@ -46,8 +46,6 @@ class MyBeaconsViewController: BaseViewController {
         
         BeaconService.run()
         
-        BeaconService.setupDelegate(delegate: self)
-        
         StorageService.loadBeacons { (beacons) in
             dLog("\(beacons)")
             self.prepareBeaconsListAndShow()
@@ -121,7 +119,7 @@ class MyBeaconsViewController: BaseViewController {
     }
     
     fileprivate func updateCell(_ cell: DiscoveredDeviceTableViewCell, for indexPath: IndexPath) {
-        cell.resetCell()
+        cell.resetContent()
         
         let beacon = beacons[indexPath.row]
         cell.deviceName.text = beacon.name
@@ -189,7 +187,7 @@ extension MyBeaconsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MyBeaconsViewController: BeaconServiceDelegate {
-    func beaconFinded(_ beacon: BeaconCLModel) {
+    func beaconFound(_ beacon: BeaconCLModel) {
         clBeacons.append(beacon)
         
         switch currentFilterId {
@@ -245,7 +243,7 @@ extension MyBeaconsViewController: BeaconServiceDelegate {
                 }
             }
         } else {
-            beaconFinded(beacon)
+            beaconFound(beacon)
         }
     }
     

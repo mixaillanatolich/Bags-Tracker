@@ -105,7 +105,7 @@ class EditBeaconViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
-    
+    // buttons for testing cloud kit features
     @IBAction func button1Clicked(_ sender: Any) {
         //list
         

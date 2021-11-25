@@ -151,10 +151,8 @@ class CloudStorageImpl: NSObject {
         }
         let beacon = BeaconModel(uuid: uuid, name: name, aIdentifier: identifier, majorValue: major, minorValue: minor)
         beacon.isNotificationEnabled = (record["isNotificationEnabled"] >>> JSONAsBool) ?? false
-        if let events = record["notificationEvents"] >>> JSONAsArray {
-            for event in events as! [Int] {
-                beacon.notificationEvents.append(NotificationEventType(rawValue: event)!)
-            }
+        if let events = (record["notificationEvents"] >>> JSONAsArray) as? [Int] {
+            events.forEach({ beacon.notificationEvents.append(NotificationEventType(rawValue: $0)!) })
         }
         beacon.cloudSyncStatus = .synced
         beacon.lastModified = record.modificationDate
@@ -162,24 +160,25 @@ class CloudStorageImpl: NSObject {
     }
     
     fileprivate func createRecordFrom(_ beacon: BeaconModel) -> CKRecord {
-        let ckbeacon = CKRecord(recordType: "Beacons", recordID: CKRecord.ID(recordName: beacon.identifier) ) //CKRecord(recordType: "Beacons")
+        let ckBeacon = CKRecord(recordType: "Beacons", recordID: CKRecord.ID(recordName: beacon.identifier))
         
-        ckbeacon.setObject(beacon.uuid.uuidString as __CKRecordObjCValue, forKey: "uuid")
-        ckbeacon.setObject(beacon.identifier as __CKRecordObjCValue, forKey: "identifier")
-        ckbeacon.setObject(beacon.name as __CKRecordObjCValue, forKey: "name")
-        ckbeacon.setObject((beacon.majorValue ?? 0) as __CKRecordObjCValue, forKey: "major")
-        ckbeacon.setObject((beacon.minorValue ?? 0) as __CKRecordObjCValue, forKey: "minor")
-        ckbeacon.setObject(beacon.isNotificationEnabled as __CKRecordObjCValue, forKey: "isNotificationEnabled")
+        ckBeacon["uuid"] = beacon.uuid.uuidString
+        ckBeacon["identifier"] = beacon.identifier
+        ckBeacon["name"] = beacon.name
+        ckBeacon["major"] = beacon.majorValue
+        ckBeacon["minor"] = beacon.minorValue
+        ckBeacon["isNotificationEnabled"] = beacon.isNotificationEnabled
+
         var notificationEvents = [Int]()
-        for event in beacon.notificationEvents {
-            notificationEvents.append(event.rawValue)
-        }
-        ckbeacon.setObject(notificationEvents as __CKRecordObjCValue, forKey: "notificationEvents")
+        beacon.notificationEvents.forEach( { notificationEvents.append($0.rawValue) } )
         
-        return ckbeacon
+        ckBeacon["notificationEvents"] = notificationEvents
+        
+        return ckBeacon
     }
-    
 }
+
+// just for test
 
 //        let query = CKQuery(recordType: "Beacons", predicate: NSPredicate(format: "identifier == %@", beacon.identifier))
 //

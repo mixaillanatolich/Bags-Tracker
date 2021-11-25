@@ -109,7 +109,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
             } else {
                 let theBeacon = BeaconCLModel(clBeacon: beacon)
                 activeBeacons.append(theBeacon)
-                delegate?.beaconFinded(theBeacon)
+                delegate?.beaconFound(theBeacon)
                 
                 NotificationManager.checkNotificationFor(beacon: theBeacon, eventType: .inRange)
             }
@@ -147,7 +147,7 @@ extension BeaconServiceImpl: CLLocationManagerDelegate {
          } else {
             let theBeacon = BeaconCLModel(clBeaconRegion: beaconRegion)
              activeBeacons.append(theBeacon)
-             delegate?.beaconFinded(theBeacon)
+             delegate?.beaconFound(theBeacon)
          }
         
         NotificationManager.checkNotificationFor(beacon: BeaconCLModel(clBeaconRegion: beaconRegion), eventType: .inRange)

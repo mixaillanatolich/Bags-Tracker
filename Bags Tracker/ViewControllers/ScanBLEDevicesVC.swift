@@ -69,7 +69,7 @@ extension ScanBLEDevicesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:DiscoveredDeviceTableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "DiscoveredPeripheralCell")! as! DiscoveredDeviceTableViewCell
-        cell.resetCell()
+        cell.resetContent()
         
         let device = discoveredDevices[Array(self.discoveredDevices.keys)[indexPath.row]]!
 
