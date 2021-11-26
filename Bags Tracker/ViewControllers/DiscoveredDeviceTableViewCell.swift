@@ -11,24 +11,21 @@ import UIKit
 class DiscoveredDeviceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var deviceName: UILabel!
-   // @IBOutlet weak var servicesLabel: UILabel!
-   // @IBOutlet weak var manufacturerLabel: UILabel!
     @IBOutlet weak var rssiLabel: UILabel!
     @IBOutlet weak var signalLevelIndicator1: UIView!
     @IBOutlet weak var signalLevelIndicator2: UIView!
     @IBOutlet weak var signalLevelIndicator3: UIView!
     @IBOutlet weak var signalLevelIndicator4: UIView!
     @IBOutlet weak var signalLevelIndicator5: UIView!
+    @IBOutlet weak var alertSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
     }
 
     func resetContent() {
@@ -42,7 +39,7 @@ class DiscoveredDeviceTableViewCell: UITableViewCell {
         signalLevelIndicator1.backgroundColor = UIColor.lightGray
     }
     
-    func updateDeviceRSSI(rssi: Int) {
+    func updateDevice(rssi: Int) {
 //        rssiLabel.text = "RSSI: \(rssi)"
         
         if (rssi > -55) {
@@ -66,7 +63,7 @@ class DiscoveredDeviceTableViewCell: UITableViewCell {
         
         var rssiStr = "n/a"
         if let rssi = clBeacon.rssi, rssi != 0 {
-            updateDeviceRSSI(rssi: rssi)
+            updateDevice(rssi: rssi)
             rssiStr = "\(rssi)"
         }
         

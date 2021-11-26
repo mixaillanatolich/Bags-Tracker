@@ -81,24 +81,20 @@ class EditBeaconViewController: BaseViewController {
             beacon.notificationEvents.append(NotificationEventType(rawValue: item)!)
         }
         
+        if (notificationStateWasChanged) {
+            BeaconService.stopMonitoring(beacons: [self.beacon])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                BeaconService.startMonitoring(beacons: [self.beacon])
+            }
+        }
+        
         StorageService.updateBeacon(beacon) { (error) in
             if let error = error {
                 self.showAlert(withTitle: error, andMessage: nil)
             } else {
-                
-                if (notificationStateWasChanged) {
-                    BeaconService.stopMonitoring(beacons: [self.beacon])
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        BeaconService.startMonitoring(beacons: [self.beacon])
-                    }
-                }
-
-                self.showAlert(withTitle: "iBeacon was updated successfully", andMessage: nil) {
-                    self.closeButtonClicked(self)
-                }
+                self.closeButtonClicked(self)
             }
         }
-
     }
         
     @objc func onTouchGesture() {

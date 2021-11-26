@@ -42,7 +42,8 @@ class MyBeaconsViewController: BaseViewController {
         filterBeaconsMultiControl.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .selected)
         filterBeaconsMultiControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
         
-        NotificationCenter.addObserver(self, selector: #selector(prepareBeaconsListAndShow), name: NSNotification.Name(rawValue: BeaconsSyncedWithCloudNotification), object: nil)
+        NotificationCenter.addObserver(self, selector: #selector(prepareBeaconsListAndShow),
+                                       name: NSNotification.Name(rawValue: BeaconsSyncedWithCloudNotification), object: nil)
         
         BeaconService.run()
         
@@ -118,15 +119,38 @@ class MyBeaconsViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
+    @objc func alertSwitchSwitched(_ sender: UISwitch) {
+        let beacon = beacons[sender.tag]
+        beacon.isNotificationEnabled = sender.isOn
+        
+        BeaconService.stopMonitoring(beacons: [beacon])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            BeaconService.startMonitoring(beacons: [beacon])
+        }
+        
+        StorageService.updateBeacon(beacon) { (error) in
+            dLog("\(error.orNil)")
+        }
+    }
+    
     fileprivate func updateCell(_ cell: DiscoveredDeviceTableViewCell, for indexPath: IndexPath) {
         cell.resetContent()
         
         let beacon = beacons[indexPath.row]
         cell.deviceName.text = beacon.name
+        cell.alertSwitch.isOn = beacon.isNotificationEnabled
         
         if let clBeacon = clBeacons.first(where: { $0 == beacon }) {
             cell.updateInfo(clBeacon: clBeacon)
         }
+    }
+    
+    fileprivate func openBeaconEditScreen(for indexPath: IndexPath) {
+        let beacon = self.beacons[indexPath.row]
+        self.performSegue(withIdentifier: "ShowBeaconEditScreen", sender: { (destVC: UIViewController) in
+            let vc = destVC as! EditBeaconViewController
+            vc.beacon = beacon
+        })
     }
 }
 
@@ -145,6 +169,9 @@ extension MyBeaconsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "DiscoveredPeripheralCell")! as! DiscoveredDeviceTableViewCell
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.alertSwitch.tag = indexPath.row
+        cell.alertSwitch.addTarget(self, action: #selector(alertSwitchSwitched(_:)), for: .valueChanged)
         updateCell(cell, for: indexPath)
             
         return cell
@@ -169,21 +196,14 @@ extension MyBeaconsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.editedIndex = nil
             }
         }
-        let editAction = UIContextualAction(style: .normal, title: "Edit") {  (contextualAction, view, boolValue) in
-            let beacon = self.beacons[indexPath.row]
-            self.performSegue(withIdentifier: "ShowBeaconEditScreen", sender: { (destVC: UIViewController) in
-                let vc = destVC as! EditBeaconViewController
-                vc.beacon = beacon
-            })
-        }
-        let swipeActions = UISwipeActionsConfiguration(actions: [editAction, deleteAction])
+
+        let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
         return swipeActions
     }
     
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        openBeaconEditScreen(for: indexPath)
     }
-    
 }
 
 extension MyBeaconsViewController: BeaconServiceDelegate {
